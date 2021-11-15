@@ -58,7 +58,6 @@ public class Main {
     try (Connection connection = dataSource.getConnection()) {
       String modelPut = "ON EST DANS LE MODEL PUT LA";
       ArrayList<String> output = new ArrayList<String>();
-      
       output.add(modelPut);
       model.put("records", output);
       return "db";
