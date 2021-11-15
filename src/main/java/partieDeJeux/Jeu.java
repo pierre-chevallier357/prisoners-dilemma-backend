@@ -1,6 +1,8 @@
 package partieDeJeux;
 import strategie.*;
 
+import java.util.ArrayList;
+
 import joueur.*;
 
 public class Jeu {
@@ -8,10 +10,11 @@ public class Jeu {
 	Joueur joueur1 = new Joueur();
 	Joueur joueur2 = new Joueur();
 	int nb_tour;
-	String res = "";
+	
 	HistoriqueJoueur historiqueJ1 = new HistoriqueJoueur();
 	HistoriqueJoueur historiqueJ2 = new HistoriqueJoueur();
 	
+    ArrayList<String> RetourDesResultats = new ArrayList<String>();
 	public Jeu() {
 		
 		this.nb_tour= 5;
@@ -36,14 +39,14 @@ public class Jeu {
 			
 			partieJouee(this.joueur1, this.joueur2);
 			
-			this.res += joueur1.getNom()+"   "+joueur1.getResultat()+"  Point: "+ historiqueJ1.calculPoint()+'\n';
+			RetourDesResultats.add(joueur1.getNom()+"   "+joueur1.getResultat()+"  Point: "+ historiqueJ1.calculPoint());
 
-			this.res += joueur2.getNom()+"   "+joueur2.getResultat()+"  Point: "+historiqueJ2.calculPoint()+'\n';
+			RetourDesResultats.add(joueur2.getNom()+"   "+joueur2.getResultat()+"  Point: "+historiqueJ2.calculPoint());
 		}
 		
 	}
-	public String renvoiString(){
-		return this.res;
+	public ArrayList<String> renvoiString(){
+		return this.RetourDesResultats;
 	}
 	
 	public void partieJouee(Joueur joueur1, Joueur joueur2){

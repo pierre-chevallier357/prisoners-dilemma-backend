@@ -57,9 +57,7 @@ public class Main {
   String db(Map<String, Object> model) {
 
     Jeu jeu = new Jeu();
-    String modelPut = jeu.renvoiString();
-    ArrayList<String> output = new ArrayList<String>();
-    output.add(modelPut);
+    ArrayList<String> output = jeu.renvoiString();
     model.put("records", output);
     return "db";
   }
