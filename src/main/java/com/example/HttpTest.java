@@ -46,33 +46,5 @@ public class HttpTest {
     String db() {
       return "pong";
     }
-
-    @GetMapping("/db")
-    String db(Map<String, Object> model, HttpServletResponse response) {
-      try (Connection connection = dataSource.getConnection()) {
-        Statement stmt = connection.createStatement();
-        stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
-        stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
-        ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
-  
-        ArrayList<String> output = new ArrayList<String>();
-        while (rs.next()) {
-          output.add("Read from DB: " + rs.getTimestamp("tick"));
-        }
-  
-        model.put("records", output);
-        stmt.close();
-        connection.close();
-        return "db";
-      } catch (Exception e) {
-        response.setStatus(500);
-        try {
-          response.getOutputStream().print( e.getMessage() );
-        } catch (Exception e2) {
-          System.err.println(e2.getMessage());
-        }
-        return "error";
-      }
-    }
   
 }
