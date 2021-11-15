@@ -57,7 +57,6 @@ public class Main {
   String db(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
       String modelPut = "ON EST DANS LE MODEL PUT LA";
-      model.put("ON EST DANS LE MODEL PUT LA", modelPut);
       Statement stmt = connection.createStatement();
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
       stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
@@ -67,7 +66,8 @@ public class Main {
       while (rs.next()) {
         output.add("Read from DB: " + rs.getTimestamp("tick"));
       }
-
+      output.add(modelPut);
+      
       model.put("records", output);
       return "db";
     } catch (Exception e) {
