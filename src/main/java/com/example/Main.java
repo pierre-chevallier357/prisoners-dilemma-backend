@@ -60,6 +60,7 @@ public class Main {
       ArrayList<String> output = new ArrayList<String>();
       
       output.add(modelPut);
+      model.put("records", output);
       return "db";
     } catch (Exception e) {
       model.put("message", e.getMessage());
