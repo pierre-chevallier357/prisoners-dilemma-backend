@@ -56,7 +56,8 @@ public class Main {
   @RequestMapping("/db")
   String db(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
-      model.put("ON EST DANS LE MODEL PUT LA");
+      String modelPut = "ON EST DANS LE MODEL PUT LA";
+      model.put("ON EST DANS LE MODEL PUT LA", modelPut);
       Statement stmt = connection.createStatement();
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
       stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
