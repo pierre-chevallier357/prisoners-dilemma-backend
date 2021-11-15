@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-package com.example;
-
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +23,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import partieDeJeux.Jeu;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -55,16 +55,13 @@ public class Main {
 
   @RequestMapping("/db")
   String db(Map<String, Object> model) {
-    try (Connection connection = dataSource.getConnection()) {
-      String modelPut = "ON EST DANS LE MODEL PUT LA";
-      ArrayList<String> output = new ArrayList<String>();
-      output.add(modelPut);
-      model.put("records", output);
-      return "db";
-    } catch (Exception e) {
-      model.put("message", e.getMessage());
-      return "error";
-    }
+
+    Jeu jeu = new Jeu();
+    String modelPut = jeu.renvoiString();
+    ArrayList<String> output = new ArrayList<String>();
+    output.add(modelPut);
+    model.put("records", output);
+    return "db";
   }
 
   @Bean
