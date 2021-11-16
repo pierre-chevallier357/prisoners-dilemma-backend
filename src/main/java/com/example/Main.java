@@ -52,6 +52,19 @@ public class Main {
   }
 
   @RequestMapping("/creation")
+  String creation(Map<String, Object> model) {
+    try (Connection connection = dataSource.getConnection()) {
+      String nb_tour = "Veuillez saisir le nom de tour voulu";
+      model.put("nb_tour", nb_tour); 
+    return "creation";
+    }
+    catch (Exception e) {
+      model.put("message", e.getMessage());
+      return "error";
+    }
+  }
+
+  @RequestMapping("/db")
   String db(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
       int nb_tour= 5;

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'db')}">
+
+<body>
+
+
+<div class="container">
+  <ul th:each="nb_tour : ${nb_tour}">
+    <li th:text="${nb_tour}"/>
+  </ul>
+</div>
+
+</body>
+</html>
