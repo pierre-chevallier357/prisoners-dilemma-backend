@@ -9,15 +9,23 @@ public class Jeu {
 	
 	Joueur joueur1 = new Joueur();
 	Joueur joueur2 = new Joueur();
+	int id;
+
 	int nb_tour;
 	
 	HistoriqueJoueur historiqueJ1 = new HistoriqueJoueur();
 	HistoriqueJoueur historiqueJ2 = new HistoriqueJoueur();
 	
     ArrayList<String> RetourDesResultats = new ArrayList<String>();
-	public Jeu(int nb_tour) {
+
+	public Jeu(int id){
+		joueur1.setNom("faudra recuperer son nom");
+		joueur1.setConnect(true);
+		this.id = id;
+	}
+	public Jeu() {
 		
-		this.nb_tour= nb_tour;
+		this.nb_tour= 5;
 		this.joueur1.setNom("Pierre");
 		this.joueur2.setNom("Loris");
 		joueur1.setConnect(false);

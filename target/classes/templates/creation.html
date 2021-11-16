@@ -2,11 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'db')}">
 
 <body>
-
-    <label for="nb_tour">Veuillez saisir le nombre de tour :</label>
     <div class="container">
-        <input type="text" id="nb_tour" name="nb_tour" required minlength="4" maxlength="8" size="10">
+        <FORM>
+        <input type="text" name="sethu" id="hu" value="Veuillez saisir le nombre de tour :" />
+        <input type="button" value="send HU code" onclick="getHU();" />
+       </FORM>
     </div>
-
+    <script language="javascript">
+        function getHU() {
+            hu = document.getElementById("hu").innerHTML;
+            alert(hu);
+        }
+    </script>
     </body>
 </html>
