@@ -57,8 +57,8 @@ public class Main {
   @RequestMapping("/creation")
   String creation(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
-      String question_nb_tour = "Veuillez saisir le nom de tour voulu";
-      model.put("nb_tour", question_nb_tour); 
+      String nom = jeu.getJoueur1().getNom();
+      model.put("nom", nom); 
     return "creation";
     }
     catch (Exception e) {
@@ -72,7 +72,7 @@ public class Main {
 		jeu = new Jeu(nb_tour);
     return nb_tour;
 	}
-  
+
   @GetMapping("/creation/{nom}")
 	public String addNom(@PathVariable(value = "nom") String nom) {
     Joueur joueur = new Joueur();

@@ -59,6 +59,9 @@ public class Jeu {
 	public void setJoueur1(Joueur joueur){
 		this.joueur1 = joueur;
 	}
+	public Joueur getJoueur1(){
+		return this.joueur1;
+	}
 	
 	public void partieJouee(Joueur joueur1, Joueur joueur2){
 		if (joueur1.getCoup() == joueur2.getCoup()) {
