@@ -3,12 +3,10 @@
 
 <body>
 
+    <label for="nb_tour">Veuillez saisir le nombre de tour :</label>
+    <div class="container">
+        <input type="text" id="nb_tour" name="nb_tour" required minlength="4" maxlength="8" size="10">
+    </div>
 
-<div class="container">
-  <ul th:each="nb_tour : ${nb_tour}">
-    <li th:text="${nb_tour}"/>
-  </ul>
-</div>
-
-</body>
+    </body>
 </html>
