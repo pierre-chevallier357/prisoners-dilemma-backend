@@ -55,6 +55,10 @@ public class Jeu {
 	public ArrayList<String> renvoiString(){
 		return this.RetourDesResultats;
 	}
+
+	public void setJoueur1(Joueur joueur){
+		this.joueur1 = joueur;
+	}
 	
 	public void partieJouee(Joueur joueur1, Joueur joueur2){
 		if (joueur1.getCoup() == joueur2.getCoup()) {

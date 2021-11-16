@@ -7,7 +7,8 @@ public class Joueur {
 	private Coup coup = null;
 	private Resultat resultat;
 	private boolean connect;
-
+	private int id;
+	
 	public Resultat getResultat() {
 		return resultat;
 	}
@@ -16,6 +17,13 @@ public class Joueur {
 		this.resultat = resultat;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 	public Coup getCoup() {
 		return coup;
 	}

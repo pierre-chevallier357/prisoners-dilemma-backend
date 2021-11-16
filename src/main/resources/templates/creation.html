@@ -7,6 +7,7 @@
         <h1>Veuillez saisir le nombre de tour :</h1>
         <input type="text" name="sethu" id="hu" />
         <input type="button" value="send HU code" onclick="getHU();" />
+        <a th:href="@{/creation/{nb_tour}(nb_tour=${nb_tour})}">nb_tour</a>
        </FORM>
     </div>
     <script language="javascript">

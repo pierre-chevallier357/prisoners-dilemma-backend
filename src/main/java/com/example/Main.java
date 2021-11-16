@@ -20,6 +20,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
@@ -28,6 +30,7 @@ import java.rmi.ServerException;
 import java.sql.Connection;
 import javax.sql.DataSource;
 
+import com.example.joueur.Joueur;
 import com.example.partieDeJeux.Jeu;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -54,8 +57,8 @@ public class Main {
   @RequestMapping("/creation")
   String creation(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
-      String nb_tour = "Veuillez saisir le nom de tour voulu";
-      model.put("nb_tour", nb_tour); 
+      String question_nb_tour = "Veuillez saisir le nom de tour voulu";
+      model.put("nb_tour", question_nb_tour); 
     return "creation";
     }
     catch (Exception e) {
@@ -63,6 +66,12 @@ public class Main {
       return "error";
     }
   }
+
+  @GetMapping("/creation/{nb_tour}")
+	public Integer addNbTour(@PathVariable(value = "nb_tour") int nb_tour) {
+		Jeu jeu = new Jeu(nb_tour);
+    return nb_tour;
+	}
 
   @RequestMapping("/db")
   String db(Map<String, Object> model) {
