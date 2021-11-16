@@ -15,13 +15,12 @@ public class Jeu {
 	HistoriqueJoueur historiqueJ2 = new HistoriqueJoueur();
 	
     ArrayList<String> RetourDesResultats = new ArrayList<String>();
-	public Jeu() {
+	public Jeu(int nb_tour) {
 		
-		this.nb_tour= 5;
+		this.nb_tour= nb_tour;
 		this.joueur1.setNom("Pierre");
 		this.joueur2.setNom("Loris");
 		joueur1.setConnect(false);
-
 		joueur2.setConnect(false);
 		for(int i=0; i<nb_tour; i++) {
 			if(joueur1.isConnect() == false) {

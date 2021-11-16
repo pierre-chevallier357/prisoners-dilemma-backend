@@ -54,7 +54,8 @@ public class Main {
   @RequestMapping("/creation")
   String db(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
-      Jeu jeu = new Jeu();
+      int nb_tour= 5;
+      Jeu jeu = new Jeu(nb_tour);
       ArrayList<String> output = new ArrayList<String>();
       output = jeu.renvoiString();
       model.put("records", output); 
