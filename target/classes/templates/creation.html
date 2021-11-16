@@ -5,8 +5,7 @@
     <div class="container">
         <FORM>
         <h1>Veuillez saisir le nombre de tour :</h1>
-        <input type="text" name="nb_tour" id="nb_tour" />
-        <a th:href="@{/creation/{nb_tour}(nb_tour=${nb_tour})}">nb_tour</a>
+        <input type="text" th:href="@{/creation/{nb_tour}(nb_tour=${nb_tour})}"/>
        </FORM>
     </div>
 </body>
