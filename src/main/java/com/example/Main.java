@@ -28,6 +28,7 @@ import java.rmi.ServerException;
 import java.sql.Connection;
 import javax.sql.DataSource;
 
+import com.example.partieDeJeux.Jeu;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -53,12 +54,13 @@ public class Main {
   @RequestMapping("/db")
   String db(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
-      String modelPut = "ON EST DANS LE MODEL PUT LA";
+      Jeu jeu = new Jeu();
       ArrayList<String> output = new ArrayList<String>();
-      output.add(modelPut);
-      model.put("records", output);
-      return "db";
-    } catch (Exception e) {
+      output = jeu.renvoiString();
+      model.put("records", output); 
+    return "db";
+    }
+    catch (Exception e) {
       model.put("message", e.getMessage());
       return "error";
     }
