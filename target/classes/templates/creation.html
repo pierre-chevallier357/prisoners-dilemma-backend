@@ -5,16 +5,9 @@
     <div class="container">
         <FORM>
         <h1>Veuillez saisir le nombre de tour :</h1>
-        <input type="text" name="sethu" id="hu" />
-        <input type="button" value="send HU code" onclick="getHU();" />
+        <input type="text" name="nb_tour" id="nb_tour" />
         <a th:href="@{/creation/{nb_tour}(nb_tour=${nb_tour})}">nb_tour</a>
        </FORM>
     </div>
-    <script language="javascript">
-        function getHU() {
-            hu = document.getElementById("hu").innerHTML;
-            alert(hu);
-        }
-    </script>
-    </body>
+</body>
 </html>
