@@ -18,15 +18,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import partieDeJeux.Jeu;
 import java.util.ArrayList;
 import java.util.Map;
-
+import java.rmi.ServerException;
 import java.sql.Connection;
 import javax.sql.DataSource;
+
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 
 @Controller
 @SpringBootApplication
@@ -61,4 +65,16 @@ public class Main {
       return "error";
     }
   }
+
+  @Bean
+  public DataSource dataSource() throws ServerException {
+    if (dbUrl == null || dbUrl.isEmpty()) {
+      return new HikariDataSource();
+    } else {
+      HikariConfig config = new HikariConfig();
+      config.setJdbcUrl(dbUrl);
+      return new HikariDataSource(config);
+    }
+  }
+
 }
