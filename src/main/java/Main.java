@@ -51,7 +51,8 @@ public class Main {
   String db(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
       Jeu jeu = new Jeu();
-      ArrayList<String> output = jeu.renvoiString();
+      ArrayList<String> output = new ArrayList<String>();
+      output = jeu.renvoiString();
       model.put("records", output); 
     return "db";
     }
