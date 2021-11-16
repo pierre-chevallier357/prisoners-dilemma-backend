@@ -54,13 +54,12 @@ public class Main {
   @RequestMapping("/db")
   String db(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
-      Jeu jeu = new Jeu();
+      String modelPut = "ON EST DANS LE MODEL PUT LA";
       ArrayList<String> output = new ArrayList<String>();
-      output = jeu.renvoiString();
-      model.put("records", output); 
-    return "db";
-    }
-    catch (Exception e) {
+      output.add(modelPut);
+      model.put("records", output);
+      return "db";
+    } catch (Exception e) {
       model.put("message", e.getMessage());
       return "error";
     }
