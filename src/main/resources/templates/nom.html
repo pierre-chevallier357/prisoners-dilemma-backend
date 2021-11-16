@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'db')}">
+
+    <body>
+        <div class="container">
+            <FORM>
+        <ul th:each="nom : ${nom}">
+            <li th:text="${nom}"/>
+        </ul>
+        </div>
+    </body>
+</html>

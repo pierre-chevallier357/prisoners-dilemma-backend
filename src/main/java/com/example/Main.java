@@ -57,8 +57,6 @@ public class Main {
   @RequestMapping("/creation")
   String creation(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
-      String nom = jeu.getJoueur1().getNom();
-      model.put("nom", nom); 
     return "creation";
     }
     catch (Exception e) {
@@ -66,6 +64,20 @@ public class Main {
       return "error";
     }
   }
+
+  @RequestMapping("/nom")
+  String affichageNom(Map<String, Object> model) {
+    try (Connection connection = dataSource.getConnection()) {
+      String nom = jeu.getJoueur1().getNom();
+      model.put("nom", nom); 
+    return "nom";
+    }
+    catch (Exception e) {
+      model.put("message", e.getMessage());
+      return "error";
+    }
+  }
+
 
   @GetMapping("/creation/{nb_tour}")
 	public Integer addNbTour(@PathVariable(value = "nb_tour") int nb_tour) {
