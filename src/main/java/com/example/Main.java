@@ -51,7 +51,7 @@ public class Main {
     return "index";
   }
 
-  @RequestMapping("/db")
+  @RequestMapping("/creation")
   String db(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
       Jeu jeu = new Jeu();
@@ -65,6 +65,8 @@ public class Main {
       return "error";
     }
   }
+
+
 
   @Bean
   public DataSource dataSource() throws ServerException {
