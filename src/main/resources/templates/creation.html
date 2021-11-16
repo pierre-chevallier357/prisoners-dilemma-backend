@@ -7,10 +7,16 @@
     
         <h1>Veuillez saisir votre nom :</h1>
         <input type="text" th:href="@{/creation/{nom}(nom=${nom})}"/>
+        <ul th:each="nom : ${nom}">
+            <li th:text="${nom}"/>
+          </ul>
         <h1>Veuillez saisir le nombre de tour :</h1>
         <input type="text" th:href="@{/creation/{nb_tour}(nb_tour=${nb_tour})}"/>
+        <ul th:each="record : ${nb_tour}">
+            <li th:text="${nb_tour}"/>
+          </ul>
         <a type="button" class="btn btn-lg btn-default" href="https://serveur-pc.herokuapp.com/creation"></a>
-        
+
        </FORM>
     </div>
 </body>
