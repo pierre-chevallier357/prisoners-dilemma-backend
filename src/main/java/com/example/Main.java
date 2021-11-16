@@ -68,8 +68,10 @@ public class Main {
   @RequestMapping("/nom")
   String affichageNom(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
+      ArrayList<String> nomJoueur = new ArrayList<String>();
       String nom = jeu.getJoueur1().getNom();
-      model.put("nom", nom); 
+      nomJoueur.add(nom);
+      model.put("noms", nomJoueur); 
     return "nom";
     }
     catch (Exception e) {
