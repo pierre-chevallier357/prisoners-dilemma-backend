@@ -39,7 +39,7 @@ public class Jeu {
         TimeUnit time = TimeUnit.SECONDS;
 		while(joueur1.getCoup()==null){
 			try {
-				time.sleep(1);
+				time.sleep(30);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -47,7 +47,7 @@ public class Jeu {
 		}
 		while(joueur2.getCoup()==null){			
 			try {
-				time.sleep(1);
+				time.sleep(30);
 			} 
 			catch (InterruptedException e) {
 				e.printStackTrace();
