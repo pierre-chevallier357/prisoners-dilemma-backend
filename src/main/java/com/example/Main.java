@@ -108,9 +108,13 @@ public class Main {
   }
 
   @GetMapping("/partie/{idPartie}&{idJoueur}&{coup}")
-  public String jouePartie(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur, @PathVariable(value = "coup") String coup  ){
+  public void jouePartie(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur, @PathVariable(value = "coup") String coup  ){
     jeu.JoueUnCoup(idPartie, idJoueur, coup);
     jeu.attenteDeCoup(idJoueur);
+  }
+
+  @GetMapping("/resultat/{idPartie}&{idJoueur}")
+  public String resultatTour(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     String res = jeu.getRes(idJoueur);
     return res;
   }
