@@ -104,7 +104,7 @@ public class Main {
   }
 
   @GetMapping("/rejoindrePartie/{idPartie}&{nom}")
-  public Integer rejoindrePartie(@PathVariable(value = "idParties") Integer id, @PathVariable(value = "nom") String nom ){
+  public Integer rejoindrePartie(@PathVariable(value = "idPartie") Integer id, @PathVariable(value = "nom") String nom ){
     Integer i = Tools.randomNum();
     Joueur joueur = new Joueur();
     joueur.setNom(nom);
