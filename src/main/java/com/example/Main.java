@@ -110,6 +110,7 @@ public class Main {
     joueur.setId(i);
     jeu.connectionJoueur2(id);
     jeu.setJoueur2(joueur);
+    listJoueur.add(joueur);
     return jeu.getJoueur2().getId();
   }
 
