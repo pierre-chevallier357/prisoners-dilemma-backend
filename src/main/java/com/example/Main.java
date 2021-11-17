@@ -20,9 +20,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -35,8 +37,9 @@ import com.example.partieDeJeux.Jeu;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
-@Controller
-@SpringBootApplication
+@RestController
+@CrossOrigin
+@RequestMapping("/")
 public class Main {
   ArrayList<Joueur> listJoueur = new ArrayList<>();
   Jeu jeu = new Jeu();
@@ -46,12 +49,12 @@ public class Main {
   @Autowired
   private DataSource dataSource;
 
-  @RequestMapping("/")
+  @GetMapping("/")
   String index() {
     return "index";
   }
 
-  @RequestMapping("/creation")
+  @GetMapping("/creation")
   String creation(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
     return "creation";
@@ -62,7 +65,7 @@ public class Main {
     }
   }
 
-  @RequestMapping("/nom")
+  @GetMapping("/nom")
   String affichageNom(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
       ArrayList<String> nomJoueur = new ArrayList<String>();
@@ -110,7 +113,7 @@ public class Main {
     return res;
   }
 
-  @RequestMapping("/db")
+  @GetMapping("/db")
   String db(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
       int nb_tour= 5;
