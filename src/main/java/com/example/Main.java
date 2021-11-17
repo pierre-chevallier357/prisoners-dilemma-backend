@@ -43,34 +43,20 @@ import com.zaxxer.hikari.HikariDataSource;
 @RequestMapping("/")
 public class Main {
   ArrayList<Joueur> listJoueur = new ArrayList<>();
-  Jeu jeu = new Jeu();
+  ArrayList<Jeu> listPartie = new ArrayList<>();
   @Value("${spring.datasource.url}")
   private String dbUrl;
 
-  @Autowired
-  private DataSource dataSource;
-
+  Jeu jeu = new Jeu();
   @GetMapping("/")
   String index() {
     return "index";
   }
 
-  @GetMapping("/creation")
-  String creation(Map<String, Object> model) {
-    try (Connection connection = dataSource.getConnection()) {
-    return "creation";
-    }
-    catch (Exception e) {
-      model.put("message", e.getMessage());
-      return "error";
-    }
-  }
-
-
   @GetMapping("/creation-partie/{nb_tour}")
 	public Integer addNbTour(@PathVariable(value = "nb_tour") int nb_tour) {
 		jeu.setNbTour(nb_tour);
-    
+    listPartie.add(jeu);
     return jeu.getId();
 	}
 
@@ -119,20 +105,14 @@ public class Main {
     return jeu.getJoueur2().getId();
   }
 
-  @GetMapping("/db")
-  String db(Map<String, Object> model) {
-    try (Connection connection = dataSource.getConnection()) {
-      int nb_tour= 5;
-      ArrayList<String> output = new ArrayList<String>();
-      output = jeu.renvoiString();
-      model.put("records", output); 
-    return "db";
-    }
-    catch (Exception e) {
-      model.put("message", e.getMessage());
-      return "error";
-    }
+  @GetMapping("/partie/{idPartie}&{idJoueur}&{coup}")
+  public String jouePartie(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur, @PathVariable(value = "coup") String coup  ){
+    jeu.JoueUnCoup(idPartie, idJoueur, coup);
+    jeu.attenteDeCoup();
+    String res = jeu.getRes(idJoueur);
+    return res;
   }
+
 
 
 

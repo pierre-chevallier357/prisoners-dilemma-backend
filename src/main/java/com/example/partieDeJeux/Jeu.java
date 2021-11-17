@@ -38,31 +38,19 @@ public class Jeu {
 		while(joueur2.getCoup()==null);
 	}
 
-
-	public boolean attenteJoueur2(){
-		while(joueur2.isConnect()==false);
-		return true;
-	}
-
 	public void jeuManche(){
-		for(int i=0; i<nb_tour; i++) {
-			if(joueur1.isConnect() == false) {
-				
-				joueur1.setCoup(strategieJ1.ProchainCoup(joueur1, historiqueJ1.getListCoup(), historiqueJ2.getListCoup()));
-				joueur2.setCoup(strategieJ2.ProchainCoup(joueur2, historiqueJ2.getListCoup(), historiqueJ1.getListCoup()));
-			}
+		if(joueur1.isConnect() == false) {
 			
-			partieJouee(this.joueur1, this.joueur2);
-			
-			RetourDesResultats.add(joueur1.getNom()+"   "+joueur1.getResultat()+"  Point: "+ historiqueJ1.calculPoint());
-
-			RetourDesResultats.add(joueur2.getNom()+"   "+joueur2.getResultat()+"  Point: "+historiqueJ2.calculPoint());
-			if (joueur1.isConnect()){
-				joueur1.setCoup(null);
-			}
-			if(joueur2.isConnect()){
-				joueur2.setCoup(null);
-			}
+			joueur1.setCoup(strategieJ1.ProchainCoup(joueur1, historiqueJ1.getListCoup(), historiqueJ2.getListCoup()));
+			joueur2.setCoup(strategieJ2.ProchainCoup(joueur2, historiqueJ2.getListCoup(), historiqueJ1.getListCoup()));
+		}
+		
+		partieJouee(this.joueur1, this.joueur2);
+		if (joueur1.isConnect()){
+			joueur1.setCoup(null);
+		}
+		if(joueur2.isConnect()){
+			joueur2.setCoup(null);
 		}
 
 	}
@@ -101,6 +89,17 @@ public class Jeu {
 	public Integer getId(){
 		return this.id;
 	}
+
+	public String getRes(Integer idJoueur){
+		String res ="";
+		if(joueur1.getId()== idJoueur){
+			res = Integer.toString(historiqueJ1.calculPoint());
+		}
+		else if(joueur2.getId()== idJoueur){
+			res = Integer.toString(historiqueJ2.calculPoint());
+		}
+		return res;
+	}
 	
 	public void partieJouee(Joueur joueur1, Joueur joueur2){
 		if (joueur1.getCoup() == joueur2.getCoup()) {
@@ -128,6 +127,17 @@ public class Jeu {
 		historiqueJ1.addCoupRes(joueur1);
 		historiqueJ2.addCoupRes(joueur2);
 	}
+
+    public void JoueUnCoup(Integer idPartie, Integer idJoueur, String coup) {
+		if(this.id == idPartie){
+			if(joueur1.getId()== idJoueur){
+				joueur1.setCoupString(coup);
+			}
+			else if(joueur2.getId()== idJoueur){
+				joueur2.setCoupString(coup);
+			}
+		}
+    }
 
 }
 

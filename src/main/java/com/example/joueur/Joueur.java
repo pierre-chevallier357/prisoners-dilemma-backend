@@ -30,9 +30,21 @@ public class Joueur {
 		return coup;
 	}
 
-	public void setCoup(Coup Coup) {
-		this.coup = Coup;
+	public void setCoupString(String coup) {
+		switch(coup){
+			case "COOPERER" : 
+				this.coup = Coup.COOPERER;
+				break;
+			case "TRAHIR" :
+				this.coup = Coup.TRAHIR;
+				break;
+		}
 	}
+
+	public void setCoup(Coup coup) {
+		this.coup = coup;
+	}
+
 
 	public String getNom() {
 		return nom;
