@@ -89,7 +89,7 @@ public class Main {
     jeu.setJoueur1(joueur);
     listJoueur.add(joueur);
 
-    return i;
+    return joueur.getId();
 	}
 
   @GetMapping("/all-joueur")
