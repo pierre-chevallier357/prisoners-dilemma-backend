@@ -97,7 +97,7 @@ public class Main {
   public String getAllJoueur(){
     String res = "";
     for (Joueur j : listJoueur) {
-      res += j.getNom()+" ";
+      res += j.getNom()+" "+j.getId();
       
     }
     return res;
