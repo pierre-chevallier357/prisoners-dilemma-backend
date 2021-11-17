@@ -88,7 +88,7 @@ public class Main {
     return nb_tour;
 	}
 
-  @GetMapping("/creation/{nom}")
+  @GetMapping("/creation-joueur/{nom}")
 	public String addNom(@PathVariable(value = "nom") String nom) {
     Joueur joueur = new Joueur();
     if(nom != null){
