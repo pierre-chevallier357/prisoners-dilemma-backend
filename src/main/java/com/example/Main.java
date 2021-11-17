@@ -81,7 +81,7 @@ public class Main {
   }
 
 
-  @GetMapping("/creation/{nb_tour}")
+  @GetMapping("/nb_tour")
 	public Integer addNbTour(@PathVariable(value = "nb_tour") int nb_tour) {
 		jeu.setNbTour(nb_tour);
     return nb_tour;
