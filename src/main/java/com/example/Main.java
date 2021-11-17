@@ -18,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,8 +34,6 @@ import javax.sql.DataSource;
 import com.example.joueur.Joueur;
 import com.example.partieDeJeux.Jeu;
 import com.example.partieDeJeux.Tools;
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
 
 @RestController
 @CrossOrigin
@@ -83,6 +80,7 @@ public class Main {
         i = Tools.randomNum();
       }
     }
+
     joueur.setId(i);
     joueur.setNom(nom);
     joueur.setConnect(true);
@@ -114,19 +112,6 @@ public class Main {
     catch (Exception e) {
       model.put("message", e.getMessage());
       return "error";
-    }
-  }
-
-
-
-  @Bean
-  public DataSource dataSource() throws ServerException {
-    if (dbUrl == null || dbUrl.isEmpty()) {
-      return new HikariDataSource();
-    } else {
-      HikariConfig config = new HikariConfig();
-      config.setJdbcUrl(dbUrl);
-      return new HikariDataSource(config);
     }
   }
 
