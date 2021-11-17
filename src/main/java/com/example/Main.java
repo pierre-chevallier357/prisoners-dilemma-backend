@@ -69,7 +69,7 @@ public class Main {
   String affichageNom(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
       ArrayList<String> nomJoueur = new ArrayList<String>();
-      String nom = jeu.getJoueur1().getNom();
+      String nom =  jeu.getJoueur1().getNom();
       nomJoueur.add(nom);
       model.put("noms", nomJoueur); 
     return "nom";
@@ -90,7 +90,13 @@ public class Main {
   @GetMapping("/creation/{nom}")
 	public String addNom(@PathVariable(value = "nom") String nom) {
     Joueur joueur = new Joueur();
-    joueur.setNom(nom);
+    if(nom != null){
+      joueur.setNom(nom);
+    }
+    else {
+      
+      joueur.setNom("mauvais nom");
+    }
     joueur.setConnect(true);
     jeu.setJoueur1(joueur);
     return nom;

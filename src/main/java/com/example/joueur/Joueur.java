@@ -3,7 +3,7 @@ package com.example.joueur;
 import com.example.partieDeJeux.Resultat;
 
 public class Joueur {
-	private String nom = new String();
+	private String nom = null;
 	private Coup coup = null;
 	private Resultat resultat;
 	private boolean connect;
