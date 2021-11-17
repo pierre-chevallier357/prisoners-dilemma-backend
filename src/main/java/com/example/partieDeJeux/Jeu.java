@@ -51,8 +51,6 @@ public class Jeu extends Thread{
 				} catch (Exception e) {}
 			}
 		}
-		
-		notify();
 		jeuManche();
 	}
 
