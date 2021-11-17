@@ -63,10 +63,14 @@ public class Jeu extends Thread{
 		}
 		
 		partieJouee(this.joueur1, this.joueur2);
-		if (joueur1.isConnect()){
+
+	}
+
+	public void setCoupJoueur(Integer id){
+		if(joueur1.isConnect() && joueur1.getId()== id){
 			joueur1.setCoup(null);
 		}
-		if(joueur2.isConnect()){
+		else if(joueur1.isConnect() && joueur2.getId()== id){
 			joueur2.setCoup(null);
 		}
 
