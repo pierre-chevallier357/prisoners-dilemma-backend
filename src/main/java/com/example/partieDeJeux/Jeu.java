@@ -42,7 +42,7 @@ public class Jeu extends Thread{
 					Thread.sleep(100);
 				} catch (Exception e) {}
 			}
-			notifyAll();
+			notify();
 		}
 		else if(joueur2.getId()== idJoueur){
 			while (joueur1.getCoup()== null) {
@@ -51,7 +51,7 @@ public class Jeu extends Thread{
 					Thread.sleep(100);
 				} catch (Exception e) {}
 			}
-			notifyAll();
+			notify();
 		}
 		jeuManche();
 	}
