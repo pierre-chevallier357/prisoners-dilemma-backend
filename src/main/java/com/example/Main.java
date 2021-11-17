@@ -38,6 +38,7 @@ import com.zaxxer.hikari.HikariDataSource;
 @Controller
 @SpringBootApplication
 public class Main {
+  ArrayList<Joueur> listJoueur = new ArrayList<>();
   Jeu jeu = new Jeu();
   @Value("${spring.datasource.url}")
   private String dbUrl;
@@ -99,8 +100,19 @@ public class Main {
     }
     joueur.setConnect(true);
     jeu.setJoueur1(joueur);
+    listJoueur.add(joueur);
     return nom;
 	}
+
+  @GetMapping("/all-joueur")
+  public String getAllJoueur(){
+    String res = "";
+    for (Joueur j : listJoueur) {
+      res += j.getNom()+" ";
+      
+    }
+    return res;
+  }
 
   @RequestMapping("/db")
   String db(Map<String, Object> model) {

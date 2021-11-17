@@ -9,6 +9,8 @@ public class Jeu {
 	
 	Joueur joueur1 = new Joueur();
 	Joueur joueur2 = new Joueur();
+	Strategie strategieJ1;
+	Strategie strategieJ2;
 	int id;
 
 	int nb_tour;
@@ -19,31 +21,36 @@ public class Jeu {
     ArrayList<String> RetourDesResultats = new ArrayList<String>();
 
 	public Jeu(int id){
-		joueur1.setNom("faudra recuperer son nom");
-		joueur1.setConnect(true);
 		this.id = id;
 	}
 	public Jeu(){}
 	
-	public void jeuAutomatique(){
-		
-		this.nb_tour= 5;
-		this.joueur1.setNom("Pierre");
-		this.joueur2.setNom("Loris");
-		joueur1.setConnect(false);
-		joueur2.setConnect(false);
+	public boolean connectionJoueur2(int id){
+		if(this.id ==id){
+			joueur2.setConnect(true);
+			return true;
+		}
+
+		return false;
+	}
+
+	public void attenteDeCoup(){
+		while(joueur1.getCoup()==null);
+		while(joueur2.getCoup()==null);
+	}
+
+
+	public boolean attenteJoueur2(){
+		while(joueur2.isConnect()==false);
+		return true;
+	}
+
+	public void jeuManche(){
 		for(int i=0; i<nb_tour; i++) {
 			if(joueur1.isConnect() == false) {
-				Strategie stategieJ1;
-				stategieJ1= new VraiPacificateur();
-				Strategie strategieJ2;
-				strategieJ2= new Aleatoire();
 				
-				joueur1.setCoup(stategieJ1.ProchainCoup(joueur1, historiqueJ1.getListCoup(), historiqueJ2.getListCoup()));
+				joueur1.setCoup(strategieJ1.ProchainCoup(joueur1, historiqueJ1.getListCoup(), historiqueJ2.getListCoup()));
 				joueur2.setCoup(strategieJ2.ProchainCoup(joueur2, historiqueJ2.getListCoup(), historiqueJ1.getListCoup()));
-			}else {
-				this.joueur1.setCoup(Coup.COOPERER);
-				this.joueur2.setCoup(Coup.TRAHIR);
 			}
 			
 			partieJouee(this.joueur1, this.joueur2);
@@ -51,8 +58,14 @@ public class Jeu {
 			RetourDesResultats.add(joueur1.getNom()+"   "+joueur1.getResultat()+"  Point: "+ historiqueJ1.calculPoint());
 
 			RetourDesResultats.add(joueur2.getNom()+"   "+joueur2.getResultat()+"  Point: "+historiqueJ2.calculPoint());
+			if (joueur1.isConnect()){
+				joueur1.setCoup(null);
+			}
+			if(joueur2.isConnect()){
+				joueur2.setCoup(null);
+			}
 		}
-		
+
 	}
 
 	public void setNbTour(int nb_tour){
@@ -65,8 +78,25 @@ public class Jeu {
 	public void setJoueur1(Joueur joueur){
 		this.joueur1 = joueur;
 	}
+
 	public Joueur getJoueur1(){
 		return this.joueur1;
+	}
+
+	public void setJoueur2(Joueur joueur){
+		this.joueur2 = joueur;
+	}
+
+	public Joueur getJoueur2(){
+		return this.joueur2;
+	}
+
+	public void setStrategieJ1(Strategie strategie){
+		this.strategieJ1 = strategie;
+	}
+
+	public Strategie getStrategieJ1(){
+		return strategieJ1;
 	}
 	
 	public void partieJouee(Joueur joueur1, Joueur joueur2){
