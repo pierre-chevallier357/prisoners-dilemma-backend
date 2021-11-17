@@ -1,6 +1,8 @@
 package com.example.partieDeJeux;
 import com.example.strategie.*;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
+
 import com.example.joueur.*;
 
 public class Jeu {
@@ -34,8 +36,23 @@ public class Jeu {
 	}
 
 	public void attenteDeCoup(){
-		while(joueur1.getCoup()==null);
-		while(joueur2.getCoup()==null);
+        TimeUnit time = TimeUnit.SECONDS;
+		while(joueur1.getCoup()==null){
+			try {
+				time.sleep(1);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+
+		}
+		while(joueur2.getCoup()==null){			
+			try {
+				time.sleep(1);
+			} 
+			catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	public void jeuManche(){
