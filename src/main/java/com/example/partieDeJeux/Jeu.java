@@ -1,6 +1,5 @@
 package com.example.partieDeJeux;
 import com.example.strategie.*;
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -24,10 +23,7 @@ public class Jeu {
 
 
 	public Jeu(){
-		Random r = new Random();
-		int low = 1000;
-		int high = 9999;
-		this.id = r.nextInt(high-low) + low;
+		this.id = Tools.randomNum();
 	}
 	
 	public boolean connectionJoueur2(int id){

@@ -7,9 +7,9 @@ public class Joueur {
 	private Coup coup = null;
 	private Resultat resultat;
 	private boolean connect;
-	private int id;
+	private Integer id;
 
-	
+
 	public Joueur(){}
 	public Resultat getResultat() {
 		return resultat;

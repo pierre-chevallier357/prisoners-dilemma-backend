@@ -34,6 +34,7 @@ import javax.sql.DataSource;
 
 import com.example.joueur.Joueur;
 import com.example.partieDeJeux.Jeu;
+import com.example.partieDeJeux.Tools;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -74,19 +75,21 @@ public class Main {
 	}
 
   @GetMapping("/creation-joueur/{nom}")
-	public String addNom(@PathVariable(value = "nom") String nom) {
+	public Integer creationJoueur(@PathVariable(value = "nom") String nom) {
     Joueur joueur = new Joueur();
-    if(nom != null){
-      joueur.setNom(nom);
+    Integer i = Tools.randomNum();
+    for (Joueur j : listJoueur) {
+      while(j.getId()==i){
+        i = Tools.randomNum();
+      }
     }
-    else {
-      
-      joueur.setNom("mauvais nom");
-    }
+    joueur.setId(i);
+    joueur.setNom(nom);
     joueur.setConnect(true);
     jeu.setJoueur1(joueur);
     listJoueur.add(joueur);
-    return nom;
+
+    return i;
 	}
 
   @GetMapping("/all-joueur")
