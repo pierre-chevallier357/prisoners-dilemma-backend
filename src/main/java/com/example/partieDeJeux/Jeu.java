@@ -1,11 +1,10 @@
 package com.example.partieDeJeux;
 import com.example.strategie.*;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 
 import com.example.joueur.*;
 
-public class Jeu {
+public class Jeu extends Thread{
 	
 	Joueur joueur1 = new Joueur();
 	Joueur joueur2 = new Joueur();
@@ -35,23 +34,24 @@ public class Jeu {
 		return false;
 	}
 
-	public void attenteDeCoup(){
-        TimeUnit time = TimeUnit.SECONDS;
-		while(joueur1.getCoup()==null){
-			try {
-				time.sleep(30);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+	public void attenteDeCoup(Integer idJoueur){
+		if(joueur1.getId()== idJoueur){
+			while (joueur2.getCoup()== null) {
+				try {
+					Thread.currentThread();
+					Thread.sleep(100);
+				} catch (Exception e) {}
 			}
-
+			
 		}
-		while(joueur2.getCoup()==null){			
-			try {
-				time.sleep(30);
-			} 
-			catch (InterruptedException e) {
-				e.printStackTrace();
+		else if(joueur2.getId()== idJoueur){
+			while (joueur1.getCoup()== null) {
+				try {
+					Thread.currentThread();
+					Thread.sleep(100);
+				} catch (Exception e) {}
 			}
+			
 		}
 	}
 
@@ -103,7 +103,7 @@ public class Jeu {
 		return strategieJ1;
 	}
 
-	public Integer getId(){
+	public Integer getPartieId(){
 		return this.id;
 	}
 

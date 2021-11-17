@@ -59,7 +59,7 @@ public class Main {
     jeu.setNbTour(nb_tour);
 
     listPartie.add(jeu);
-    return jeu.getId();
+    return jeu.getPartieId();
 	}
 
   @GetMapping("/creation-joueur/{nom}")
@@ -111,7 +111,7 @@ public class Main {
   @GetMapping("/partie/{idPartie}&{idJoueur}&{coup}")
   public String jouePartie(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur, @PathVariable(value = "coup") String coup  ){
     jeu.JoueUnCoup(idPartie, idJoueur, coup);
-    jeu.attenteDeCoup();
+    jeu.attenteDeCoup(idJoueur);
     String res = jeu.getRes(idJoueur);
     return res;
   }
