@@ -86,7 +86,6 @@ public class Main {
     String res = "";
     for (Joueur j : listJoueur) {
       res += j.getNom()+" "+j.getId()+" ";
-      
     }
     return res;
   }

@@ -51,8 +51,8 @@ public class Jeu extends Thread{
 					Thread.sleep(100);
 				} catch (Exception e) {}
 			}
-			
 		}
+		jeuManche();
 	}
 
 	public void jeuManche(){
