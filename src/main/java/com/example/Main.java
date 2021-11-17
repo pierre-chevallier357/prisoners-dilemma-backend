@@ -111,7 +111,6 @@ public class Main {
   public void jouePartie(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur, @PathVariable(value = "coup") String coup  ){
     jeu.JoueUnCoup(idPartie, idJoueur, coup);
     jeu.attenteDeCoup(idJoueur);
-    notifyAll();
     jeu.resetCoupJoueur(idJoueur);
 
   }
