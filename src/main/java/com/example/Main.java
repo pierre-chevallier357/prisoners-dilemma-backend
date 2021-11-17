@@ -103,6 +103,22 @@ public class Main {
     return res;
   }
 
+  @GetMapping("/rejoindrePartie/{idPartie}&{nom}")
+  public Integer rejoindrePartie(@PathVariable(value = "idParties") Integer id, @PathVariable(value = "nom") String nom ){
+    Integer i = Tools.randomNum();
+    Joueur joueur = new Joueur();
+    joueur.setNom(nom);
+    for (Joueur j : listJoueur) {
+      while(j.getId()==i){
+        i = Tools.randomNum();
+      }
+    }
+    joueur.setId(i);
+    jeu.connectionJoueur2(id);
+    jeu.setJoueur2(joueur);
+    return jeu.getJoueur2().getId();
+  }
+
   @GetMapping("/db")
   String db(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
