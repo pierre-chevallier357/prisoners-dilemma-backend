@@ -53,9 +53,17 @@ public class Main {
     return "index";
   }
 
-  @GetMapping("/creation-partie/{nb_tour}")
-	public Integer addNbTour(@PathVariable(value = "nb_tour") int nb_tour) {
-		jeu.setNbTour(nb_tour);
+  @GetMapping("/creation-partie/{idJoueur}&{nb_tour}")
+	public Integer creationPartie(@PathVariable(value = "idJoueur") Integer idJoueur, @PathVariable(value = "nb_tour") int nb_tour) {
+		Joueur j1 = new Joueur();
+    for (Joueur j : listJoueur) {
+      if(j.getId()==idJoueur){
+        j1 = j;
+      }
+    }
+    jeu.setJoueur1(j1);
+    jeu.setNbTour(nb_tour);
+
     listPartie.add(jeu);
     return jeu.getId();
 	}
