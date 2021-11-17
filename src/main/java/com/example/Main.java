@@ -38,7 +38,7 @@ import com.zaxxer.hikari.HikariDataSource;
 @Controller
 @SpringBootApplication
 public class Main {
-  Jeu jeu;
+  Jeu jeu = new Jeu();
   @Value("${spring.datasource.url}")
   private String dbUrl;
 
@@ -83,7 +83,7 @@ public class Main {
 
   @GetMapping("/creation/{nb_tour}")
 	public Integer addNbTour(@PathVariable(value = "nb_tour") int nb_tour) {
-		jeu = new Jeu(nb_tour);
+		jeu.setNbTour(nb_tour);
     return nb_tour;
 	}
 

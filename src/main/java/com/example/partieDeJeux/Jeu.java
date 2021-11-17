@@ -25,7 +25,7 @@ public class Jeu {
 	}
 	public Jeu() {
 		
-		this.nb_tour= 5;
+		/*this.nb_tour= 5;
 		this.joueur1.setNom("Pierre");
 		this.joueur2.setNom("Loris");
 		joueur1.setConnect(false);
@@ -49,8 +49,12 @@ public class Jeu {
 			RetourDesResultats.add(joueur1.getNom()+"   "+joueur1.getResultat()+"  Point: "+ historiqueJ1.calculPoint());
 
 			RetourDesResultats.add(joueur2.getNom()+"   "+joueur2.getResultat()+"  Point: "+historiqueJ2.calculPoint());
-		}
+		}*/
 		
+	}
+
+	public void setNbTour(int nb_tour){
+		this.nb_tour = nb_tour;
 	}
 	public ArrayList<String> renvoiString(){
 		return this.RetourDesResultats;
