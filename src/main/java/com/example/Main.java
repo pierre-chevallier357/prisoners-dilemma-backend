@@ -46,10 +46,6 @@ public class Main {
   @Autowired
   private DataSource dataSource;
 
-  public static void main(String[] args) throws Exception {
-    SpringApplication.run(Main.class, args);
-  }
-
   @RequestMapping("/")
   String index() {
     return "index";
