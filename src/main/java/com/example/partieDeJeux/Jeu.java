@@ -2,6 +2,7 @@ package com.example.partieDeJeux;
 import com.example.strategie.*;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import com.example.joueur.*;
 
@@ -20,10 +21,14 @@ public class Jeu {
 	
     ArrayList<String> RetourDesResultats = new ArrayList<String>();
 
-	public Jeu(int id){
-		this.id = id;
+
+
+	public Jeu(){
+		Random r = new Random();
+		int low = 1000;
+		int high = 9999;
+		this.id = r.nextInt(high-low) + low;
 	}
-	public Jeu(){}
 	
 	public boolean connectionJoueur2(int id){
 		if(this.id ==id){
@@ -97,6 +102,10 @@ public class Jeu {
 
 	public Strategie getStrategieJ1(){
 		return strategieJ1;
+	}
+
+	public Integer getId(){
+		return this.id;
 	}
 	
 	public void partieJouee(Joueur joueur1, Joueur joueur2){

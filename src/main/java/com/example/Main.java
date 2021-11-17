@@ -69,7 +69,8 @@ public class Main {
   @GetMapping("/creation-partie/{nb_tour}")
 	public Integer addNbTour(@PathVariable(value = "nb_tour") int nb_tour) {
 		jeu.setNbTour(nb_tour);
-    return nb_tour;
+    
+    return jeu.getId();
 	}
 
   @GetMapping("/creation-joueur/{nom}")
@@ -102,7 +103,6 @@ public class Main {
   String db(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
       int nb_tour= 5;
-      Jeu jeu = new Jeu(nb_tour);
       ArrayList<String> output = new ArrayList<String>();
       output = jeu.renvoiString();
       model.put("records", output); 
