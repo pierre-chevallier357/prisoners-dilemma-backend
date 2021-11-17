@@ -65,23 +65,8 @@ public class Main {
     }
   }
 
-  @GetMapping("/nom")
-  String affichageNom(Map<String, Object> model) {
-    try (Connection connection = dataSource.getConnection()) {
-      ArrayList<String> nomJoueur = new ArrayList<String>();
-      String nom =  jeu.getJoueur1().getNom();
-      nomJoueur.add(nom);
-      model.put("noms", nomJoueur); 
-    return "nom";
-    }
-    catch (Exception e) {
-      model.put("message", e.getMessage());
-      return "error";
-    }
-  }
 
-
-  @GetMapping("/nb_tour")
+  @GetMapping("/creation-partie/{nb_tour}")
 	public Integer addNbTour(@PathVariable(value = "nb_tour") int nb_tour) {
 		jeu.setNbTour(nb_tour);
     return nb_tour;
