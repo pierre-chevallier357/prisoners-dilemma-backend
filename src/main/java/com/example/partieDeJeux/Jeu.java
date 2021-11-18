@@ -25,15 +25,6 @@ public class Jeu extends Thread{
 	public Jeu(){
 		this.id = Tools.randomNum();
 	}
-	
-	public boolean connectionJoueur2(int id){
-		if(this.id ==id){
-			joueur2.setConnect(true);
-			return true;
-		}
-
-		return false;
-	}
 
 	public synchronized void attenteDeCoup(Integer id){
 		boolean iHaveWait = false;
@@ -57,6 +48,63 @@ public class Jeu extends Thread{
 		
 		partieJouee(this.joueur1, this.joueur2);
 
+	}
+
+	public String getRes(Integer idJoueur){
+		String res ="";
+		if(joueur1.getId().equals(idJoueur)){
+			res = Integer.toString(historiqueJ1.calculPoint());
+		}
+		else if(joueur2.getId().equals(idJoueur)){
+			res = Integer.toString(historiqueJ2.calculPoint());
+		}
+		return res;
+	}
+	
+	public void partieJouee(Joueur joueur1, Joueur joueur2){
+		if (joueur1.getCoup() == joueur2.getCoup()) {
+			switch (joueur1.getCoup()) {
+			case TRAHIR :
+				joueur1.setResultat(Resultat.P);
+				joueur2.setResultat(Resultat.P);
+				break;
+			case COOPERER:
+				joueur1.setResultat(Resultat.C);
+				joueur2.setResultat(Resultat.C);
+				break;
+				
+			}
+		}
+		else if ((joueur1.getCoup() == Coup.TRAHIR) && (joueur2.getCoup() == Coup.COOPERER)){
+			joueur1.setResultat(Resultat.T);
+			joueur2.setResultat(Resultat.D);
+		}
+		else {
+			joueur1.setResultat(Resultat.D);
+			joueur2.setResultat(Resultat.T);
+		}
+		
+		historiqueJ1.addCoupRes(joueur1);
+		historiqueJ2.addCoupRes(joueur2);
+	}
+
+    public void JoueUnCoup(Integer idPartie, Integer idJoueur, String coup) {
+		if(this.id.equals(idPartie)){
+			if(joueur1.getId().equals(idJoueur)){
+				joueur1.setCoupString(coup);
+			}
+			else if(joueur2.getId().equals(idJoueur)){
+				joueur2.setCoupString(coup);
+			}
+		}
+    }
+
+	public boolean ifPlayed(){
+		boolean res = false;
+		if(joueur1.getCoup()!= null && joueur2.getCoup() != null){
+			res = true;
+		}
+		return res;
 	}
 
 	public void resetCoupJoueur(){
@@ -98,64 +146,6 @@ public class Jeu extends Thread{
 	public Integer getPartieId(){
 		return id;
 	}
-
-	public String getRes(Integer idJoueur){
-		String res ="";
-		if(joueur1.getId()== idJoueur){
-			res = Integer.toString(historiqueJ1.calculPoint());
-		}
-		else if(joueur2.getId()== idJoueur){
-			res = Integer.toString(historiqueJ2.calculPoint());
-		}
-		return res;
-	}
-	
-	public void partieJouee(Joueur joueur1, Joueur joueur2){
-		if (joueur1.getCoup() == joueur2.getCoup()) {
-			switch (joueur1.getCoup()) {
-			case TRAHIR :
-				joueur1.setResultat(Resultat.P);
-				joueur2.setResultat(Resultat.P);
-				break;
-			case COOPERER:
-				joueur1.setResultat(Resultat.C);
-				joueur2.setResultat(Resultat.C);
-				break;
-				
-			}
-		}
-		else if ((joueur1.getCoup() == Coup.TRAHIR) && (joueur2.getCoup() == Coup.COOPERER)){
-			joueur1.setResultat(Resultat.T);
-			joueur2.setResultat(Resultat.D);
-		}
-		else {
-			joueur1.setResultat(Resultat.D);
-			joueur2.setResultat(Resultat.T);
-		}
-		
-		historiqueJ1.addCoupRes(joueur1);
-		historiqueJ2.addCoupRes(joueur2);
-	}
-
-    public void JoueUnCoup(Integer idPartie, Integer idJoueur, String coup) {
-		if(this.id == idPartie){
-			if(joueur1.getId()== idJoueur){
-				joueur1.setCoupString(coup);
-			}
-			else if(joueur2.getId()== idJoueur){
-				joueur2.setCoupString(coup);
-			}
-		}
-    }
-
-	public boolean ifPlayed(){
-		boolean res = false;
-		if(joueur1.getCoup()!= null && joueur2.getCoup() != null){
-			res = true;
-		}
-		return res;
-	}
-
 }
 
 

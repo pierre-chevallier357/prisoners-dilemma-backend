@@ -50,7 +50,7 @@ public class Main {
     Joueur joueur = new Joueur();
     Integer i = Tools.randomNum();
     for (Joueur j : listJoueur) {
-      while(j.getId()==i){
+      while(j.getId().equals(i)){
         i = Tools.randomNum();
       }
     }
@@ -103,7 +103,7 @@ public class Main {
   public boolean jouePartie(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     boolean res = false;
     Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
-    if(jeu.getId() == idPartie && jeu.getJoueur1().getId() == idJoueur){
+    if(jeu.getPartieId().equals(idPartie) && jeu.getJoueur1().getId().equals(idJoueur)){
       jeu.jeuManche();
       jeu.resetCoupJoueur();
       res = true;
