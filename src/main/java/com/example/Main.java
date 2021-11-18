@@ -94,7 +94,7 @@ public class Main {
   public String getAllPartie(){
     String res = "";
     for (Jeu p : listPartie) {
-      res += p.getId();
+      res += p.getId()+" ";
     }
     return res;
   }
