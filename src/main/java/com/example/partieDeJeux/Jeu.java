@@ -40,14 +40,14 @@ public class Jeu extends Thread{
 			try {
 				System.out.println("JE MENDOR "+ id);
 				iHaveWait = true;
-				Thread.currentThread().wait();
+				wait();
 			} catch (Exception e) {
 				Thread.currentThread().interrupt();
 			}
 		}
 		if(!iHaveWait){
 			notifyAll();
-			System.out.println("JE ME REVEILLE "+id);
+			System.out.println("JE REVEILLE "+id);
 		}
 
 	}
