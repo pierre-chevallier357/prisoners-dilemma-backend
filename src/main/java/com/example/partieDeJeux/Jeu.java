@@ -34,22 +34,18 @@ public class Jeu extends Thread{
 		return false;
 	}
 
-	public void attenteDeCoup(Integer idJoueur){
-		if(joueur1.getId()== idJoueur){
-			while (joueur2.getCoup()== null) {
-				try {
-					Thread.currentThread().wait();
-				} catch (Exception e) {}
-			}
-		}
-		else if(joueur2.getId()== idJoueur){
-			while (joueur1.getCoup()== null) {
-				try {
-					Thread.currentThread().wait();
-				} catch (Exception e) {}
-			}
+	public void attenteDeCoup(){
+		boolean iHaveWait = false;
+		while (joueur1.getCoup()== null && joueur2.getCoup()== null ) {
+			try {
+				iHaveWait = true;
+				wait();
+			} catch (Exception e) {}
 		}
 		jeuManche();
+		if(!iHaveWait){
+			notifyAll();
+		}
 	}
 
 	public void jeuManche(){
