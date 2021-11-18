@@ -17,7 +17,7 @@ public class Tools {
     public static Jeu jeuDansList(ArrayList<Jeu> listPartie, Integer id ){
         Jeu jeu = null;
         for (Jeu j : listPartie) {
-            if(j.getPartieId()==id){
+            if(j.getPartieId() == id){
               jeu = j;
             }
         }
