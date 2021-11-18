@@ -64,12 +64,12 @@ public class Main {
   
 
   @GetMapping("/creation-partie/{idJoueur}&{nb_tour}")
-	public Integer creationPartie(@PathVariable(value = "idJoueur") Integer idJoueur, @PathVariable(value = "nb_tour") int nb_tour) {
+	public Integer creationPartie(@PathVariable(value = "idJoueur") Integer idJoueur, @PathVariable(value = "nb_tour") int nbTour) {
 		Joueur joueur = Tools.joueurDansList(listJoueur, idJoueur);
     Jeu jeu = new Jeu();
 
     jeu.setJoueur1(joueur);
-    jeu.setNbTour(nb_tour);
+    jeu.setNbTour(nbTour);
     listPartie.add(jeu);
     return jeu.getPartieId();
 	}
@@ -116,13 +116,20 @@ public class Main {
       jeu.resetCoupJoueur();
       res = true;
     }
+    jeu.setNbTourJouee(jeu.getNbTourJouee()+1);
     return res;
   }
 
   @GetMapping("/resultat/{idPartie}&{idJoueur}")
   public String resultatTour(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
-    String res = "Vos point :"+jeu.getRes(idJoueur)+" "+jeu.getDerniersCoup(idJoueur);
+    String res = "";
+    if(jeu.getNbTourJouee()<jeu.getNbTour()){
+      res = "Vos point :"+jeu.getRes(idJoueur)+" "+jeu.getDerniersCoup(idJoueur);
+    }
+    else {
+      res = "Fin voici votre resultat "+jeu.getRes(idJoueur) ;
+    }
     return res;
   }
 

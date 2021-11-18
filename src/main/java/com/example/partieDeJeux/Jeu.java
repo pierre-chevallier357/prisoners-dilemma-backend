@@ -12,8 +12,8 @@ public class Jeu extends Thread{
 	Strategie strategieJ1;
 	Strategie strategieJ2;
 	Integer id;
-
-	int nb_tour;
+	int nbTourJouee = 1;
+	int nbTour;
 	
 	HistoriqueJoueur historiqueJ1 = new HistoriqueJoueur();
 	HistoriqueJoueur historiqueJ2 = new HistoriqueJoueur();
@@ -140,9 +140,10 @@ public class Jeu extends Thread{
 		joueur2.setCoup(null);
 	}
 
-	public void setNbTour(int nb_tour){
-		this.nb_tour = nb_tour;
+	public void setNbTour(int nbTour){
+		this.nbTour = nbTour;
 	}
+
 	public ArrayList<String> renvoiString(){
 		return this.RetourDesResultats;
 	}
@@ -174,6 +175,18 @@ public class Jeu extends Thread{
 	public Integer getPartieId(){
 		return id;
 	}
+
+	public int getNbTourJouee() {
+		return nbTourJouee;
+	}
+
+    public void setNbTourJouee(int nbTourJouee) {
+		this.nbTourJouee = nbTourJouee;
+    }
+
+    public int getNbTour() {
+        return nbTour;
+    }
 
 }
 
