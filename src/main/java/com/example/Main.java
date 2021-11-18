@@ -82,7 +82,7 @@ public class Main {
     //Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
     String res = "";
     for (Jeu p : listPartie) {
-      if(p.getPartieId() == idPartie){
+      if(p.getPartieId().equals(idPartie)){
         res += p.getPartieId();
       }
     }
