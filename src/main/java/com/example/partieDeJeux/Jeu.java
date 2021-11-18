@@ -38,6 +38,7 @@ public class Jeu extends Thread{
 		boolean iHaveWait = false;
 		while (joueur1.getCoup()== null || joueur2.getCoup()== null) {
 			try {
+				System.out.println("JE MENDOR ");
 				iHaveWait = true;
 				wait();
 			} catch (Exception e) {
@@ -46,16 +47,12 @@ public class Jeu extends Thread{
 		}
 		if(!iHaveWait){
 			notifyAll();
+			System.out.println("JE ME REVEILLE ");
 		}
 
 	}
 
 	public void jeuManche(){
-		/*if(joueur1.isConnect() == false) {
-			
-			joueur1.setCoup(strategieJ1.ProchainCoup(joueur1, historiqueJ1.getListCoup(), historiqueJ2.getListCoup()));
-			joueur2.setCoup(strategieJ2.ProchainCoup(joueur2, historiqueJ2.getListCoup(), historiqueJ1.getListCoup()));
-		}*/
 		
 		partieJouee(this.joueur1, this.joueur2);
 
