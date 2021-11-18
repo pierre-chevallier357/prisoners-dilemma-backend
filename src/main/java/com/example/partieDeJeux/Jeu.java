@@ -36,7 +36,7 @@ public class Jeu extends Thread{
 
 	public synchronized void attenteDeCoup(Integer id){
 		boolean iHaveWait = false;
-		while (this.ifPlayed()) {
+		while (!ifPlayed()) {
 			try {
 				System.out.println("JE MENDOR "+ id);
 				iHaveWait = true;
