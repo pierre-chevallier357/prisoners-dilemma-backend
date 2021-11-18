@@ -107,11 +107,25 @@ public class Main {
     return res;
   }
 
+  @GetMapping("/strategie/{idPartie}&{idJoueur}&{strategie}")
+  public boolean strategieJoueur(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur, @PathVariable(value = "strategie") int strategie ){
+    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
+    jeu.setStrategie(idJoueur, strategie);
+    return true;
+  }
+
   @GetMapping("/partie/{idPartie}&{idJoueur}")
   public boolean jouePartie(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     boolean res = false;
     Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
-    if(jeu.getPartieId().equals(idPartie) && jeu.getJoueur1().getId().equals(idJoueur)){
+    if(jeu.getJoueur1().isConnect()){
+      if(jeu.getPartieId().equals(idPartie) && jeu.getJoueur1().getId().equals(idJoueur)){
+        jeu.jeuManche();
+        jeu.resetCoupJoueur();
+        res = true;
+      }
+    }
+    else{
       jeu.jeuManche();
       jeu.resetCoupJoueur();
       res = true;

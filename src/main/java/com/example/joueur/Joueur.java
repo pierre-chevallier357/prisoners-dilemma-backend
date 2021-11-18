@@ -8,6 +8,7 @@ public class Joueur {
 	private Resultat resultat;
 	private boolean connect;
 	private Integer id;
+	private int strategie = 0;
 
 
 	public Joueur(){
@@ -62,6 +63,14 @@ public class Joueur {
 
 	public void setConnect(boolean connect) {
 		this.connect = connect;
+	}
+
+	public void setStrategie(int strategie) {
+		this.strategie = strategie;
+	}
+
+	public int getStrategie() {
+		return strategie;
 	}
 	
 	

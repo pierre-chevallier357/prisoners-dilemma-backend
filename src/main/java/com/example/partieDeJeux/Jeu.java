@@ -9,8 +9,6 @@ public class Jeu extends Thread{
 	
 	Joueur joueur1 = new Joueur();
 	Joueur joueur2 = new Joueur();
-	Strategie strategieJ1;
-	Strategie strategieJ2;
 	Integer id;
 	int nbTourJouee = 1;
 	int nbTour;
@@ -28,20 +26,21 @@ public class Jeu extends Thread{
 
 	public synchronized void attenteDeCoup(Integer id){
 		boolean iHaveWait = false;
-		while (!ifPlayed()) {
-			try {
-				System.out.println("JE MENDOR "+ id+" "+joueur1.getCoup()+" "+joueur2.getCoup());
-				iHaveWait = true;
-				wait();
-			} catch (Exception e) {
-				Thread.currentThread().interrupt();
+		if(joueur1.isConnect() && joueur2.isConnect()){
+			while (!ifPlayed()) {
+				try {
+					System.out.println("JE MENDOR "+ id+" "+joueur1.getCoup()+" "+joueur2.getCoup());
+					iHaveWait = true;
+					wait();
+				} catch (Exception e) {
+					Thread.currentThread().interrupt();
+				}
+			}
+			if(!iHaveWait){
+				notifyAll();
+				System.out.println("JE REVEILLE "+id);
 			}
 		}
-		if(!iHaveWait){
-			notifyAll();
-			System.out.println("JE REVEILLE "+id);
-		}
-
 	}
 
 	public synchronized void attenteJoueur2(Integer idJoueur){
@@ -62,6 +61,12 @@ public class Jeu extends Thread{
 	}
 
 	public void jeuManche(){
+		if(!joueur1.isConnect()){
+			joueur1.setCoup(Tools.prochainCoup(historiqueJ1, historiqueJ2, joueur1.getStrategie()));	
+		}
+		if(!joueur2.isConnect()){
+			joueur2.setCoup(Tools.prochainCoup(historiqueJ2, historiqueJ1, joueur2.getStrategie()));	
+		}
 		
 		partieJouee(this.joueur1, this.joueur2);
 
@@ -164,14 +169,6 @@ public class Jeu extends Thread{
 		return this.joueur2;
 	}
 
-	public void setStrategieJ1(Strategie strategie){
-		this.strategieJ1 = strategie;
-	}
-
-	public Strategie getStrategieJ1(){
-		return strategieJ1;
-	}
-
 	public Integer getPartieId(){
 		return id;
 	}
@@ -186,6 +183,17 @@ public class Jeu extends Thread{
 
     public int getNbTour() {
         return nbTour;
+    }
+
+    public void setStrategie(Integer idJoueur, int strategie) {
+		if(joueur1.getId().equals(idJoueur)){
+			joueur1.setStrategie(strategie);
+			joueur1.setConnect(false);
+		}
+		else if(joueur2.getId().equals(idJoueur)){
+			joueur2.setStrategie(strategie);
+			joueur2.setConnect(false);
+		}
     }
 
 }
