@@ -85,7 +85,7 @@ public class Main {
   public String getAllJoueur(){
     String res = "";
     for (Joueur j : listJoueur) {
-      res += j.getNom()+" "+j.getId()+" ";
+      res += j.getNom()+"&"+j.getId()+"&";
     }
     return res;
   }
@@ -94,7 +94,7 @@ public class Main {
   public String getAllPartie(){
     String res = "";
     for (Jeu p : listPartie) {
-      res += p.getId()+" ";
+      res += p.getId()+"&";
     }
     return res;
   }
@@ -132,7 +132,7 @@ public class Main {
   @GetMapping("/partie/{idPartie}&{idJoueur}")
   public boolean jouePartie(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     boolean res = false;
-    if(jeu.getId()== idPartie && jeu.getJoueur1().getId() == idJoueur){
+    if(jeu.getId() == idPartie && jeu.getJoueur1().getId() == idJoueur){
       jeu.jeuManche();
       jeu.resetCoupJoueur();
       res = true;
