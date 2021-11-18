@@ -109,7 +109,8 @@ public class Main {
 
   @GetMapping("/partie/{idPartie}&{idJoueur}&{coup}")
   public void jouePartie(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur, @PathVariable(value = "coup") String coup  ){
-    jeu.JoueUnCoup(idPartie, idJoueur, coup);
+    jeu.JoueUnCoup(idPartie, idJoueur, coup); 
+    notifyAll();
     jeu.attenteDeCoup(idJoueur);
     jeu.resetCoupJoueur(idJoueur);
 
