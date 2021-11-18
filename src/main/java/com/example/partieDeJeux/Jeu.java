@@ -51,11 +51,11 @@ public class Jeu extends Thread{
 	}
 
 	public void jeuManche(){
-		if(joueur1.isConnect() == false) {
+		/*if(joueur1.isConnect() == false) {
 			
 			joueur1.setCoup(strategieJ1.ProchainCoup(joueur1, historiqueJ1.getListCoup(), historiqueJ2.getListCoup()));
 			joueur2.setCoup(strategieJ2.ProchainCoup(joueur2, historiqueJ2.getListCoup(), historiqueJ1.getListCoup()));
-		}
+		}*/
 		
 		partieJouee(this.joueur1, this.joueur2);
 
