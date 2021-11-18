@@ -36,7 +36,7 @@ public class Jeu extends Thread{
 
 	public void attenteDeCoup(Integer id){
 		boolean iHaveWait = false;
-		while (joueur1.getCoup()== null || joueur2.getCoup()== null) {
+		while (this.ifPlayed()) {
 			try {
 				System.out.println("JE MENDOR "+ id);
 				iHaveWait = true;
@@ -151,6 +151,14 @@ public class Jeu extends Thread{
 			}
 		}
     }
+
+	public boolean ifPlayed(){
+		boolean res = false;
+		if(joueur1.getCoup()!= null && joueur2.getCoup() != null){
+			res = true;
+		}
+		return res;
+	}
 
 }
 
