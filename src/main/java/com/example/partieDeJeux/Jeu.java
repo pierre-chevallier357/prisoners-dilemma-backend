@@ -34,20 +34,20 @@ public class Jeu extends Thread{
 		return false;
 	}
 
-	public void attenteDeCoup(){
+	public void attenteDeCoup(Integer id){
 		boolean iHaveWait = false;
 		while (joueur1.getCoup()== null || joueur2.getCoup()== null) {
 			try {
-				System.out.println("JE MENDOR ");
+				System.out.println("JE MENDOR "+ id);
 				iHaveWait = true;
 				wait();
 			} catch (Exception e) {
 				Thread.currentThread().interrupt();
 			}
 		}
-		if(!iHaveWait){
+		if(iHaveWait){
 			notifyAll();
-			System.out.println("JE ME REVEILLE ");
+			System.out.println("JE ME REVEILLE "+id);
 		}
 
 	}
