@@ -38,14 +38,16 @@ public class Jeu extends Thread{
 		if(joueur1.getId()== idJoueur){
 			while (joueur2.getCoup()== null) {
 				try {
-					Thread.currentThread().wait();
+					Thread.currentThread();
+					Thread.sleep(100);
 				} catch (Exception e) {}
 			}
 		}
 		else if(joueur2.getId()== idJoueur){
 			while (joueur1.getCoup()== null) {
 				try {
-					Thread.currentThread().wait();
+					Thread.currentThread();
+					Thread.sleep(100);
 				} catch (Exception e) {}
 			}
 		}
