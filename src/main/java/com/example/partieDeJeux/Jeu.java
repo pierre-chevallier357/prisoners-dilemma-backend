@@ -28,7 +28,6 @@ public class Jeu extends Thread{
 		if(joueur1.isConnect() && joueur2.isConnect()){
 			while (!ifPlayed()) {
 				try {
-					System.out.println("JE MENDOR "+ id+" "+joueur1.getCoup()+" "+joueur2.getCoup());
 					iHaveWait = true;
 					wait();
 				} catch (Exception e) {
@@ -37,7 +36,6 @@ public class Jeu extends Thread{
 			}
 			if(!iHaveWait){
 				notifyAll();
-				System.out.println("JE REVEILLE "+id);
 			}
 		}
 	}
@@ -46,13 +44,11 @@ public class Jeu extends Thread{
 		if(joueur1.getId().equals(idJoueur)){
 			while (!joueur2.isConnect()) {
 				try {
-					System.out.println("JE MENDOR "+joueur1.getCoup()+" "+joueur2.isConnect());
 					wait();
 				} catch (Exception e) {
 					Thread.currentThread().interrupt();
 				}
 			}
-			System.out.println("JE ME reveille "+joueur1.getCoup()+" "+joueur2.isConnect());
 		}
 		else{
 			notifyAll();

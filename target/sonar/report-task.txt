@@ -2,5 +2,5 @@ projectKey=com.example:jeu_dilemme_g2_6
 serverUrl=http://im2ag-sonar.u-ga.fr:9000
 serverVersion=9.1.0.47736
 dashboardUrl=http://im2ag-sonar.u-ga.fr:9000/dashboard?id=com.example%3Ajeu_dilemme_g2_6
-ceTaskId=AX0yMzmgGQM64D9b5Mht
-ceTaskUrl=http://im2ag-sonar.u-ga.fr:9000/api/ce/task?id=AX0yMzmgGQM64D9b5Mht
+ceTaskId=AX00tJTpGQM64D9b5Mi0
+ceTaskUrl=http://im2ag-sonar.u-ga.fr:9000/api/ce/task?id=AX00tJTpGQM64D9b5Mi0
