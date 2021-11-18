@@ -58,14 +58,9 @@ public class Jeu extends Thread{
 
 	}
 
-	public void resetCoupJoueur(Integer id){
-		if(joueur1.isConnect() && joueur1.getId()== id){
-			joueur1.setCoup(null);
-		}
-		if(joueur2.isConnect() && joueur2.getId()== id){
-			joueur2.setCoup(null);
-		}
-
+	public void resetCoupJoueur(){
+		joueur1.setCoup(null);
+		joueur2.setCoup(null);
 	}
 
 	public void setNbTour(int nb_tour){

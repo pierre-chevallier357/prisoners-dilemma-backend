@@ -116,14 +116,28 @@ public class Main {
     return jeu.getJoueur2().getId();
   }
 
-  @GetMapping("/partie/{idPartie}&{idJoueur}&{coup}")
-  public void jouePartie(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur, @PathVariable(value = "coup") String coup  ){
+  @GetMapping("/coup/{idPartie}&{idJoueur}&{coup}")
+  public boolean coupJoueur(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur, @PathVariable(value = "coup") String coup  ){
+    boolean res = false;
+    try{
+      jeu.JoueUnCoup(idPartie, idJoueur, coup); 
+      jeu.attenteDeCoup(idJoueur);
+      res = true;
+    }catch (Exception e) {
+      res = false;
+    }
+    return res;
+  }
 
-    jeu.JoueUnCoup(idPartie, idJoueur, coup); 
-    jeu.attenteDeCoup(idJoueur);
-    jeu.jeuManche();
-    jeu.resetCoupJoueur(idJoueur);
-
+  @GetMapping("/partie/{idPartie}&{idJoueur}")
+  public boolean jouePartie(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
+    boolean res = false;
+    if(jeu.getId()== idPartie && jeu.getJoueur1().getId() == idJoueur){
+      jeu.jeuManche();
+      jeu.resetCoupJoueur();
+      res = true;
+    }
+    return res;
   }
 
   @GetMapping("/resultat/{idPartie}&{idJoueur}")
