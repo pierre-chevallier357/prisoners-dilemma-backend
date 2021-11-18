@@ -36,16 +36,19 @@ public class Jeu extends Thread{
 
 	public void attenteDeCoup(){
 		boolean iHaveWait = false;
-		while (joueur1.getCoup()== null && joueur2.getCoup()== null ) {
+		while (joueur1.getCoup()== null && joueur2.getCoup()== null) {
 			try {
 				iHaveWait = true;
 				wait();
-			} catch (Exception e) {}
+			} catch (Exception e) {
+				Thread.currentThread().interrupt();
+			}
 		}
-		jeuManche();
 		if(!iHaveWait){
 			notifyAll();
 		}
+		jeuManche();
+
 	}
 
 	public void jeuManche(){
@@ -63,7 +66,7 @@ public class Jeu extends Thread{
 		if(joueur1.isConnect() && joueur1.getId()== id){
 			joueur1.setCoup(null);
 		}
-		else if(joueur1.isConnect() && joueur2.getId()== id){
+		if(joueur2.isConnect() && joueur2.getId()== id){
 			joueur2.setCoup(null);
 		}
 
