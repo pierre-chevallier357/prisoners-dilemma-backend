@@ -30,7 +30,7 @@ public class Jeu extends Thread{
 		boolean iHaveWait = false;
 		while (!ifPlayed()) {
 			try {
-				System.out.println("JE MENDOR "+ id);
+				System.out.println("JE MENDOR "+ id+" "+joueur1.getCoup()+" "+joueur2.getCoup());
 				iHaveWait = true;
 				wait();
 			} catch (Exception e) {
@@ -101,7 +101,7 @@ public class Jeu extends Thread{
 
 	public boolean ifPlayed(){
 		boolean res = false;
-		if(joueur1.getCoup()!= null && joueur2.getCoup() != null){
+		if(joueur1.getCoup()!= null && joueur2.getCoup()!= null){
 			res = true;
 		}
 		return res;
