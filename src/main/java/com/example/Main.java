@@ -79,10 +79,10 @@ public class Main {
   public boolean rejoindrePartie(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     Joueur joueur = Tools.joueurDansList(listJoueur, idJoueur);
     System.out.println(joueur.getNom());
-    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
+    /*Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
     
     System.out.println("ID PArtie :"+jeu.getPartieId());
-    jeu.setJoueur2(joueur);
+    jeu.setJoueur2(joueur);*/
     return true;
   }
 
