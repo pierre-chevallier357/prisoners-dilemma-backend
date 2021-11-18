@@ -70,7 +70,6 @@ public class Main {
 
     jeu.setJoueur1(joueur);
     jeu.setNbTour(nb_tour);
-
     listPartie.add(jeu);
     return jeu.getPartieId();
 	}
@@ -82,8 +81,17 @@ public class Main {
     Jeu jeu = Tools.jeuDansList(listPartie, idPartie);    
     System.out.println("ID PArtie :"+jeu.getPartieId());
     jeu.setJoueur2(joueur);
+    notifyAll();
     return true;
   }
+
+  @GetMapping("/attente-connection/{idPartie}&{idJoueur}")
+  public boolean attenteDuJoueur2(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
+    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);    
+    jeu.attenteJoueur2();
+    return true;
+  }
+  
 
   @GetMapping("/coup/{idPartie}&{idJoueur}&{coup}")
   public boolean coupJoueur(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur, @PathVariable(value = "coup") String coup  ){

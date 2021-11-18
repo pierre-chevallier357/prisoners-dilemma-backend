@@ -44,6 +44,18 @@ public class Jeu extends Thread{
 
 	}
 
+	public synchronized void attenteJoueur2(){
+		while (joueur2.isConnect() == false) {
+			try {
+				System.out.println("JE MENDOR "+joueur1.getCoup()+" "+joueur2.isConnect());
+				wait();
+			} catch (Exception e) {
+				Thread.currentThread().interrupt();
+			}
+		}
+		System.out.println("JE ME reveille "+joueur1.getCoup()+" "+joueur2.isConnect());
+	}
+
 	public void jeuManche(){
 		
 		partieJouee(this.joueur1, this.joueur2);
