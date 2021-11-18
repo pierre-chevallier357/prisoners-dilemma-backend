@@ -10,7 +10,8 @@ import com.example.partieDeJeux.Jeu;
 
 import com.example.strategie.*;
 
-public abstract class Tools {
+public class Tools {
+    private Tools(){}
     public static Integer randomNum(){
         Random r = new Random();
 		int low = 1000;

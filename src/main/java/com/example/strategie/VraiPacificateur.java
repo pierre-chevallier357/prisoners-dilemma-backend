@@ -10,10 +10,8 @@ public class VraiPacificateur extends Strategie{
 	public Coup ProchainCoup(ArrayList<Coup> historiqueJ1, ArrayList<Coup> historiqueJ2) {
 		Coup coup = Coup.COOPERER;
 		try{
-			if(Math.random()<0.7) {
-				if((historiqueJ2.get(historiqueJ2.size()-2) == Coup.TRAHIR )&&(historiqueJ2.get(historiqueJ2.size() - 1) == Coup.TRAHIR )){
-					coup = Coup.TRAHIR;
-				}
+			if(Math.random()<0.7 && (historiqueJ2.get(historiqueJ2.size()-2) == Coup.TRAHIR ) && (historiqueJ2.get(historiqueJ2.size() - 1) == Coup.TRAHIR )){
+				coup = Coup.TRAHIR;
 			}
 		}
 		catch(Exception e){
