@@ -81,7 +81,6 @@ public class Main {
     Jeu jeu = Tools.jeuDansList(listPartie, idPartie);    
     System.out.println("ID PArtie :"+jeu.getPartieId());
     jeu.setJoueur2(joueur);
-    notifyAll();
     return true;
   }
 
