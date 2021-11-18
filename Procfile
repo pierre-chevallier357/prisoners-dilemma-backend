@@ -1,1 +1,1 @@
-web: java -jar target/java-getting-started-1.0.jar
+web: java -jar target/jeu_dilemme_g2_6-1.0.jar
