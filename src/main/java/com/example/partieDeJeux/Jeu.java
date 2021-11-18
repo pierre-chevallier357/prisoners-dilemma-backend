@@ -45,7 +45,7 @@ public class Jeu extends Thread{
 				Thread.currentThread().interrupt();
 			}
 		}
-		if(iHaveWait){
+		if(!iHaveWait){
 			notifyAll();
 			System.out.println("JE ME REVEILLE "+id);
 		}
