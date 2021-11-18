@@ -122,7 +122,7 @@ public class Main {
   @GetMapping("/resultat/{idPartie}&{idJoueur}")
   public String resultatTour(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
-    String res = jeu.getRes(idJoueur);
+    String res = "Vos point :"+jeu.getRes(idJoueur)+" "+jeu.getDerniersCoup(idJoueur);
     return res;
   }
 

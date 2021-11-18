@@ -20,7 +20,10 @@ public class HistoriqueJoueur {
 	}
 	public Coup getCoup (int index) {
 		return coupList.get(index);
-		
+	}
+
+	public Coup getLastCoup(){
+		return coupList.get(coupList.size()-1);
 	}
 	
 	public ArrayList<Coup> getListCoup(){

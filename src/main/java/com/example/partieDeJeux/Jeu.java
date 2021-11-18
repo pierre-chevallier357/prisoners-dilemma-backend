@@ -77,6 +77,17 @@ public class Jeu extends Thread{
 		}
 		return res;
 	}
+
+	public String getDerniersCoup(Integer idJoueur) {
+		String res ="";
+		if(joueur1.getId().equals(idJoueur)){
+			res = "Votre coup :"+historiqueJ1.getLastCoup()+" Le coup de votre Adversaire :"+historiqueJ2.getLastCoup();
+		}
+		else if(joueur2.getId().equals(idJoueur)){
+			res = "Votre coup :"+historiqueJ2.getLastCoup()+" Le coup de votre Adversaire :"+historiqueJ1.getLastCoup();
+		}
+		return res;
+    }
 	
 	public void partieJouee(Joueur joueur1, Joueur joueur2){
 		if (joueur1.getCoup() == joueur2.getCoup()) {
@@ -163,6 +174,7 @@ public class Jeu extends Thread{
 	public Integer getPartieId(){
 		return id;
 	}
+
 }
 
 
