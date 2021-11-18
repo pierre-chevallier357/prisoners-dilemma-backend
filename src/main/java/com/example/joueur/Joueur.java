@@ -6,11 +6,12 @@ public class Joueur {
 	private String nom = null;
 	private Coup coup = null;
 	private Resultat resultat;
-	private boolean connect = false;
+	private boolean connect;
 	private Integer id;
 
 
 	public Joueur(){
+		this.connect = false;
 	}
 	public Resultat getResultat() {
 		return resultat;

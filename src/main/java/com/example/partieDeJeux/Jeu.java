@@ -46,7 +46,7 @@ public class Jeu extends Thread{
 
 	public synchronized void attenteJoueur2(Integer idJoueur){
 		if(joueur1.getId().equals(idJoueur)){
-			while (joueur2.isConnect()) {
+			while (!joueur2.isConnect()) {
 				try {
 					System.out.println("JE MENDOR "+joueur1.getCoup()+" "+joueur2.isConnect());
 					wait();
