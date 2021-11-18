@@ -34,13 +34,13 @@ public class Jeu extends Thread{
 		return false;
 	}
 
-	public void attenteDeCoup(Integer id){
+	public synchronized void attenteDeCoup(Integer id){
 		boolean iHaveWait = false;
 		while (this.ifPlayed()) {
 			try {
 				System.out.println("JE MENDOR "+ id);
 				iHaveWait = true;
-				wait();
+				Thread.currentThread().wait();
 			} catch (Exception e) {
 				Thread.currentThread().interrupt();
 			}
