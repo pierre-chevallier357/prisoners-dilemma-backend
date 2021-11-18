@@ -13,7 +13,7 @@ import java.rmi.ServerException;
 import javax.sql.DataSource;
 
 import com.example.joueur.Joueur;
-import com.example.partieDeJeux.Jeu;
+import com.example.partiedejeux.Jeu;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -82,7 +82,7 @@ public class Main {
     boolean res = false;
     Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
     try{
-      jeu.JoueUnCoup(idPartie, idJoueur, coup); 
+      jeu.joueUnCoup(idPartie, idJoueur, coup); 
       jeu.attenteDeCoup();
       res = true;
     }catch (Exception e) {
@@ -136,6 +136,24 @@ public class Main {
     String res = "";
     for (Joueur j : listJoueur) {
       res += j.getNom()+"&"+j.getId()+"&";
+    }
+    return res;
+  }
+  
+  @GetMapping("/all-joueur-by-id")
+  public String getAllIdsJoueur(){
+    String res = "";
+    for (Joueur j : listJoueur) {
+      res += j.getId()+"&";
+    }
+    return res;
+  }
+
+  @GetMapping("/all-joueur-by-nom")
+  public String getAllNomsJoueur(){
+    String res = "";
+    for (Joueur j : listJoueur) {
+      res += j.getNom()+"&";
     }
     return res;
   }

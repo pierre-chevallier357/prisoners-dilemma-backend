@@ -1,4 +1,4 @@
-package com.example.partieDeJeux;
+package com.example.partiedejeux;
 import java.util.ArrayList;
 
 import com.example.Tools;
@@ -14,8 +14,6 @@ public class Jeu{
 	
 	HistoriqueJoueur historiqueJ1 = new HistoriqueJoueur();
 	HistoriqueJoueur historiqueJ2 = new HistoriqueJoueur();
-	
-    ArrayList<String> RetourDesResultats = new ArrayList<String>();
 
 
 
@@ -57,10 +55,10 @@ public class Jeu{
 
 	public void jeuManche(){
 		if(!joueur1.isConnect()){
-			joueur1.setCoup(Tools.prochainCoup(historiqueJ1, historiqueJ2, joueur1.getStrategie()));	
+			joueur1.setCoup(Tools.prochainCoupStrat(historiqueJ1, historiqueJ2, joueur1.getStrategie()));	
 		}
 		if(!joueur2.isConnect()){
-			joueur2.setCoup(Tools.prochainCoup(historiqueJ2, historiqueJ1, joueur2.getStrategie()));	
+			joueur2.setCoup(Tools.prochainCoupStrat(historiqueJ2, historiqueJ1, joueur2.getStrategie()));	
 		}
 		
 		partieJouee(this.joueur1, this.joueur2);
@@ -91,16 +89,13 @@ public class Jeu{
 	
 	public void partieJouee(Joueur joueur1, Joueur joueur2){
 		if (joueur1.getCoup() == joueur2.getCoup()) {
-			switch (joueur1.getCoup()) {
-			case TRAHIR :
+			if(joueur1.getCoup().equals(Coup.TRAHIR)) {
 				joueur1.setResultat(Resultat.P);
 				joueur2.setResultat(Resultat.P);
-				break;
-			case COOPERER:
+			}
+			else if(joueur1.getCoup().equals(Coup.COOPERER)){
 				joueur1.setResultat(Resultat.C);
 				joueur2.setResultat(Resultat.C);
-				break;
-				
 			}
 		}
 		else if ((joueur1.getCoup() == Coup.TRAHIR) && (joueur2.getCoup() == Coup.COOPERER)){
@@ -116,7 +111,7 @@ public class Jeu{
 		historiqueJ2.addCoupRes(joueur2);
 	}
 
-    public void JoueUnCoup(Integer idPartie, Integer idJoueur, String coup) {
+    public void joueUnCoup(Integer idPartie, Integer idJoueur, String coup) {
 		if(this.id.equals(idPartie)){
 			if(joueur1.getId().equals(idJoueur)){
 				joueur1.setCoupString(coup);
@@ -142,10 +137,6 @@ public class Jeu{
 
 	public void setNbTour(int nbTour){
 		this.nbTour = nbTour;
-	}
-
-	public ArrayList<String> renvoiString(){
-		return this.RetourDesResultats;
 	}
 
 	public void setJoueur1(Joueur joueur){

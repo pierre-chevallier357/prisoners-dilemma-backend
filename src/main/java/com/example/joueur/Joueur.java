@@ -1,6 +1,6 @@
 package com.example.joueur;
 
-import com.example.partieDeJeux.Resultat;
+import com.example.partiedejeux.Resultat;
 
 public class Joueur {
 	private String nom = null;

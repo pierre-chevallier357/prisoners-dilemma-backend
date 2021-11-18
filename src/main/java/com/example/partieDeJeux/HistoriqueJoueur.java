@@ -1,4 +1,4 @@
-package com.example.partieDeJeux;
+package com.example.partiedejeux;
 
 import java.util.ArrayList;
 
