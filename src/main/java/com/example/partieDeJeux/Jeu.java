@@ -36,7 +36,7 @@ public class Jeu extends Thread{
 
 	public void attenteDeCoup(){
 		boolean iHaveWait = false;
-		while (joueur1.getCoup()== null && joueur2.getCoup()== null) {
+		while (joueur1.getCoup()== null || joueur2.getCoup()== null) {
 			try {
 				iHaveWait = true;
 				wait();
@@ -44,10 +44,11 @@ public class Jeu extends Thread{
 				Thread.currentThread().interrupt();
 			}
 		}
+
+		jeuManche();
 		if(!iHaveWait){
 			notifyAll();
 		}
-		jeuManche();
 
 	}
 
