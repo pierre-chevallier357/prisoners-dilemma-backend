@@ -88,7 +88,7 @@ public class Main {
   @GetMapping("/attente-connection/{idPartie}&{idJoueur}")
   public boolean attenteDuJoueur2(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     Jeu jeu = Tools.jeuDansList(listPartie, idPartie);    
-    jeu.attenteJoueur2();
+    jeu.attenteJoueur2(idJoueur);
     return true;
   }
   
