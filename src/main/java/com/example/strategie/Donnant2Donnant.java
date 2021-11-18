@@ -6,7 +6,7 @@ import com.example.joueur.*;
 
 public class Donnant2Donnant extends Strategie {
 	@Override
-	public Coup ProchainCoup(ArrayList<Coup> historiqueJ1, ArrayList<Coup> historiqueJ2) {
+	public Coup prochainCoup(ArrayList<Coup> historiqueJ1, ArrayList<Coup> historiqueJ2) {
 		Coup coup = null;
 		try {
 			int i = historiqueJ2.size() - 1;
@@ -18,7 +18,7 @@ public class Donnant2Donnant extends Strategie {
 			 }	
 		}		
 		catch(Exception e){
-			coup = CoupAleatoire(0.5);
+			coup = coupAleatoire(0.5);
 		}
 		 return coup;
 	}
