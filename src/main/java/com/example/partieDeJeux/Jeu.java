@@ -2,7 +2,7 @@ package com.example.partieDeJeux;
 import com.example.strategie.*;
 import java.util.ArrayList;
 
-
+import com.example.Tools;
 import com.example.joueur.*;
 
 public class Jeu extends Thread{

@@ -28,7 +28,6 @@ import javax.sql.DataSource;
 
 import com.example.joueur.Joueur;
 import com.example.partieDeJeux.Jeu;
-import com.example.partieDeJeux.Tools;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -41,7 +40,6 @@ public class Main {
   @Value("${spring.datasource.url}")
   private String dbUrl;
 
-  Jeu jeu;
   @GetMapping("/")
   String index() {
     return "index";
@@ -68,7 +66,7 @@ public class Main {
   @GetMapping("/creation-partie/{idJoueur}&{nb_tour}")
 	public Integer creationPartie(@PathVariable(value = "idJoueur") Integer idJoueur, @PathVariable(value = "nb_tour") int nb_tour) {
 		Joueur joueur = new Joueur();
-    this.jeu = new Jeu();
+    Jeu jeu = new Jeu();
     for (Joueur j : listJoueur) {
       if(j.getId()==idJoueur){
         joueur = j;
@@ -82,9 +80,9 @@ public class Main {
 	}
 
   @GetMapping("/rejoindrePartie/{idPartie}&{idJoueur}")
-  public boolean rejoindrePartie(@PathVariable(value = "idPartie") Integer id, @PathVariable(value = "idJoueur") Integer idJoueur){
+  public boolean rejoindrePartie(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     Joueur joueur = new Joueur();
-    jeu = new Jeu();
+    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
     for (Joueur j : listJoueur) {
       if(j.getId()==idJoueur){
         joueur = j;
@@ -97,6 +95,7 @@ public class Main {
   @GetMapping("/coup/{idPartie}&{idJoueur}&{coup}")
   public boolean coupJoueur(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur, @PathVariable(value = "coup") String coup  ){
     boolean res = false;
+    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
     try{
       jeu.JoueUnCoup(idPartie, idJoueur, coup); 
       jeu.attenteDeCoup(idJoueur);
@@ -110,6 +109,7 @@ public class Main {
   @GetMapping("/partie/{idPartie}&{idJoueur}")
   public boolean jouePartie(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     boolean res = false;
+    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
     if(jeu.getId() == idPartie && jeu.getJoueur1().getId() == idJoueur){
       jeu.jeuManche();
       jeu.resetCoupJoueur();
@@ -120,6 +120,7 @@ public class Main {
 
   @GetMapping("/resultat/{idPartie}&{idJoueur}")
   public String resultatTour(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
+    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
     String res = jeu.getRes(idJoueur);
     return res;
   }
