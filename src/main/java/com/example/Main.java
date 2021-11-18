@@ -78,7 +78,7 @@ public class Main {
   @GetMapping("/rejoindrePartie/{idPartie}&{idJoueur}")
   public boolean rejoindrePartie(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     Joueur joueur = Tools.joueurDansList(listJoueur, idJoueur);
-    System.out.println(joueur.getNom());
+    System.out.println(joueur.getNom()+"  ---  "+idPartie);
     //Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
     String res = "";
     for (Jeu p : listPartie) {
