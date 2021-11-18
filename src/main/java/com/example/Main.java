@@ -90,6 +90,15 @@ public class Main {
     return res;
   }
 
+  @GetMapping("/all-partie")
+  public String getAllPartie(){
+    String res = "";
+    for (Jeu p : listPartie) {
+      res += p.getId();
+    }
+    return res;
+  }
+
   @GetMapping("/rejoindrePartie/{idPartie}&{nom}")
   public Integer rejoindrePartie(@PathVariable(value = "idPartie") Integer id, @PathVariable(value = "nom") String nom ){
     Integer i = Tools.randomNum();
