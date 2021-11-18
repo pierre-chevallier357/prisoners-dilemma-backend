@@ -1,5 +1,4 @@
 package com.example.partiedejeux;
-import java.util.ArrayList;
 
 import com.example.Tools;
 import com.example.joueur.*;
