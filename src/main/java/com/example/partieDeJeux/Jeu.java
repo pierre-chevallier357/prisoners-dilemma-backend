@@ -96,7 +96,7 @@ public class Jeu extends Thread{
 	}
 
 	public Integer getPartieId(){
-		return this.id;
+		return id;
 	}
 
 	public String getRes(Integer idJoueur){
