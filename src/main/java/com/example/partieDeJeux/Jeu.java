@@ -44,8 +44,6 @@ public class Jeu extends Thread{
 				Thread.currentThread().interrupt();
 			}
 		}
-
-		jeuManche();
 		if(!iHaveWait){
 			notifyAll();
 		}
