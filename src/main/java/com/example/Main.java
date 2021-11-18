@@ -41,26 +41,11 @@ public class Main {
   @Value("${spring.datasource.url}")
   private String dbUrl;
 
-  Jeu jeu = new Jeu();
+  Jeu jeu;
   @GetMapping("/")
   String index() {
     return "index";
   }
-
-  @GetMapping("/creation-partie/{idJoueur}&{nb_tour}")
-	public Integer creationPartie(@PathVariable(value = "idJoueur") Integer idJoueur, @PathVariable(value = "nb_tour") int nb_tour) {
-		Joueur j1 = new Joueur();
-    for (Joueur j : listJoueur) {
-      if(j.getId()==idJoueur){
-        j1 = j;
-      }
-    }
-    jeu.setJoueur1(j1);
-    jeu.setNbTour(nb_tour);
-
-    listPartie.add(jeu);
-    return jeu.getPartieId();
-	}
 
   @GetMapping("/creation-joueur/{nom}")
 	public Integer creationJoueur(@PathVariable(value = "nom") String nom) {
@@ -71,49 +56,42 @@ public class Main {
         i = Tools.randomNum();
       }
     }
-    
     joueur.setId(i);
     joueur.setNom(nom);
     joueur.setConnect(true);
-    jeu.setJoueur1(joueur);
     listJoueur.add(joueur);
-
     return joueur.getId();
 	}
 
-  @GetMapping("/all-joueur")
-  public String getAllJoueur(){
-    String res = "";
-    for (Joueur j : listJoueur) {
-      res += j.getNom()+"&"+j.getId()+"&";
-    }
-    return res;
-  }
+  
 
-  @GetMapping("/all-partie")
-  public String getAllPartie(){
-    String res = "";
-    for (Jeu p : listPartie) {
-      res += p.getId()+"&";
-    }
-    return res;
-  }
-
-  @GetMapping("/rejoindrePartie/{idPartie}&{nom}")
-  public Integer rejoindrePartie(@PathVariable(value = "idPartie") Integer id, @PathVariable(value = "nom") String nom ){
-    Integer i = Tools.randomNum();
-    Joueur joueur = new Joueur();
-    joueur.setNom(nom);
+  @GetMapping("/creation-partie/{idJoueur}&{nb_tour}")
+	public Integer creationPartie(@PathVariable(value = "idJoueur") Integer idJoueur, @PathVariable(value = "nb_tour") int nb_tour) {
+		Joueur joueur = new Joueur();
+    jeu = new Jeu();
     for (Joueur j : listJoueur) {
-      while(j.getId()==i){
-        i = Tools.randomNum();
+      if(j.getId()==idJoueur){
+        joueur = j;
       }
     }
-    joueur.setId(i);
-    jeu.connectionJoueur2(id);
+    jeu.setJoueur1(joueur);
+    jeu.setNbTour(nb_tour);
+
+    listPartie.add(jeu);
+    return jeu.getPartieId();
+	}
+
+  @GetMapping("/rejoindrePartie/{idPartie}&{idJoueur}")
+  public boolean rejoindrePartie(@PathVariable(value = "idPartie") Integer id, @PathVariable(value = "idJoueur") Integer idJoueur){
+    Joueur joueur = new Joueur();
+    jeu = new Jeu();
+    for (Joueur j : listJoueur) {
+      if(j.getId()==idJoueur){
+        joueur = j;
+      }
+    }
     jeu.setJoueur2(joueur);
-    listJoueur.add(joueur);
-    return jeu.getJoueur2().getId();
+    return true;
   }
 
   @GetMapping("/coup/{idPartie}&{idJoueur}&{coup}")
@@ -143,6 +121,24 @@ public class Main {
   @GetMapping("/resultat/{idPartie}&{idJoueur}")
   public String resultatTour(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     String res = jeu.getRes(idJoueur);
+    return res;
+  }
+
+  @GetMapping("/all-joueur")
+  public String getAllJoueur(){
+    String res = "";
+    for (Joueur j : listJoueur) {
+      res += j.getNom()+"&"+j.getId()+"&";
+    }
+    return res;
+  }
+
+  @GetMapping("/all-partie")
+  public String getAllPartie(){
+    String res = "";
+    for (Jeu p : listPartie) {
+      res += p.getId()+"&";
+    }
     return res;
   }
 
