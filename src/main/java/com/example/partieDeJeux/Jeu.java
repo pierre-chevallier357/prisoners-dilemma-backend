@@ -2,6 +2,8 @@ package com.example.partieDeJeux;
 import com.example.strategie.*;
 import java.util.ArrayList;
 
+import javax.print.DocFlavor.INPUT_STREAM;
+
 import com.example.joueur.*;
 
 public class Jeu extends Thread{
@@ -10,7 +12,7 @@ public class Jeu extends Thread{
 	Joueur joueur2 = new Joueur();
 	Strategie strategieJ1;
 	Strategie strategieJ2;
-	int id;
+	Integer id;
 
 	int nb_tour;
 	

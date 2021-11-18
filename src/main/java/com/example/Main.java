@@ -68,7 +68,7 @@ public class Main {
   @GetMapping("/creation-partie/{idJoueur}&{nb_tour}")
 	public Integer creationPartie(@PathVariable(value = "idJoueur") Integer idJoueur, @PathVariable(value = "nb_tour") int nb_tour) {
 		Joueur joueur = new Joueur();
-    jeu = new Jeu();
+    this.jeu = new Jeu();
     for (Joueur j : listJoueur) {
       if(j.getId()==idJoueur){
         joueur = j;
