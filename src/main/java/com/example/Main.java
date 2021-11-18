@@ -65,13 +65,9 @@ public class Main {
 
   @GetMapping("/creation-partie/{idJoueur}&{nb_tour}")
 	public Integer creationPartie(@PathVariable(value = "idJoueur") Integer idJoueur, @PathVariable(value = "nb_tour") int nb_tour) {
-		Joueur joueur = new Joueur();
+		Joueur joueur = Tools.joueurDansList(listJoueur, idJoueur);
     Jeu jeu = new Jeu();
-    for (Joueur j : listJoueur) {
-      if(j.getId()==idJoueur){
-        joueur = j;
-      }
-    }
+
     jeu.setJoueur1(joueur);
     jeu.setNbTour(nb_tour);
 
@@ -81,13 +77,8 @@ public class Main {
 
   @GetMapping("/rejoindrePartie/{idPartie}&{idJoueur}")
   public boolean rejoindrePartie(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
-    Joueur joueur = new Joueur();
+    Joueur joueur = Tools.joueurDansList(listJoueur, idJoueur);
     Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
-    for (Joueur j : listJoueur) {
-      if(j.getId()==idJoueur){
-        joueur = j;
-      }
-    }
     jeu.setJoueur2(joueur);
     return true;
   }

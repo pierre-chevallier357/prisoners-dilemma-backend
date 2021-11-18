@@ -3,6 +3,7 @@ package com.example;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.example.joueur.Joueur;
 import com.example.partieDeJeux.Jeu;
 
 public class Tools {
@@ -21,5 +22,15 @@ public class Tools {
             }
         }
         return jeu;
+    }
+
+    public static Joueur joueurDansList(ArrayList<Joueur> listJoueur, Integer id ){
+        Joueur joueur = null;
+        for (Joueur j : listJoueur) {
+            if(j.getId()==id){
+              joueur = j;
+            }
+        }
+        return joueur;
     }
 }
