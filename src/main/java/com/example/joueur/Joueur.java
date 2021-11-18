@@ -41,6 +41,8 @@ public class Joueur {
 			case "TRAHIR" :
 				setCoup(Coup.TRAHIR);
 				break;
+			default:
+                break;
 		}
 	}
 

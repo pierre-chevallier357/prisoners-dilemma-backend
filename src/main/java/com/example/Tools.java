@@ -10,7 +10,7 @@ import com.example.partieDeJeux.Jeu;
 
 import com.example.strategie.*;
 
-public class Tools {
+public abstract class Tools {
     public static Integer randomNum(){
         Random r = new Random();
 		int low = 1000;
@@ -89,6 +89,8 @@ public class Tools {
             case 12: 
                 strat = new VraiPacificateur();
                 coup = strat.ProchainCoup(historiqueJ1.getListCoup(), historiqueJ2.getListCoup());
+                break;
+            default:
                 break;
         }
         return coup;

@@ -23,7 +23,7 @@ public class Jeu{
 		this.id = Tools.randomNum();
 	}
 
-	public synchronized void attenteDeCoup(Integer id){
+	public synchronized void attenteDeCoup(){
 		boolean iHaveWait = false;
 		if(joueur1.isConnect() && joueur2.isConnect()){
 			while (!ifPlayed()) {

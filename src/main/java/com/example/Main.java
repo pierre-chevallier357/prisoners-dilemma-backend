@@ -27,7 +27,7 @@ public class Main {
   private String dbUrl;
 
   @GetMapping("/")
-  String index() {
+  public String index() {
     return "index";
   }
 
@@ -83,7 +83,7 @@ public class Main {
     Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
     try{
       jeu.JoueUnCoup(idPartie, idJoueur, coup); 
-      jeu.attenteDeCoup(idJoueur);
+      jeu.attenteDeCoup();
       res = true;
     }catch (Exception e) {
       res = false;
