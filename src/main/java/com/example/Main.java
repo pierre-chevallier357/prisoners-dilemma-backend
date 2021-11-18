@@ -139,24 +139,7 @@ public class Main {
     }
     return res;
   }
-  
-  @GetMapping("/all-joueur-by-id")
-  public String getAllIdsJoueur(){
-    String res = "";
-    for (Joueur j : listJoueur) {
-      res += j.getId()+"&";
-    }
-    return res;
-  }
 
-  @GetMapping("/all-joueur-by-nom")
-  public String getAllNomsJoueur(){
-    String res = "";
-    for (Joueur j : listJoueur) {
-      res += j.getNom()+"&";
-    }
-    return res;
-  }
 
   @GetMapping("/all-joueur-by-id")
   public String getAllIdsJoueur(){
