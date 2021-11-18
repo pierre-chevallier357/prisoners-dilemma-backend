@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import com.example.Tools;
 import com.example.joueur.*;
 
-public class Jeu extends Thread{
+public class Jeu{
 	
 	Joueur joueur1 = new Joueur();
 	Joueur joueur2 = new Joueur();
