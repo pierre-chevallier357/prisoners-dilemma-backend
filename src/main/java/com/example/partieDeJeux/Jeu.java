@@ -2,7 +2,6 @@ package com.example.partieDeJeux;
 import com.example.strategie.*;
 import java.util.ArrayList;
 
-import javax.print.DocFlavor.INPUT_STREAM;
 
 import com.example.joueur.*;
 
