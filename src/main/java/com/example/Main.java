@@ -131,6 +131,13 @@ public class Main {
     return res;
   }
 
+  @GetMapping("/resultat_final/{idPartie}&{idJoueur}")
+  public String resFinaql(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
+    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
+    String res = "";
+    res = "Fin voici votre resultat "+jeu.getRes(idJoueur)+" Et celui de votre adversaire :"+jeu.getResAdv(idJoueur) ;
+    return res;
+  }
   @GetMapping("/all-joueur")
   public String getAllJoueur(){
     String res = "";
@@ -163,10 +170,14 @@ public class Main {
   public String getAllPartie(){
     String res = "";
     for (Jeu p : listPartie) {
-      res += p.getPartieId()+"&";
+      if(!p.getJoueur2().isConnect()){
+        res += p.getPartieId()+"&";
+      }
     }
     return res;
   }
+
+
 
   @Bean
   public DataSource dataSource() throws ServerException {

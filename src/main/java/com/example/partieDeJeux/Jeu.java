@@ -75,6 +75,17 @@ public class Jeu{
 		return res;
 	}
 
+	public String getResAdv(Integer idJoueur){
+		String res ="";
+		if(joueur2.getId().equals(idJoueur)){
+			res = Integer.toString(historiqueJ1.calculPoint());
+		}
+		else if(joueur1.getId().equals(idJoueur)){
+			res = Integer.toString(historiqueJ2.calculPoint());
+		}
+		return res;
+	}
+
 	public String getDerniersCoup(Integer idJoueur) {
 		String res ="";
 		if(joueur1.getId().equals(idJoueur)){
