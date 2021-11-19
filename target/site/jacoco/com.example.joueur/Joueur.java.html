@@ -23,24 +23,24 @@ public class Joueur {
 <span class="fc" id="L23">	}</span>
 
 	public Integer getId() {
-<span class="nc" id="L26">		return id;</span>
+<span class="fc" id="L26">		return id;</span>
 	}
 
 	public void setId(Integer id) {
-<span class="nc" id="L30">		this.id = id;</span>
-<span class="nc" id="L31">	}</span>
+<span class="fc" id="L30">		this.id = id;</span>
+<span class="fc" id="L31">	}</span>
 	public Coup getCoup() {
 <span class="fc" id="L33">		return coup;</span>
 	}
 
 	public void setCoupString(String coupString) {
-<span class="pc bpc" id="L37" title="1 of 3 branches missed.">		switch(coupString){</span>
+<span class="fc bfc" id="L37" title="All 3 branches covered.">		switch(coupString){</span>
 			case &quot;COOPERER&quot; : 
 <span class="fc" id="L39">				setCoup(Coup.COOPERER);</span>
 <span class="fc" id="L40">				break;</span>
 			case &quot;TRAHIR&quot; :
-<span class="nc" id="L42">				setCoup(Coup.TRAHIR);</span>
-<span class="nc" id="L43">				break;</span>
+<span class="fc" id="L42">				setCoup(Coup.TRAHIR);</span>
+<span class="fc" id="L43">				break;</span>
 			default:
                 break;
 		}
@@ -56,8 +56,8 @@ public class Joueur {
 	}
 
 	public void setNom(String nom) {
-<span class="nc" id="L59">		this.nom = nom;</span>
-<span class="nc" id="L60">	}</span>
+<span class="fc" id="L59">		this.nom = nom;</span>
+<span class="fc" id="L60">	}</span>
 
 	public boolean isConnect() {
 <span class="fc" id="L63">		return connect;</span>
@@ -68,11 +68,11 @@ public class Joueur {
 <span class="fc" id="L68">	}</span>
 
 	public void setStrategie(int strategie) {
-<span class="nc" id="L71">		this.strategie = strategie;</span>
-<span class="nc" id="L72">	}</span>
+<span class="fc" id="L71">		this.strategie = strategie;</span>
+<span class="fc" id="L72">	}</span>
 
 	public int getStrategie() {
-<span class="nc" id="L75">		return strategie;</span>
+<span class="fc" id="L75">		return strategie;</span>
 	}
 	
 	

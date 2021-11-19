@@ -15,7 +15,7 @@ jeu_dilemme_g2_6,com.example.strategie,Rancunier,29,0,4,0,9,0,4,0,2,0
 jeu_dilemme_g2_6,com.example.strategie,ToujoursCooperer,5,0,0,0,2,0,2,0,2,0
 jeu_dilemme_g2_6,com.example.strategie,SondeurNaif,28,0,4,0,8,0,4,0,2,0
 jeu_dilemme_g2_6,com.example.strategie,SondeurRepentant,49,0,8,0,14,0,6,0,2,0
-jeu_dilemme_g2_6,com.example.joueur,Joueur,22,49,1,2,10,20,6,10,5,9
+jeu_dilemme_g2_6,com.example.joueur,Joueur,0,71,0,3,0,30,0,16,0,14
 jeu_dilemme_g2_6,com.example.joueur,Coup,0,24,0,0,0,3,0,1,0,1
 jeu_dilemme_g2_6,com.example,RestServer,8,0,0,0,3,0,2,0,2,0
 jeu_dilemme_g2_6,com.example,Tools,211,0,21,0,53,0,20,0,4,0
