@@ -115,6 +115,9 @@ public class Main {
       res = true;
     }
     jeu.setNbTourJouee(jeu.getNbTourJouee()+1);
+    if(jeu.getNbTourJouee() == jeu.getNbTour()){
+      res = false;
+    }
     return res;
   }
 
@@ -138,6 +141,7 @@ public class Main {
     res = "Fin voici votre resultat "+jeu.getRes(idJoueur)+" Et celui de votre adversaire :"+jeu.getResAdv(idJoueur) ;
     return res;
   }
+
   @GetMapping("/all-joueur")
   public String getAllJoueur(){
     String res = "";
