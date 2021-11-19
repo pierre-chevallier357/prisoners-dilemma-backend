@@ -34,7 +34,7 @@ public class Joueur {
 	}
 
 	public void setCoupString(String coupString) {
-<span class="pc bpc" id="L37" title="1 of 3 branches missed.">		switch(coupString){</span>
+<span class="fc bfc" id="L37" title="All 3 branches covered.">		switch(coupString){</span>
 			case &quot;COOPERER&quot; : 
 <span class="fc" id="L39">				setCoup(Coup.COOPERER);</span>
 <span class="fc" id="L40">				break;</span>
@@ -42,37 +42,38 @@ public class Joueur {
 <span class="fc" id="L42">				setCoup(Coup.TRAHIR);</span>
 <span class="fc" id="L43">				break;</span>
 			default:
+<span class="fc" id="L45">				setCoup(null);</span>
                 break;
 		}
-<span class="fc" id="L47">	}</span>
+<span class="fc" id="L48">	}</span>
 
 	public void setCoup(Coup coup) {
-<span class="fc" id="L50">		this.coup = coup;</span>
-<span class="fc" id="L51">	}</span>
+<span class="fc" id="L51">		this.coup = coup;</span>
+<span class="fc" id="L52">	}</span>
 
 
 	public String getNom() {
-<span class="fc" id="L55">		return nom;</span>
+<span class="fc" id="L56">		return nom;</span>
 	}
 
 	public void setNom(String nom) {
-<span class="fc" id="L59">		this.nom = nom;</span>
-<span class="fc" id="L60">	}</span>
+<span class="fc" id="L60">		this.nom = nom;</span>
+<span class="fc" id="L61">	}</span>
 
 	public boolean isConnect() {
-<span class="fc" id="L63">		return connect;</span>
+<span class="fc" id="L64">		return connect;</span>
 	}
 
 	public void setConnect(boolean connect) {
-<span class="fc" id="L67">		this.connect = connect;</span>
-<span class="fc" id="L68">	}</span>
+<span class="fc" id="L68">		this.connect = connect;</span>
+<span class="fc" id="L69">	}</span>
 
 	public void setStrategie(int strategie) {
-<span class="fc" id="L71">		this.strategie = strategie;</span>
-<span class="fc" id="L72">	}</span>
+<span class="fc" id="L72">		this.strategie = strategie;</span>
+<span class="fc" id="L73">	}</span>
 
 	public int getStrategie() {
-<span class="fc" id="L75">		return strategie;</span>
+<span class="fc" id="L76">		return strategie;</span>
 	}
 	
 	

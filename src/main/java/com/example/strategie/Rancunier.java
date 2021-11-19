@@ -8,16 +8,11 @@ public class Rancunier extends Strategie{
 	
 	@Override
 	public Coup prochainCoup(ArrayList<Coup> historiqueJ1, ArrayList<Coup> historiqueJ2) {
-		Coup coup = Coup.COOPERER;;
-		try{
-			for(Coup c : historiqueJ2) {
-				if( c == Coup.TRAHIR){
-					coup = Coup.TRAHIR;
-				}
+		Coup coup = Coup.COOPERER;
+		for(Coup c : historiqueJ2) {
+			if( c == Coup.TRAHIR){
+				coup = Coup.TRAHIR;
 			}
-		}
-		catch(Exception e){
-			coup = Coup.COOPERER;
 		}
 		return coup;
 			
