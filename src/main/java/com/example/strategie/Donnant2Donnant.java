@@ -14,7 +14,7 @@ public class Donnant2Donnant extends Strategie {
 				 i--;
 			 }
 			 if(i>0) {
-				 coup = historiqueJ2.get(historiqueJ2.size() - 1);
+				 coup = historiqueJ2.get(i);
 			 }	
 		}		
 		catch(Exception e){
