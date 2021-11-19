@@ -64,4 +64,5 @@ class HistoriqueTest {
 
         assertEquals(resultatList.getClass().getSimpleName(), hj.getListResultat().getClass().getSimpleName());
     }
+
 }
