@@ -5,14 +5,14 @@ import com.example.joueur.*;
 
 public class Jeu{
 	
-	Joueur joueur1 = new Joueur();
-	Joueur joueur2 = new Joueur();
-	Integer id;
-	int nbTourJouee = 1;
-	int nbTour;
+	private Joueur joueur1 = new Joueur();
+	private Joueur joueur2 = new Joueur();
+	private Integer id;
+	private int nbTourJouee = 1;
+	private int nbTour;
 	
-	HistoriqueJoueur historiqueJ1 = new HistoriqueJoueur();
-	HistoriqueJoueur historiqueJ2 = new HistoriqueJoueur();
+	private HistoriqueJoueur historiqueJ1 = new HistoriqueJoueur();
+	private HistoriqueJoueur historiqueJ2 = new HistoriqueJoueur();
 
 
 

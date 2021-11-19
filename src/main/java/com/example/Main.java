@@ -21,10 +21,12 @@ import com.zaxxer.hikari.HikariDataSource;
 @CrossOrigin
 @RequestMapping("/")
 public class Main {
-  ArrayList<Joueur> listJoueur = new ArrayList<>();
-  ArrayList<Jeu> listPartie = new ArrayList<>();
+  
   @Value("${spring.datasource.url}")
   private String dbUrl;
+
+  private ArrayList<Joueur> listJoueur = new ArrayList<>();
+  private ArrayList<Jeu> listPartie = new ArrayList<>();
 
   @GetMapping("/")
   public String index() {
@@ -139,6 +141,7 @@ public class Main {
     Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
     String res = "";
     res = "Fin voici votre resultat "+jeu.getRes(idJoueur)+" Et celui de votre adversaire :"+jeu.getResAdv(idJoueur) ;
+    listPartie.remove(jeu);
     return res;
   }
 
