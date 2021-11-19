@@ -32,6 +32,41 @@ class JoueurTest {
 	void testSetGetCoupString() {
 		j.setCoupString("COOPERER");
 		assertEquals(Coup.COOPERER, j.getCoup());
+		
+		j.setCoupString("TRAHIR");
+		
+		assertEquals(Coup.TRAHIR, j.getCoup());
 	}
+
+	@Test
+    void testSetGetId() {
+        
+	    Integer id = 1000;
+
+		j.setId(id);
+
+        assertEquals(1000, j.getId());
+    }
+
+	@Test
+    void testSetGetNom() {
+        
+	    String nom ="test";
+
+		j.setNom(nom);
+
+        assertEquals("test", j.getNom());
+    }
+
+	@Test
+    void testSetGetStrategie() {
+        
+	    int  i = 10;
+
+		j.setStrategie(i);
+
+        assertEquals(10, j.getStrategie());
+    }
+
 
 }

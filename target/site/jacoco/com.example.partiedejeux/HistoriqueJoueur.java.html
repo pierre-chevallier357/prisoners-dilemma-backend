@@ -15,11 +15,11 @@ import com.example.joueur.Joueur;
 <span class="fc" id="L15">	}</span>
 	
 	public Resultat getResultat (int index) {
-<span class="nc" id="L18">		return resultatList.get(index);</span>
+<span class="fc" id="L18">		return resultatList.get(index);</span>
 		
 	}
 	public Coup getCoup (int index) {
-<span class="nc" id="L22">		return coupList.get(index);</span>
+<span class="fc" id="L22">		return coupList.get(index);</span>
 	}
 
 	public Coup getLastCoup(){
@@ -27,11 +27,11 @@ import com.example.joueur.Joueur;
 	}
 	
 	public ArrayList&lt;Coup&gt; getListCoup(){
-<span class="nc" id="L30">		return this.coupList;</span>
+<span class="fc" id="L30">		return this.coupList;</span>
 	}
 	
 	public ArrayList&lt;Resultat&gt; getListResultat(){
-<span class="nc" id="L34">		return this.resultatList;</span>
+<span class="fc" id="L34">		return this.resultatList;</span>
 	}
 	
 	public int calculPoint() {
@@ -39,7 +39,7 @@ import com.example.joueur.Joueur;
 <span class="fc" id="L39">		int point = 0;</span>
 <span class="fc bfc" id="L40" title="All 2 branches covered.">		for(Resultat res : resultatList) {</span>
 <span class="fc" id="L41">			point += res.getPoint();			</span>
-<span class="fc" id="L42">		}</span>
+		}
 		
 <span class="fc" id="L44">		return point;</span>
 		

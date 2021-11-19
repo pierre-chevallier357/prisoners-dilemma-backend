@@ -29,7 +29,7 @@ public class Jeu{
 <span class="nc" id="L29">					wait();</span>
 <span class="nc" id="L30">				} catch (Exception e) {</span>
 <span class="nc" id="L31">					Thread.currentThread().interrupt();</span>
-<span class="nc" id="L32">				}</span>
+				}
 			}
 <span class="nc bnc" id="L34" title="All 2 branches missed.">			if(!iHaveWait){</span>
 <span class="nc" id="L35">				notifyAll();</span>
@@ -44,9 +44,9 @@ public class Jeu{
 <span class="nc" id="L44">					wait();</span>
 <span class="nc" id="L45">				} catch (Exception e) {</span>
 <span class="nc" id="L46">					Thread.currentThread().interrupt();</span>
-<span class="nc" id="L47">				}</span>
+				}
 			}
-		}
+<span class="nc" id="L49">		}</span>
 		else{
 <span class="nc" id="L51">			notifyAll();</span>
 		}
@@ -68,7 +68,7 @@ public class Jeu{
 <span class="nc" id="L68">		String res =&quot;&quot;;</span>
 <span class="nc bnc" id="L69" title="All 2 branches missed.">		if(joueur1.getId().equals(idJoueur)){</span>
 <span class="nc" id="L70">			res = Integer.toString(historiqueJ1.calculPoint());</span>
-		}
+<span class="nc" id="L71">		}</span>
 <span class="nc bnc" id="L72" title="All 2 branches missed.">		else if(joueur2.getId().equals(idJoueur)){</span>
 <span class="nc" id="L73">			res = Integer.toString(historiqueJ2.calculPoint());</span>
 		}
@@ -79,7 +79,7 @@ public class Jeu{
 <span class="nc" id="L79">		String res =&quot;&quot;;</span>
 <span class="nc bnc" id="L80" title="All 2 branches missed.">		if(joueur2.getId().equals(idJoueur)){</span>
 <span class="nc" id="L81">			res = Integer.toString(historiqueJ1.calculPoint());</span>
-		}
+<span class="nc" id="L82">		}</span>
 <span class="nc bnc" id="L83" title="All 2 branches missed.">		else if(joueur1.getId().equals(idJoueur)){</span>
 <span class="nc" id="L84">			res = Integer.toString(historiqueJ2.calculPoint());</span>
 		}
@@ -90,7 +90,7 @@ public class Jeu{
 <span class="nc" id="L90">		String res =&quot;&quot;;</span>
 <span class="nc bnc" id="L91" title="All 2 branches missed.">		if(joueur1.getId().equals(idJoueur)){</span>
 <span class="nc" id="L92">			res = &quot;Votre coup :&quot;+historiqueJ1.getLastCoup()+&quot; Le coup de votre Adversaire :&quot;+historiqueJ2.getLastCoup();</span>
-		}
+<span class="nc" id="L93">		}</span>
 <span class="nc bnc" id="L94" title="All 2 branches missed.">		else if(joueur2.getId().equals(idJoueur)){</span>
 <span class="nc" id="L95">			res = &quot;Votre coup :&quot;+historiqueJ2.getLastCoup()+&quot; Le coup de votre Adversaire :&quot;+historiqueJ1.getLastCoup();</span>
 		}
@@ -102,16 +102,16 @@ public class Jeu{
 <span class="nc bnc" id="L102" title="All 2 branches missed.">			if(joueur1.getCoup().equals(Coup.TRAHIR)) {</span>
 <span class="nc" id="L103">				joueur1.setResultat(Resultat.P);</span>
 <span class="nc" id="L104">				joueur2.setResultat(Resultat.P);</span>
-			}
+<span class="nc" id="L105">			}</span>
 <span class="nc bnc" id="L106" title="All 2 branches missed.">			else if(joueur1.getCoup().equals(Coup.COOPERER)){</span>
 <span class="nc" id="L107">				joueur1.setResultat(Resultat.C);</span>
 <span class="nc" id="L108">				joueur2.setResultat(Resultat.C);</span>
 			}
-		}
+<span class="nc" id="L110">		}</span>
 <span class="nc bnc" id="L111" title="All 4 branches missed.">		else if ((joueur1.getCoup() == Coup.TRAHIR) &amp;&amp; (joueur2.getCoup() == Coup.COOPERER)){</span>
 <span class="nc" id="L112">			joueur1.setResultat(Resultat.T);</span>
 <span class="nc" id="L113">			joueur2.setResultat(Resultat.D);</span>
-		}
+<span class="nc" id="L114">		}</span>
 		else {
 <span class="nc" id="L116">			joueur1.setResultat(Resultat.D);</span>
 <span class="nc" id="L117">			joueur2.setResultat(Resultat.T);</span>
@@ -125,7 +125,7 @@ public class Jeu{
 <span class="nc bnc" id="L125" title="All 2 branches missed.">		if(this.id.equals(idPartie)){</span>
 <span class="nc bnc" id="L126" title="All 2 branches missed.">			if(joueur1.getId().equals(idJoueur)){</span>
 <span class="nc" id="L127">				joueur1.setCoupString(coup);</span>
-			}
+<span class="nc" id="L128">			}</span>
 <span class="nc bnc" id="L129" title="All 2 branches missed.">			else if(joueur2.getId().equals(idJoueur)){</span>
 <span class="nc" id="L130">				joueur2.setCoupString(coup);</span>
 			}
@@ -185,7 +185,7 @@ public class Jeu{
 <span class="nc bnc" id="L185" title="All 2 branches missed.">		if(joueur1.getId().equals(idJoueur)){</span>
 <span class="nc" id="L186">			joueur1.setStrategie(strategie);</span>
 <span class="nc" id="L187">			joueur1.setConnect(false);</span>
-		}
+<span class="nc" id="L188">		}</span>
 <span class="nc bnc" id="L189" title="All 2 branches missed.">		else if(joueur2.getId().equals(idJoueur)){</span>
 <span class="nc" id="L190">			joueur2.setStrategie(strategie);</span>
 <span class="nc" id="L191">			joueur2.setConnect(false);</span>
