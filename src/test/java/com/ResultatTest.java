@@ -7,12 +7,12 @@ import org.junit.jupiter.api.Test;
 import com.example.partiedejeux.*;
 
 
-public class ResultatTest {
+class ResultatTest {
 
     	//Test Resultat
 
 	@Test
-	public void testGetValResultat(){
+	void testGetValResultat(){
     	assertEquals(5, Resultat.T.getPoint());
 	}
     

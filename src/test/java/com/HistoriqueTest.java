@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import com.example.joueur.*;
 import com.example.partiedejeux.*;
 
-public class HistoriqueTest {
+class HistoriqueTest {
 
     // Test HistoriqueJoueur.java
 
@@ -16,7 +16,7 @@ public class HistoriqueTest {
 
 
     @Test
-    public void testLastCoup() {
+    void testLastCoup() {
         j.setCoup(Coup.COOPERER);
         j.setResultat(Resultat.P);
         hj.addCoupRes(j);
@@ -24,7 +24,7 @@ public class HistoriqueTest {
     }
 
     @Test
-    public void testCalculRes() {
+    void testCalculRes() {
         j.setCoup(Coup.COOPERER);
         j.setResultat(Resultat.P);
         hj.addCoupRes(j);

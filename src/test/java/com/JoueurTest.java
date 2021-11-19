@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import com.example.joueur.*;
 
 
-public class JoueurTest {
+class JoueurTest {
 
 	// Test Joueur.java 
 	Joueur j = new Joueur();
@@ -23,13 +23,13 @@ public class JoueurTest {
 	}
 
 	@Test
-	public void testSetConnectJoueur() {
+	void testSetConnectJoueur() {
 		j.setConnect(false);
 		assertFalse(j.isConnect());
 	}
 
 	@Test
-	public void testSetGetCoupString() {
+	void testSetGetCoupString() {
 		j.setCoupString("COOPERER");
 		assertEquals(Coup.COOPERER, j.getCoup());
 	}
