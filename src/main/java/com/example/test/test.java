@@ -1,12 +1,13 @@
-package Test;
+package com.example.test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-import java.com.example.*;
 
-import com.example.joueur.Coup;
-import com.example.joueur.Joueur;
-import com.example.partiedejeux.HistoriqueJoueur;
-import com.example.partiedejeux.Resultat;
+import com.example.*;
+import com.example.joueur.*;
+import com.example.partiedejeux.*;
+import com.example.strategie.*;
 
 public class test {
 
@@ -30,16 +31,7 @@ public class test {
 	public void testSetGetCoupString() {
 		Joueur j = new Joueur();
 		j.setCoupString("COOPERER");
-		;
 		assertEquals(Coup.COOPERER, j.getCoup());
-	}
-
-	@Test
-	public void testGetCoupString() {
-		Joueur j = new Joueur();
-		j.setCoupString("COOPERER");
-		;
-		assertEquals(Coup.COOPERER, j.isConnect());
 	}
 
 	//Test HistoriqueJoueur.java
@@ -51,7 +43,7 @@ public class test {
 		j.setResultat(Resultat.P);
 		HistoriqueJoueur hj = new HistoriqueJoueur();
 		hj.addCoupRes(j);
-    	assertEquals(Coup.COOPERER, h1.getDerniersCoup());
+    	assertEquals(Coup.COOPERER, hj.getLastCoup());
 	}
 
 	@Test
@@ -61,7 +53,7 @@ public class test {
 		j.setResultat(Resultat.P);
 		HistoriqueJoueur hj = new HistoriqueJoueur();
 		hj.addCoupRes(j);
-    	assertEquals(1, h1.calculPoint());
+    	assertEquals(1, hj.calculPoint());
 	}
 
 }
