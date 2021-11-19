@@ -20,6 +20,5 @@ public abstract class Strategie {
 		
 		return coup;
 		
-		
 	}
 }

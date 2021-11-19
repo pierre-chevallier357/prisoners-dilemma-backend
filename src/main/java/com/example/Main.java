@@ -30,7 +30,7 @@ public class Main {
 
   @GetMapping("/")
   public String index() {
-    return "index";
+    return "Ceci est le serveur voici l' applcation : client-pc.web.app";
   }
 
   @GetMapping("/creation-joueur/{nom}")
