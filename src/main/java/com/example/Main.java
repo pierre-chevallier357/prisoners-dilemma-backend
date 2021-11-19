@@ -137,7 +137,7 @@ public class Main {
   }
 
   @GetMapping("/resultat_final/{idPartie}&{idJoueur}")
-  public String resFinaql(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
+  public String resFinal(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
     String res = "";
     res = "Fin voici votre resultat "+jeu.getRes(idJoueur)+" Et celui de votre adversaire :"+jeu.getResAdv(idJoueur) ;
