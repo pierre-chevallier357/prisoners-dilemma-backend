@@ -8,7 +8,7 @@ public class Rancunier extends Strategie{
 	
 	@Override
 	public Coup prochainCoup(ArrayList<Coup> historiqueJ1, ArrayList<Coup> historiqueJ2) {
-		Coup coup = null;
+		Coup coup = Coup.COOPERER;;
 		try{
 			for(Coup c : historiqueJ2) {
 				if( c == Coup.TRAHIR){
@@ -17,7 +17,7 @@ public class Rancunier extends Strategie{
 			}
 		}
 		catch(Exception e){
-			coup = coupAleatoire(0.5);
+			coup = Coup.COOPERER;
 		}
 		return coup;
 			

@@ -4,21 +4,21 @@ import java.util.ArrayList;
 
 import com.example.joueur.*;
 
-<span class="nc" id="L7">public abstract class Strategie {</span>
+<span class="fc" id="L7">public abstract class Strategie {</span>
 	public abstract Coup prochainCoup(ArrayList&lt;Coup&gt; historiqueJ1, ArrayList&lt;Coup&gt; historiqueJ2);
 
 	
-	public Coup coupAleatoire(double d) {
+	public static Coup coupAleatoire(double d) {
 		Coup coup;
 		
-<span class="nc bnc" id="L14" title="All 2 branches missed.">		if(Math.random()&lt;d) {</span>
-<span class="nc" id="L15">			coup= Coup.COOPERER;</span>
-<span class="nc" id="L16">		}</span>
+<span class="fc bfc" id="L14" title="All 2 branches covered.">		if(Math.random()&lt;d) {</span>
+<span class="fc" id="L15">			coup= Coup.COOPERER;</span>
+		}
 		else {
-<span class="nc" id="L18">			coup = Coup.TRAHIR;</span>
+<span class="fc" id="L18">			coup = Coup.TRAHIR;</span>
 		}
 		
-<span class="nc" id="L21">		return coup;</span>
+<span class="fc" id="L21">		return coup;</span>
 		
 	}
 }

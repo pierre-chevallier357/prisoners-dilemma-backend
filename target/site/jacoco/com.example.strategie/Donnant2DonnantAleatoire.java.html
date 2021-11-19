@@ -4,23 +4,23 @@ import java.util.ArrayList;
 
 import com.example.joueur.*;
 
-<span class="nc" id="L7">public class Donnant2DonnantAleatoire extends Strategie{</span>
+<span class="fc" id="L7">public class Donnant2DonnantAleatoire extends Strategie{</span>
 
 	@Override
 	public Coup prochainCoup(ArrayList&lt;Coup&gt; historiqueJ1, ArrayList&lt;Coup&gt; historiqueJ2) {
-<span class="nc" id="L11">		Coup coup = null;</span>
+<span class="fc" id="L11">		Coup coup = null;</span>
 		try {
 <span class="nc bnc" id="L13" title="All 4 branches missed.">			if(Math.random()&lt;0.6 &amp;&amp; (historiqueJ2.get(historiqueJ2.size() - 1) == historiqueJ2.get(historiqueJ2.size() - 2))) {</span>
 <span class="nc" id="L14">				coup = historiqueJ2.get(historiqueJ2.size() - 1);</span>
-<span class="nc" id="L15">			}</span>
+			}
 			else {
 <span class="nc" id="L17">				 coup = coupAleatoire(0.5);</span>
 			}
-<span class="nc" id="L19">		}	</span>
-<span class="nc" id="L20">		catch(Exception e){</span>
-<span class="nc" id="L21">			coup =  coupAleatoire(0.5);</span>
-		}
-<span class="nc" id="L23">		return coup;</span>
+		}	
+<span class="fc" id="L20">		catch(Exception e){</span>
+<span class="fc" id="L21">			coup =  coupAleatoire(0.5);</span>
+<span class="nc" id="L22">		}</span>
+<span class="fc" id="L23">		return coup;</span>
 	}
 	
 }

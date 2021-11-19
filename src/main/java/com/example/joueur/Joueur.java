@@ -42,6 +42,7 @@ public class Joueur {
 				setCoup(Coup.TRAHIR);
 				break;
 			default:
+				setCoup(null);
                 break;
 		}
 	}

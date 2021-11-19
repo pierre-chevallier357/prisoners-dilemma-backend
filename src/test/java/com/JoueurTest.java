@@ -30,6 +30,9 @@ class JoueurTest {
 
 	@Test
 	void testSetGetCoupString() {
+		j.setCoupString("abc");
+		assertEquals(null, j.getCoup());
+
 		j.setCoupString("COOPERER");
 		assertEquals(Coup.COOPERER, j.getCoup());
 		

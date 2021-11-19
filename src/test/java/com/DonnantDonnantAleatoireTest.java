@@ -18,5 +18,7 @@ class DonnantDonnantAleatoireTest {
         Strategie a = new DonnantDonnantAleatoire();
 	    Coup coup  = Coup.COOPERER;
         assertEquals(coup.getClass().getSimpleName(), a.prochainCoup(historiqueJ1, historiqueJ2).getClass().getSimpleName());
+        historiqueJ2.add(coup);
+        assertEquals(coup.getClass().getSimpleName(), a.prochainCoup(historiqueJ1, historiqueJ2).getClass().getSimpleName());
     }
 }
