@@ -12,19 +12,19 @@ import com.example.joueur.*;
 <span class="pc bpc" id="L12" title="2 of 4 branches missed.">			if((historiqueJ1.get(historiqueJ1.size()-1) == Coup.TRAHIR )&amp;&amp;(historiqueJ2.get(historiqueJ2.size()-1) == Coup.TRAHIR )){</span>
 				
 <span class="fc" id="L14">				coup = Coup.COOPERER;</span>
-			}
+<span class="fc" id="L15">			}</span>
 <span class="nc bnc" id="L16" title="All 2 branches missed.">			else if (historiqueJ2.get(historiqueJ2.size()-1) == Coup.COOPERER){</span>
 <span class="nc bnc" id="L17" title="All 2 branches missed.">				if(Math.random()&lt;0.5) {</span>
 <span class="nc" id="L18">					coup = Coup.TRAHIR;</span>
-				}
+<span class="nc" id="L19">				}</span>
 				else {
 <span class="nc" id="L21">					coup = Coup.COOPERER;</span>
 				}
 			}
-		}
+<span class="nc" id="L24">		}</span>
 <span class="fc" id="L25">		catch(Exception e){</span>
 <span class="fc" id="L26">			coup = coupAleatoire(0.5);</span>
-<span class="fc" id="L27">		}</span>
+		}
 <span class="fc" id="L28">		return coup;</span>
 		
 	}

@@ -80,15 +80,6 @@ class MainTest {
     }
 
     @Test
-    void resFinalTest() {
-        Integer idJoueur2 = main.creationJoueur("Joueur2");
-        main.coupJoueur(idPartie, idJoueur, "TRAHIR");
-        main.coupJoueur(idPartie, idJoueur2, "COOPERER");
-        main.jouePartie(idPartie, idJoueur);
-        assertEquals("Erreur", main.resFinal(idPartie, idJoueur));
-    }
-
-    @Test
     void  getAllJoueurTest() {
         Integer idJoueur2 = main.creationJoueur("Joueur2");
         assertEquals("Joueur1&"+idJoueur+"&"+"Joueur2&"+idJoueur2+"&", main.getAllJoueur());
