@@ -130,9 +130,8 @@ public class Main {
     res = jeu.getRes(idJoueur);
     return res;
   }
-// Modifier le /resultat/ en /resultat-dernierCoup/ sinon Application error !!!!!!!!!!!
 
-  @GetMapping("/resultat-dernierCoup/{idPartie}&{idJoueur}")
+    @GetMapping("/dernier-coup-adv/{idPartie}&{idJoueur}")
   public String dernierCoupAdv(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
     String res = "";
