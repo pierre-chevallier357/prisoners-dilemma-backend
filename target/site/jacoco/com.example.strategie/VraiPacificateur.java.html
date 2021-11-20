@@ -10,7 +10,7 @@ import com.example.joueur.*;
 	public Coup prochainCoup(ArrayList&lt;Coup&gt; historiqueJ1, ArrayList&lt;Coup&gt; historiqueJ2) {
 <span class="fc" id="L11">		Coup coup = Coup.COOPERER;</span>
 		try{
-<span class="pc bpc" id="L13" title="2 of 6 branches missed.">			if(Math.random()&lt;0.7 &amp;&amp; (historiqueJ2.get(historiqueJ2.size()-2) == Coup.TRAHIR ) &amp;&amp; (historiqueJ2.get(historiqueJ2.size() - 1) == Coup.TRAHIR )){</span>
+<span class="pc bpc" id="L13" title="3 of 6 branches missed.">			if(Math.random()&lt;0.7 &amp;&amp; (historiqueJ2.get(historiqueJ2.size()-2) == Coup.TRAHIR ) &amp;&amp; (historiqueJ2.get(historiqueJ2.size() - 1) == Coup.TRAHIR )){</span>
 <span class="fc" id="L14">				coup = Coup.TRAHIR;</span>
 			}
 		}

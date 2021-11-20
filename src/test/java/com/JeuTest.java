@@ -77,6 +77,70 @@ class JeuTest {
     }
 
     @Test
+    void attenteDeCoupTest(){
+        j1.setId(1);
+        j1.setCoup(Coup.COOPERER);
+        j1.setResultat(Resultat.P);
+        j1.setConnect(true);
+        j2.setId(2);
+        jeu.setJoueur1(j1);
+        
+        j2.setCoup(Coup.TRAHIR);
+        j2.setResultat(Resultat.C);
+        
+        j2.setConnect(true);
+        jeu.setJoueur2(j2);
+
+        jeu.partieJouee(j1, j2);
+
+        assertTrue(jeu.attenteDeCoup());
+
+    }
+
+    @Test
+    void attenteJoueur2Test(){
+        j1.setId(1);
+        j1.setCoup(Coup.COOPERER);
+        j1.setResultat(Resultat.P);
+        j1.setConnect(true);
+        j2.setId(2);
+        jeu.setJoueur1(j1);
+        
+        j2.setCoup(Coup.TRAHIR);
+        j2.setResultat(Resultat.C);
+        
+        j2.setConnect(true);
+        jeu.setJoueur2(j2);
+        jeu.partieJouee(j1, j2);
+        assertTrue(jeu.attenteJoueur2(1));
+        assertTrue(jeu.attenteJoueur2(2));
+
+    }
+
+    @Test
+    void getResAdvTest(){
+        j1.setId(1);
+        j1.setCoup(Coup.COOPERER);
+        j1.setResultat(Resultat.P);
+        j2.setId(2);
+        jeu.setJoueur1(j1);
+        
+        j2.setCoup(Coup.TRAHIR);
+        j2.setResultat(Resultat.C);
+
+        jeu.setJoueur2(j2);
+        
+        h1.addCoupRes(j1);
+        h2.addCoupRes(j2);
+
+        jeu.partieJouee(j1, j2);
+
+        assertEquals("5", jeu.getResAdv(1));
+        assertEquals("0", jeu.getResAdv(2));
+
+    }
+
+    @Test
     void getDernierCoupAdvTest(){
         j1.setId(1);
         j1.setCoup(Coup.COOPERER);

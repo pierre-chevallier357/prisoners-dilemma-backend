@@ -20,7 +20,7 @@ public class Jeu{
 		this.id = Tools.randomNum();
 	}
 
-	public synchronized void attenteDeCoup(){
+	public synchronized boolean attenteDeCoup(){
 		boolean iHaveWait = false;
 		if(joueur1.isConnect() && joueur2.isConnect()){
 			while (!ifPlayed()) {
@@ -35,9 +35,10 @@ public class Jeu{
 				notifyAll();
 			}
 		}
+		return true;
 	}
 
-	public synchronized void attenteJoueur2(Integer idJoueur){
+	public synchronized boolean attenteJoueur2(Integer idJoueur){
 		if(joueur1.getId().equals(idJoueur)){
 			while (!joueur2.isConnect()) {
 				try {
@@ -50,6 +51,7 @@ public class Jeu{
 		else{
 			notifyAll();
 		}
+		return true;
 	}
 
 	public void jeuManche(){

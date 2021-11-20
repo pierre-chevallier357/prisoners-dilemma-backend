@@ -20,120 +20,120 @@ import com.zaxxer.hikari.HikariDataSource;
 @RestController
 @CrossOrigin
 @RequestMapping(&quot;/&quot;)
-<span class="nc" id="L23">public class Main {</span>
+<span class="fc" id="L23">public class Main {</span>
   
   @Value(&quot;${spring.datasource.url}&quot;)
   private String dbUrl;
 
-<span class="nc" id="L28">  private ArrayList&lt;Joueur&gt; listJoueur = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L29">  private ArrayList&lt;Jeu&gt; listPartie = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L28">  private ArrayList&lt;Joueur&gt; listJoueur = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L29">  private ArrayList&lt;Jeu&gt; listPartie = new ArrayList&lt;&gt;();</span>
 
   @GetMapping(&quot;/&quot;)
   public String index() {
-<span class="nc" id="L33">    return &quot;Ceci est le serveur voici l'application : client-pc.web.app&quot;;</span>
+<span class="fc" id="L33">    return &quot;Ceci est le serveur voici l'application : client-pc.web.app&quot;;</span>
   }
 
   @GetMapping(&quot;/creation-joueur/{nom}&quot;)
 	public Integer creationJoueur(@PathVariable(value = &quot;nom&quot;) String nom) {
-<span class="nc" id="L38">    Joueur joueur = new Joueur();</span>
-<span class="nc" id="L39">    Integer i = Tools.randomNum();</span>
-<span class="nc bnc" id="L40" title="All 2 branches missed.">    for (Joueur j : listJoueur) {</span>
-<span class="nc bnc" id="L41" title="All 2 branches missed.">      while(j.getId().equals(i)){</span>
+<span class="fc" id="L38">    Joueur joueur = new Joueur();</span>
+<span class="fc" id="L39">    Integer i = Tools.randomNum();</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">    for (Joueur j : listJoueur) {</span>
+<span class="pc bpc" id="L41" title="1 of 2 branches missed.">      while(j.getId().equals(i)){</span>
 <span class="nc" id="L42">        i = Tools.randomNum();</span>
       }
-<span class="nc" id="L44">    }</span>
-<span class="nc" id="L45">    joueur.setId(i);</span>
-<span class="nc" id="L46">    joueur.setNom(nom);</span>
-<span class="nc" id="L47">    joueur.setConnect(true);</span>
-<span class="nc" id="L48">    listJoueur.add(joueur);</span>
-<span class="nc" id="L49">    return joueur.getId();</span>
+<span class="fc" id="L44">    }</span>
+<span class="fc" id="L45">    joueur.setId(i);</span>
+<span class="fc" id="L46">    joueur.setNom(nom);</span>
+<span class="fc" id="L47">    joueur.setConnect(true);</span>
+<span class="fc" id="L48">    listJoueur.add(joueur);</span>
+<span class="fc" id="L49">    return joueur.getId();</span>
 	}
 
   @GetMapping(&quot;/creation-partie/{idJoueur}&amp;{nb_tour}&quot;)
 	public Integer creationPartie(@PathVariable(value = &quot;idJoueur&quot;) Integer idJoueur, @PathVariable(value = &quot;nb_tour&quot;) int nbTour) {
-<span class="nc" id="L54">		Joueur joueur = Tools.joueurDansList(listJoueur, idJoueur);</span>
-<span class="nc" id="L55">    Jeu jeu = new Jeu();</span>
+<span class="fc" id="L54">		Joueur joueur = Tools.joueurDansList(listJoueur, idJoueur);</span>
+<span class="fc" id="L55">    Jeu jeu = new Jeu();</span>
 
-<span class="nc" id="L57">    jeu.setJoueur1(joueur);</span>
-<span class="nc" id="L58">    jeu.setNbTour(nbTour);</span>
-<span class="nc" id="L59">    listPartie.add(jeu);</span>
-<span class="nc" id="L60">    return jeu.getPartieId();</span>
+<span class="fc" id="L57">    jeu.setJoueur1(joueur);</span>
+<span class="fc" id="L58">    jeu.setNbTour(nbTour);</span>
+<span class="fc" id="L59">    listPartie.add(jeu);</span>
+<span class="fc" id="L60">    return jeu.getPartieId();</span>
 	}
 
   @GetMapping(&quot;/rejoindrePartie/{idPartie}&amp;{idJoueur}&quot;)
   public boolean rejoindrePartie(@PathVariable(value = &quot;idPartie&quot;) Integer idPartie, @PathVariable(value = &quot;idJoueur&quot;) Integer idJoueur){
-<span class="nc" id="L65">    Joueur joueur = Tools.joueurDansList(listJoueur, idJoueur);</span>
-<span class="nc" id="L66">    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);  </span>
-<span class="nc" id="L67">    jeu.setJoueur2(joueur);</span>
-<span class="nc" id="L68">    jeu.attenteJoueur2(idJoueur);</span>
-<span class="nc" id="L69">    return true;</span>
+<span class="fc" id="L65">    Joueur joueur = Tools.joueurDansList(listJoueur, idJoueur);</span>
+<span class="fc" id="L66">    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);  </span>
+<span class="fc" id="L67">    jeu.setJoueur2(joueur);</span>
+<span class="fc" id="L68">    jeu.attenteJoueur2(idJoueur);</span>
+<span class="fc" id="L69">    return true;</span>
   }
 
   @GetMapping(&quot;/attente-connection/{idPartie}&amp;{idJoueur}&quot;)
   public boolean attenteDuJoueur2(@PathVariable(value = &quot;idPartie&quot;) Integer idPartie, @PathVariable(value = &quot;idJoueur&quot;) Integer idJoueur){
-<span class="nc" id="L74">    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);    </span>
-<span class="nc" id="L75">    jeu.attenteJoueur2(idJoueur);</span>
-<span class="nc" id="L76">    return true;</span>
+<span class="fc" id="L74">    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);    </span>
+<span class="fc" id="L75">    jeu.attenteJoueur2(idJoueur);</span>
+<span class="fc" id="L76">    return true;</span>
   }
 
   @GetMapping(&quot;/nb-coups/{idPartie}&quot;)
   public String nbCoupsJoues(@PathVariable(value = &quot;idPartie&quot;) Integer idPartie){
-<span class="nc" id="L81">    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);</span>
-<span class="nc" id="L82">    String res = &quot;&quot;;</span>
-<span class="nc" id="L83">    res += jeu.getNbTour();</span>
-<span class="nc" id="L84">    return res;</span>
+<span class="fc" id="L81">    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);</span>
+<span class="fc" id="L82">    String res = &quot;&quot;;</span>
+<span class="fc" id="L83">    res += jeu.getNbTour();</span>
+<span class="fc" id="L84">    return res;</span>
   } 
 
   @GetMapping(&quot;/coup/{idPartie}&amp;{idJoueur}&amp;{coup}&quot;)
   public boolean coupJoueur(@PathVariable(value = &quot;idPartie&quot;) Integer idPartie, @PathVariable(value = &quot;idJoueur&quot;) Integer idJoueur, @PathVariable(value = &quot;coup&quot;) String coup  ){
-<span class="nc" id="L89">    boolean res = false;</span>
-<span class="nc" id="L90">    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);</span>
+<span class="fc" id="L89">    boolean res = false;</span>
+<span class="fc" id="L90">    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);</span>
     try{
-<span class="nc" id="L92">      jeu.joueUnCoup(idPartie, idJoueur, coup); </span>
-<span class="nc" id="L93">      jeu.attenteDeCoup();</span>
-<span class="nc" id="L94">      res = true;</span>
-<span class="nc" id="L95">    }catch (Exception e) {</span>
-<span class="nc" id="L96">      res = false;</span>
-<span class="nc" id="L97">    }</span>
-<span class="nc" id="L98">    return res;</span>
+<span class="fc" id="L92">      jeu.joueUnCoup(idPartie, idJoueur, coup); </span>
+<span class="fc" id="L93">      jeu.attenteDeCoup();</span>
+<span class="fc" id="L94">      res = true;</span>
+<span class="fc" id="L95">    }catch (Exception e) {</span>
+<span class="fc" id="L96">      res = false;</span>
+<span class="fc" id="L97">    }</span>
+<span class="fc" id="L98">    return res;</span>
   }
 
   @GetMapping(&quot;/strategie/{idPartie}&amp;{idJoueur}&amp;{strategie}&quot;)
   public boolean strategieJoueur(@PathVariable(value = &quot;idPartie&quot;) Integer idPartie, @PathVariable(value = &quot;idJoueur&quot;) Integer idJoueur, @PathVariable(value = &quot;strategie&quot;) int strategie ){
-<span class="nc" id="L103">    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);</span>
-<span class="nc" id="L104">    jeu.setStrategie(idJoueur, strategie);</span>
-<span class="nc" id="L105">    return true;</span>
+<span class="fc" id="L103">    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);</span>
+<span class="fc" id="L104">    jeu.setStrategie(idJoueur, strategie);</span>
+<span class="fc" id="L105">    return true;</span>
   }
 
   @GetMapping(&quot;/partie/{idPartie}&amp;{idJoueur}&quot;)
   public boolean jouePartie(@PathVariable(value = &quot;idPartie&quot;) Integer idPartie, @PathVariable(value = &quot;idJoueur&quot;) Integer idJoueur){
-<span class="nc" id="L110">    boolean res = false;</span>
-<span class="nc" id="L111">    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);</span>
-<span class="nc bnc" id="L112" title="All 2 branches missed.">    if(jeu.getJoueur1().isConnect()){</span>
-<span class="nc bnc" id="L113" title="All 4 branches missed.">      if(jeu.getPartieId().equals(idPartie) &amp;&amp; jeu.getJoueur1().getId().equals(idJoueur)){</span>
-<span class="nc" id="L114">        jeu.jeuManche();</span>
-<span class="nc" id="L115">        jeu.resetCoupJoueur();</span>
-<span class="nc" id="L116">        res = true;</span>
+<span class="fc" id="L110">    boolean res = false;</span>
+<span class="fc" id="L111">    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);</span>
+<span class="fc bfc" id="L112" title="All 2 branches covered.">    if(jeu.getJoueur1().isConnect()){</span>
+<span class="pc bpc" id="L113" title="2 of 4 branches missed.">      if(jeu.getPartieId().equals(idPartie) &amp;&amp; jeu.getJoueur1().getId().equals(idJoueur)){</span>
+<span class="fc" id="L114">        jeu.jeuManche();</span>
+<span class="fc" id="L115">        jeu.resetCoupJoueur();</span>
+<span class="fc" id="L116">        res = true;</span>
       }
     }
     else{
-<span class="nc" id="L120">      jeu.jeuManche();</span>
-<span class="nc" id="L121">      jeu.resetCoupJoueur();</span>
-<span class="nc" id="L122">      res = true;</span>
+<span class="fc" id="L120">      jeu.jeuManche();</span>
+<span class="fc" id="L121">      jeu.resetCoupJoueur();</span>
+<span class="fc" id="L122">      res = true;</span>
     }
-<span class="nc" id="L124">    jeu.setNbTourJouee(jeu.getNbTourJouee()+1);</span>
-<span class="nc bnc" id="L125" title="All 2 branches missed.">    if(jeu.getNbTourJouee() == jeu.getNbTour()){</span>
+<span class="fc" id="L124">    jeu.setNbTourJouee(jeu.getNbTourJouee()+1);</span>
+<span class="pc bpc" id="L125" title="1 of 2 branches missed.">    if(jeu.getNbTourJouee() == jeu.getNbTour()){</span>
 <span class="nc" id="L126">      res = false;</span>
     }
-<span class="nc" id="L128">    return res;</span>
+<span class="fc" id="L128">    return res;</span>
   }
 
   @GetMapping(&quot;/resultat-tour/{idPartie}&amp;{idJoueur}&quot;)
   public String resultatTour(@PathVariable(value = &quot;idPartie&quot;) Integer idPartie, @PathVariable(value = &quot;idJoueur&quot;) Integer idJoueur){
-<span class="nc" id="L133">    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);</span>
-<span class="nc" id="L134">    String res = &quot;&quot;;</span>
-<span class="nc" id="L135">    res = jeu.getRes(idJoueur);</span>
-<span class="nc" id="L136">    return res;</span>
+<span class="fc" id="L133">    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);</span>
+<span class="fc" id="L134">    String res = &quot;&quot;;</span>
+<span class="fc" id="L135">    res = jeu.getRes(idJoueur);</span>
+<span class="fc" id="L136">    return res;</span>
   }
 
     @GetMapping(&quot;/dernier-coup-adv/{idPartie}&amp;{idJoueur}&quot;)
@@ -155,41 +155,41 @@ import com.zaxxer.hikari.HikariDataSource;
 
   @GetMapping(&quot;/all-joueur&quot;)
   public String getAllJoueur(){
-<span class="nc" id="L158">    String res = &quot;&quot;;</span>
-<span class="nc bnc" id="L159" title="All 2 branches missed.">    for (Joueur j : listJoueur) {</span>
-<span class="nc" id="L160">      res += j.getNom()+&quot;&amp;&quot;+j.getId()+&quot;&amp;&quot;;</span>
-<span class="nc" id="L161">    }</span>
-<span class="nc" id="L162">    return res;</span>
+<span class="fc" id="L158">    String res = &quot;&quot;;</span>
+<span class="fc bfc" id="L159" title="All 2 branches covered.">    for (Joueur j : listJoueur) {</span>
+<span class="fc" id="L160">      res += j.getNom()+&quot;&amp;&quot;+j.getId()+&quot;&amp;&quot;;</span>
+<span class="fc" id="L161">    }</span>
+<span class="fc" id="L162">    return res;</span>
   }
 
 
   @GetMapping(&quot;/all-joueur-by-id&quot;)
   public String getAllIdsJoueur(){
-<span class="nc" id="L168">    String res = &quot;&quot;;</span>
-<span class="nc bnc" id="L169" title="All 2 branches missed.">    for (Joueur j : listJoueur) {</span>
-<span class="nc" id="L170">      res += j.getId()+&quot;&amp;&quot;;</span>
-<span class="nc" id="L171">    }</span>
-<span class="nc" id="L172">    return res;</span>
+<span class="fc" id="L168">    String res = &quot;&quot;;</span>
+<span class="fc bfc" id="L169" title="All 2 branches covered.">    for (Joueur j : listJoueur) {</span>
+<span class="fc" id="L170">      res += j.getId()+&quot;&amp;&quot;;</span>
+<span class="fc" id="L171">    }</span>
+<span class="fc" id="L172">    return res;</span>
   }
 
   @GetMapping(&quot;/all-joueur-by-nom&quot;)
   public String getAllNomsJoueur(){
-<span class="nc" id="L177">    String res = &quot;&quot;;</span>
-<span class="nc bnc" id="L178" title="All 2 branches missed.">    for (Joueur j : listJoueur) {</span>
-<span class="nc" id="L179">      res += j.getNom()+&quot;&amp;&quot;;</span>
-<span class="nc" id="L180">    }</span>
-<span class="nc" id="L181">    return res;</span>
+<span class="fc" id="L177">    String res = &quot;&quot;;</span>
+<span class="fc bfc" id="L178" title="All 2 branches covered.">    for (Joueur j : listJoueur) {</span>
+<span class="fc" id="L179">      res += j.getNom()+&quot;&amp;&quot;;</span>
+<span class="fc" id="L180">    }</span>
+<span class="fc" id="L181">    return res;</span>
   }
 
   @GetMapping(&quot;/all-partie&quot;)
   public String getAllPartie(){
-<span class="nc" id="L186">    String res = &quot;&quot;;</span>
-<span class="nc bnc" id="L187" title="All 2 branches missed.">    for (Jeu p : listPartie) {</span>
-<span class="nc bnc" id="L188" title="All 2 branches missed.">      if(!p.getJoueur2().isConnect()){</span>
-<span class="nc" id="L189">        res += p.getPartieId()+&quot;&amp;&quot;;</span>
+<span class="fc" id="L186">    String res = &quot;&quot;;</span>
+<span class="fc bfc" id="L187" title="All 2 branches covered.">    for (Jeu p : listPartie) {</span>
+<span class="pc bpc" id="L188" title="1 of 2 branches missed.">      if(!p.getJoueur2().isConnect()){</span>
+<span class="fc" id="L189">        res += p.getPartieId()+&quot;&amp;&quot;;</span>
       }
-<span class="nc" id="L191">    }</span>
-<span class="nc" id="L192">    return res;</span>
+<span class="fc" id="L191">    }</span>
+<span class="fc" id="L192">    return res;</span>
   }
 
 

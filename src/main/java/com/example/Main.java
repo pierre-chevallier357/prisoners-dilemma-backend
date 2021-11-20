@@ -72,8 +72,7 @@ public class Main {
   @GetMapping("/attente-connection/{idPartie}&{idJoueur}")
   public boolean attenteDuJoueur2(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     Jeu jeu = Tools.jeuDansList(listPartie, idPartie);    
-    jeu.attenteJoueur2(idJoueur);
-    return true;
+    return jeu.attenteJoueur2(idJoueur);
   }
 
   @GetMapping("/nb-coups/{idPartie}")
@@ -90,8 +89,7 @@ public class Main {
     Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
     try{
       jeu.joueUnCoup(idPartie, idJoueur, coup); 
-      jeu.attenteDeCoup();
-      res = true;
+      res = jeu.attenteDeCoup();
     }catch (Exception e) {
       res = false;
     }

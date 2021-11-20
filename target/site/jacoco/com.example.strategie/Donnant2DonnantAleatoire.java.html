@@ -10,7 +10,7 @@ import com.example.joueur.*;
 	public Coup prochainCoup(ArrayList&lt;Coup&gt; historiqueJ1, ArrayList&lt;Coup&gt; historiqueJ2) {
 <span class="fc" id="L11">		Coup coup = null;</span>
 		try {
-<span class="fc bfc" id="L13" title="All 2 branches covered.">			if(Math.random()&lt;0.6) {</span>
+<span class="pc bpc" id="L13" title="1 of 2 branches missed.">			if(Math.random()&lt;0.6) {</span>
 <span class="fc" id="L14">				int i = historiqueJ2.size() - 1;</span>
 <span class="nc bnc" id="L15" title="All 2 branches missed.">				while(historiqueJ2.get(i) != historiqueJ2.get(i-1)) {</span>
 <span class="nc" id="L16">					i--;</span>
@@ -20,12 +20,12 @@ import com.example.joueur.*;
 				}	
 <span class="nc" id="L21">			}</span>
 			else {
-<span class="fc" id="L23">				 coup = coupAleatoire(0.5);</span>
+<span class="nc" id="L23">				 coup = coupAleatoire(0.5);</span>
 			}
 		}	
 <span class="fc" id="L26">		catch(Exception e){</span>
 <span class="fc" id="L27">			coup =  coupAleatoire(0.5);</span>
-<span class="fc" id="L28">		}</span>
+<span class="nc" id="L28">		}</span>
 <span class="fc" id="L29">		return coup;</span>
 	}
 	
