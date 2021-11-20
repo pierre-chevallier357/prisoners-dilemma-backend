@@ -81,6 +81,7 @@ public class Main {
     Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
     String res = "";
     res += jeu.getNbTour();
+    System.out.println(res);
     return res;
   } 
 
