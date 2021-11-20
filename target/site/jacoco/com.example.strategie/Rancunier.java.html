@@ -8,18 +8,13 @@ import com.example.joueur.*;
 	
 	@Override
 	public Coup prochainCoup(ArrayList&lt;Coup&gt; historiqueJ1, ArrayList&lt;Coup&gt; historiqueJ2) {
-<span class="fc" id="L11">		Coup coup = Coup.COOPERER;;</span>
-		try{
-<span class="fc bfc" id="L13" title="All 2 branches covered.">			for(Coup c : historiqueJ2) {</span>
-<span class="pc bpc" id="L14" title="1 of 2 branches missed.">				if( c == Coup.TRAHIR){</span>
-<span class="fc" id="L15">					coup = Coup.TRAHIR;</span>
-				}
+<span class="fc" id="L11">		Coup coup = Coup.COOPERER;</span>
+<span class="fc bfc" id="L12" title="All 2 branches covered.">		for(Coup c : historiqueJ2) {</span>
+<span class="pc bpc" id="L13" title="1 of 2 branches missed.">			if( c == Coup.TRAHIR){</span>
+<span class="fc" id="L14">				coup = Coup.TRAHIR;</span>
 			}
-<span class="fc" id="L18">		}</span>
-<span class="nc" id="L19">		catch(Exception e){</span>
-<span class="nc" id="L20">			coup = Coup.COOPERER;</span>
-		}
-<span class="fc" id="L22">		return coup;</span>
+<span class="fc" id="L16">		}</span>
+<span class="fc" id="L17">		return coup;</span>
 			
 	}
 
