@@ -123,7 +123,7 @@ public class Main {
     return res;
   }
 
-  @GetMapping("/resultat/{idPartie}&{idJoueur}")
+  @GetMapping("/resultat-tour/{idPartie}&{idJoueur}")
   public String resultatTour(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
     String res = "";
@@ -139,7 +139,7 @@ public class Main {
     return res;
   }
 
-  @GetMapping("/resultat_final/{idPartie}&{idJoueur}")
+  @GetMapping("/resultat-final/{idPartie}&{idJoueur}")
   public String resFinal(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
     String res = "";
