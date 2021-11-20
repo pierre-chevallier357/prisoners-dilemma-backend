@@ -145,10 +145,6 @@ public class Jeu{
 		joueur2.setCoup(null);
 	}
 
-	public void setNbTour(int nbTour){
-		this.nbTour = nbTour;
-	}
-
 	public void setJoueur1(Joueur joueur){
 		this.joueur1 = joueur;
 	}
@@ -176,6 +172,10 @@ public class Jeu{
     public void setNbTourJouee(int nbTourJouee) {
 		this.nbTourJouee = nbTourJouee;
     }
+	
+	public void setNbTour(int nbTour){
+		this.nbTour = nbTour;
+	}
 
     public int getNbTour() {
         return nbTour;

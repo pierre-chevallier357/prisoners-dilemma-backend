@@ -10,12 +10,74 @@ import com.example.joueur.*;
 import com.example.partiedejeux.*;
 
 class JeuTest {
+    
+    Jeu jeu = new Jeu();
     Joueur j1 = new Joueur();
     Joueur j2 = new Joueur();
-    Jeu jeu = new Jeu();
 
     HistoriqueJoueur h1 = new HistoriqueJoueur();
     HistoriqueJoueur h2 = new HistoriqueJoueur();
+
+    @Test
+    void getInitJoueurTest() {
+        assertEquals(j1.getClass().getSimpleName(), jeu.getJoueur1().getClass().getSimpleName());
+        assertEquals(j2.getClass().getSimpleName(), jeu.getJoueur1().getClass().getSimpleName());
+    }
+
+    @Test
+    void  setGetJoueurTest(){
+        jeu.setJoueur1(j1);
+        jeu.setJoueur2(j2);
+
+        assertEquals(j1 , jeu.getJoueur1());
+        assertEquals(j2 , jeu.getJoueur2());
+    }
+
+    @Test
+    void ifPlayedTest(){
+        assertEquals(false , jeu.ifPlayed());
+        jeu.getJoueur1().setCoup(Coup.COOPERER);
+        jeu.getJoueur2().setCoup(Coup.COOPERER);
+        assertEquals(true , jeu.ifPlayed());
+    }
+
+    @Test
+    void resetCoupJoueurTest(){
+        jeu.getJoueur1().setCoup(Coup.COOPERER);
+        jeu.getJoueur2().setCoup(Coup.COOPERER);
+        jeu.resetCoupJoueur();
+        assertNull(jeu.getJoueur1().getCoup());
+        assertNull(jeu.getJoueur2().getCoup());
+    }
+
+    @Test
+    void setGetNbTourTest(){
+        jeu.setNbTour(10);
+        assertEquals(10 , jeu.getNbTour());
+    }
+
+    
+    @Test
+    void setGetNbTourJoueeTest(){
+        jeu.setNbTourJouee(10);
+        assertEquals(10 , jeu.getNbTourJouee());
+    }
+
+    @Test
+    void getPartieIdTest(){
+        Integer i = 1;
+        assertEquals(i.getClass().getSimpleName() , jeu.getPartieId().getClass().getSimpleName());
+    }
+
+    @Test
+    void setStrategieTest(){
+        jeu.getJoueur1().setId(1);
+        jeu.getJoueur2().setId(2);
+        jeu.setStrategie(jeu.getJoueur1().getId(), 1);
+        assertEquals(1 , jeu.getJoueur1().getStrategie());
+        jeu.setStrategie(jeu.getJoueur2().getId(), 1);
+        assertEquals(1 , jeu.getJoueur2().getStrategie());
+    }
 
     @Test
     void getDernierCoupAdvTest(){
@@ -36,5 +98,58 @@ class JeuTest {
         assertEquals("COOPERER", jeu.getDernierCoupAdv(2));
 
     }
+
+    @Test
+    void joueUnCoupTest(){
+        j1.setId(1);
+        jeu.setJoueur1(j1);
+        jeu.joueUnCoup(jeu.getPartieId(), j1.getId(), "COOPERER");
+        assertEquals(Coup.COOPERER, jeu.getJoueur1().getCoup());
+
+        j2.setId(2);
+        jeu.setJoueur2(j2);
+        jeu.joueUnCoup(jeu.getPartieId(), j2.getId(), "TRAHIR");
+        assertEquals(Coup.TRAHIR, jeu.getJoueur2().getCoup());
+
+    }
+
+
+
+    @Test
+    void partieJoueeTest(){
+        j1.setCoup(Coup.COOPERER);
+        jeu.setJoueur1(j1);
+        j2.setCoup(Coup.COOPERER);
+        jeu.setJoueur2(j2);
+        jeu.partieJouee(j1, j2);
+        assertEquals(Resultat.C, jeu.getJoueur1().getResultat());
+        assertEquals(Resultat.C, jeu.getJoueur2().getResultat());
+
+        j1.setCoup(Coup.TRAHIR);
+        jeu.setJoueur1(j1);
+        j2.setCoup(Coup.TRAHIR);
+        jeu.setJoueur2(j2);  
+        jeu.partieJouee(j1, j2);
+        assertEquals(Resultat.P, jeu.getJoueur1().getResultat());
+        assertEquals(Resultat.P, jeu.getJoueur2().getResultat());
+
+        j1.setCoup(Coup.TRAHIR);
+        jeu.setJoueur1(j1);
+        j2.setCoup(Coup.COOPERER);
+        jeu.setJoueur2(j2);  
+        jeu.partieJouee(j1, j2);
+        assertEquals(Resultat.T, jeu.getJoueur1().getResultat());
+        assertEquals(Resultat.D, jeu.getJoueur2().getResultat());
+
+        j1.setCoup(Coup.COOPERER);
+        jeu.setJoueur1(j1);
+        j2.setCoup(Coup.TRAHIR);
+        jeu.setJoueur2(j2);  
+        jeu.partieJouee(j1, j2);
+        assertEquals(Resultat.D, jeu.getJoueur1().getResultat());
+        assertEquals(Resultat.T, jeu.getJoueur2().getResultat());
+
+    }
     
+
 }
