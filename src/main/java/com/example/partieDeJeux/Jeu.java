@@ -89,10 +89,10 @@ public class Jeu{
 	public String getDernierCoupAdv(Integer idJoueur) {
 		String res ="";
 		if(joueur1.getId().equals(idJoueur)){
-			res = historiqueJ2.getLastCoupString();
+			res += historiqueJ2.getLastCoupString();
 		}
 		else if(joueur2.getId().equals(idJoueur)){
-			res = historiqueJ1.getLastCoupString();
+			res += historiqueJ1.getLastCoupString();
 		}
 		return res;
     }
