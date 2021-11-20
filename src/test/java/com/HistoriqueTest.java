@@ -65,4 +65,13 @@ class HistoriqueTest {
         assertEquals(resultatList.getClass().getSimpleName(), hj.getListResultat().getClass().getSimpleName());
     }
 
+    @Test
+    void testLastCoupString() {
+        j.setCoup(Coup.COOPERER);
+        j.setResultat(Resultat.P);
+        hj.addCoupRes(j);
+        assertEquals("COOPERER", hj.getLastCoupString());
+    }
+
+
 }

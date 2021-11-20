@@ -47,13 +47,16 @@ public class HistoriqueJoueur {
 
     public String getLastCoupString() {
 		String res ="";
-		switch (coupList.get(coupList.size()-1)){
+		switch (this.getLastCoup()){
 			case COOPERER :
-				res = "COOPERER";
+				res += "COOPERER";
+				break;
 			case  TRAHIR :
-				res= "TRAHIR";
+				res += "TRAHIR";
+				break;
 			default:
-				res = "";
+				res += "";
+				break;
 		}
 		return res;
     }
