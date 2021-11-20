@@ -80,7 +80,8 @@ public class Main {
   public String nbCoupsJoues(@PathVariable(value = "idPartie") Integer idPartie){
     Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
     String res = "";
-    res = jeu.getNbToursString();
+    res += jeu.getNbTour();
+    System.out.println(res);
     return res;
   } 
 
@@ -140,7 +141,8 @@ public class Main {
   public String dernierCoupAdv(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
     String res = "";
-    res = jeu.getDernierCoupAdv(idJoueur);
+    res += jeu.getDernierCoupAdv(idJoueur);
+    System.out.println(res);
     return res;
   }
 
