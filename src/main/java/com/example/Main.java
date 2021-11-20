@@ -128,10 +128,10 @@ public class Main {
     Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
     String res = "";
     if(jeu.getNbTourJouee()<jeu.getNbTour()){
-      res = "Vos point :"+jeu.getRes(idJoueur)+" "+jeu.getDerniersCoup(idJoueur);
+      res = jeu.getRes(idJoueur)+"&"+jeu.getDernierCoupAdv(idJoueur);
     }
     else {
-      res = "Fin voici votre resultat "+jeu.getRes(idJoueur) ;
+      res = jeu.getRes(idJoueur)+"&" ;
     }
     return res;
   }
@@ -140,7 +140,7 @@ public class Main {
   public String resFinal(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
     String res = "";
-    res = "Fin voici votre resultat "+jeu.getRes(idJoueur)+" Et celui de votre adversaire :"+jeu.getResAdv(idJoueur) ;
+    res = jeu.getRes(idJoueur)+"&"+jeu.getResAdv(idJoueur) ;
     listPartie.remove(jeu);
     return res;
   }
