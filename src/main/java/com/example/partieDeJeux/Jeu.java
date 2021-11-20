@@ -86,13 +86,13 @@ public class Jeu{
 		return res;
 	}
 
-	public String getDerniersCoup(Integer idJoueur) {
+	public String getDernierCoupAdv(Integer idJoueur) {
 		String res ="";
 		if(joueur1.getId().equals(idJoueur)){
-			res = "Votre coup :"+historiqueJ1.getLastCoup()+" Le coup de votre Adversaire :"+historiqueJ2.getLastCoup();
+			res = historiqueJ2.getLastCoup();
 		}
 		else if(joueur2.getId().equals(idJoueur)){
-			res = "Votre coup :"+historiqueJ2.getLastCoup()+" Le coup de votre Adversaire :"+historiqueJ1.getLastCoup();
+			res = historiqueJ1.getLastCoup();
 		}
 		return res;
     }
