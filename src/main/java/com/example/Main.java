@@ -127,12 +127,15 @@ public class Main {
   public String resultatTour(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
     String res = "";
-    if(jeu.getNbTourJouee()<jeu.getNbTour()){
-      res = jeu.getRes(idJoueur)+"&"+jeu.getDernierCoupAdv(idJoueur);
-    }
-    else {
-      res = jeu.getRes(idJoueur)+"&" ;
-    }
+    res = jeu.getRes(idJoueur)
+    return res;
+  }
+
+    @GetMapping("/resultat/{idPartie}&{idJoueur}")
+  public String dernierCoupAdv(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
+    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
+    String res = "";
+    res = jeu.getDernierCoupAdv(idJoueur);
     return res;
   }
 
