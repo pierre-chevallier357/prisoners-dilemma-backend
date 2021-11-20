@@ -44,4 +44,17 @@ public class HistoriqueJoueur {
 		return point;
 		
 	}
+
+    public String getLastCoupString() {
+		String res ="";
+		switch (coupList.get(coupList.size()-1)){
+			case COOPERER :
+				res = "COOPERER";
+			case  TRAHIR :
+				res= "TRAHIR";
+			default:
+				res = "";
+		}
+		return res;
+    }
 }
