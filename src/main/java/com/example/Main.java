@@ -131,7 +131,7 @@ public class Main {
     return res;
   }
 
-    @GetMapping("/resultat/{idPartie}&{idJoueur}")
+    @GetMapping("/resultat-dernierCoup/{idPartie}&{idJoueur}")
   public String dernierCoupAdv(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
     String res = "";
