@@ -182,7 +182,7 @@ public class Jeu{
     }
 
 	public String getNbToursString() {
-		return nbTour.toString();
+		return getNbTour().toString();
 	}
 
 
