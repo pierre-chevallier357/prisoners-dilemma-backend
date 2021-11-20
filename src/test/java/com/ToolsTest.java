@@ -1,7 +1,6 @@
 package com;
 
 import java.util.ArrayList;
-import java.util.Random;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,7 +11,7 @@ import com.example.partiedejeux.HistoriqueJoueur;
 import com.example.partiedejeux.Jeu;
 
 
-public class ToolsTest {
+class ToolsTest {
     ArrayList<Jeu> listPartie = new ArrayList<>();
     ArrayList<Joueur> listJoueur = new ArrayList<>();
 	HistoriqueJoueur historiqueJ1 = new HistoriqueJoueur();
@@ -21,7 +20,7 @@ public class ToolsTest {
     Joueur joueur = new Joueur();
     Integer idJeu = jeu.getPartieId();
     Integer idJoueur = 10;
-    
+
     @Test 
     void randomNumTest(){
         Integer i =1;
