@@ -18,5 +18,9 @@ class Donnant2DonnantTest {
         Strategie a = new Donnant2Donnant();
 	    Coup coup  = Coup.COOPERER;
         assertEquals(coup.getClass().getSimpleName(), a.prochainCoup(historiqueJ1, historiqueJ2).getClass().getSimpleName());
+        historiqueJ2.add(Coup.TRAHIR);
+        historiqueJ2.add(Coup.TRAHIR);
+        
+        assertEquals(Coup.TRAHIR, a.prochainCoup(historiqueJ1, historiqueJ2));
     }
 }

@@ -19,5 +19,9 @@ class VraiPacificateurTest {
         Strategie a = new VraiPacificateur();
 	    Coup coup  = Coup.COOPERER;
         assertEquals(coup.getClass().getSimpleName(), a.prochainCoup(historiqueJ1, historiqueJ2).getClass().getSimpleName());
+        
+        historiqueJ2.add(Coup.TRAHIR);
+        historiqueJ2.add(Coup.TRAHIR);
+        assertEquals(coup.getClass().getSimpleName(), a.prochainCoup(historiqueJ1, historiqueJ2).getClass().getSimpleName());
     }
 }
