@@ -146,8 +146,12 @@ public class Main {
   public String resFinal(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
     String res = "";
-    res = jeu.getRes(idJoueur)+"&"+jeu.getResAdv(idJoueur) ;
-    listPartie.remove(jeu);
+    try{
+      res += jeu.getRes(idJoueur)+"&"+jeu.getResAdv(idJoueur) ;
+      listPartie.remove(jeu);
+    }catch(Exception e){
+      res += "Erreur";
+    }
     return res;
   }
 

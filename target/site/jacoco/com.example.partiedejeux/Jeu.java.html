@@ -20,10 +20,10 @@ public class Jeu{
 <span class="fc" id="L20">		this.id = Tools.randomNum();</span>
 <span class="fc" id="L21">	}</span>
 
-	public synchronized void attenteDeCoup(){
+	public synchronized boolean attenteDeCoup(){
 <span class="fc" id="L24">		boolean iHaveWait = false;</span>
-<span class="pc bpc" id="L25" title="2 of 4 branches missed.">		if(joueur1.isConnect() &amp;&amp; joueur2.isConnect()){</span>
-<span class="nc bnc" id="L26" title="All 2 branches missed.">			while (!ifPlayed()) {</span>
+<span class="pc bpc" id="L25" title="1 of 4 branches missed.">		if(joueur1.isConnect() &amp;&amp; joueur2.isConnect()){</span>
+<span class="pc bpc" id="L26" title="1 of 2 branches missed.">			while (!ifPlayed()) {</span>
 				try {
 <span class="nc" id="L28">					iHaveWait = true;</span>
 <span class="nc" id="L29">					wait();</span>
@@ -31,167 +31,169 @@ public class Jeu{
 <span class="nc" id="L31">					Thread.currentThread().interrupt();</span>
 <span class="nc" id="L32">				}</span>
 			}
-<span class="nc bnc" id="L34" title="All 2 branches missed.">			if(!iHaveWait){</span>
-<span class="nc" id="L35">				notifyAll();</span>
+<span class="pc bpc" id="L34" title="1 of 2 branches missed.">			if(!iHaveWait){</span>
+<span class="fc" id="L35">				notifyAll();</span>
 			}
 		}
-<span class="fc" id="L38">	}</span>
+<span class="fc" id="L38">		return true;</span>
+	}
 
-	public synchronized void attenteJoueur2(Integer idJoueur){
-<span class="fc bfc" id="L41" title="All 2 branches covered.">		if(joueur1.getId().equals(idJoueur)){</span>
-<span class="pc bpc" id="L42" title="1 of 2 branches missed.">			while (!joueur2.isConnect()) {</span>
+	public synchronized boolean attenteJoueur2(Integer idJoueur){
+<span class="fc bfc" id="L42" title="All 2 branches covered.">		if(joueur1.getId().equals(idJoueur)){</span>
+<span class="pc bpc" id="L43" title="1 of 2 branches missed.">			while (!joueur2.isConnect()) {</span>
 				try {
-<span class="nc" id="L44">					wait();</span>
-<span class="nc" id="L45">				} catch (Exception e) {</span>
-<span class="nc" id="L46">					Thread.currentThread().interrupt();</span>
-<span class="nc" id="L47">				}</span>
+<span class="nc" id="L45">					wait();</span>
+<span class="nc" id="L46">				} catch (Exception e) {</span>
+<span class="nc" id="L47">					Thread.currentThread().interrupt();</span>
+<span class="nc" id="L48">				}</span>
 			}
 		}
 		else{
-<span class="fc" id="L51">			notifyAll();</span>
+<span class="fc" id="L52">			notifyAll();</span>
 		}
-<span class="fc" id="L53">	}</span>
+<span class="fc" id="L54">		return true;</span>
+	}
 
 	public void jeuManche(){
-<span class="fc bfc" id="L56" title="All 2 branches covered.">		if(!joueur1.isConnect()){</span>
-<span class="fc" id="L57">			joueur1.setCoup(Tools.prochainCoupStrat(historiqueJ1, historiqueJ2, joueur1.getStrategie()));	</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">		if(!joueur1.isConnect()){</span>
+<span class="fc" id="L59">			joueur1.setCoup(Tools.prochainCoupStrat(historiqueJ1, historiqueJ2, joueur1.getStrategie()));	</span>
 		}
-<span class="pc bpc" id="L59" title="1 of 2 branches missed.">		if(!joueur2.isConnect()){</span>
-<span class="fc" id="L60">			joueur2.setCoup(Tools.prochainCoupStrat(historiqueJ2, historiqueJ1, joueur2.getStrategie()));	</span>
+<span class="pc bpc" id="L61" title="1 of 2 branches missed.">		if(!joueur2.isConnect()){</span>
+<span class="fc" id="L62">			joueur2.setCoup(Tools.prochainCoupStrat(historiqueJ2, historiqueJ1, joueur2.getStrategie()));	</span>
 		}
 		
-<span class="fc" id="L63">		partieJouee(this.joueur1, this.joueur2);</span>
+<span class="fc" id="L65">		partieJouee(this.joueur1, this.joueur2);</span>
 
-<span class="fc" id="L65">	}</span>
+<span class="fc" id="L67">	}</span>
 
 	public String getRes(Integer idJoueur){
-<span class="fc" id="L68">		String res =&quot;&quot;;</span>
-<span class="pc bpc" id="L69" title="1 of 2 branches missed.">		if(joueur1.getId().equals(idJoueur)){</span>
-<span class="fc" id="L70">			res = Integer.toString(historiqueJ1.calculPoint());</span>
+<span class="fc" id="L70">		String res =&quot;&quot;;</span>
+<span class="pc bpc" id="L71" title="1 of 2 branches missed.">		if(joueur1.getId().equals(idJoueur)){</span>
+<span class="fc" id="L72">			res = Integer.toString(historiqueJ1.calculPoint());</span>
 		}
-<span class="nc bnc" id="L72" title="All 2 branches missed.">		else if(joueur2.getId().equals(idJoueur)){</span>
-<span class="nc" id="L73">			res = Integer.toString(historiqueJ2.calculPoint());</span>
+<span class="nc bnc" id="L74" title="All 2 branches missed.">		else if(joueur2.getId().equals(idJoueur)){</span>
+<span class="nc" id="L75">			res = Integer.toString(historiqueJ2.calculPoint());</span>
 		}
-<span class="fc" id="L75">		return res;</span>
+<span class="fc" id="L77">		return res;</span>
 	}
 
 	public String getResAdv(Integer idJoueur){
-<span class="nc" id="L79">		String res =&quot;&quot;;</span>
-<span class="nc bnc" id="L80" title="All 2 branches missed.">		if(joueur2.getId().equals(idJoueur)){</span>
-<span class="nc" id="L81">			res = Integer.toString(historiqueJ1.calculPoint());</span>
+<span class="fc" id="L81">		String res =&quot;&quot;;</span>
+<span class="fc bfc" id="L82" title="All 2 branches covered.">		if(joueur2.getId().equals(idJoueur)){</span>
+<span class="fc" id="L83">			res = Integer.toString(historiqueJ1.calculPoint());</span>
 		}
-<span class="nc bnc" id="L83" title="All 2 branches missed.">		else if(joueur1.getId().equals(idJoueur)){</span>
-<span class="nc" id="L84">			res = Integer.toString(historiqueJ2.calculPoint());</span>
+<span class="pc bpc" id="L85" title="1 of 2 branches missed.">		else if(joueur1.getId().equals(idJoueur)){</span>
+<span class="fc" id="L86">			res = Integer.toString(historiqueJ2.calculPoint());</span>
 		}
-<span class="nc" id="L86">		return res;</span>
+<span class="fc" id="L88">		return res;</span>
 	}
 
 	public String getDernierCoupAdv(Integer idJoueur) {
-<span class="fc" id="L90">		String res =&quot;&quot;;</span>
-<span class="fc bfc" id="L91" title="All 2 branches covered.">		if(joueur1.getId().equals(idJoueur)){</span>
-<span class="fc" id="L92">			res += historiqueJ2.getLastCoupString();</span>
+<span class="fc" id="L92">		String res =&quot;&quot;;</span>
+<span class="fc bfc" id="L93" title="All 2 branches covered.">		if(joueur1.getId().equals(idJoueur)){</span>
+<span class="fc" id="L94">			res += historiqueJ2.getLastCoupString();</span>
 		}
-<span class="pc bpc" id="L94" title="1 of 2 branches missed.">		else if(joueur2.getId().equals(idJoueur)){</span>
-<span class="fc" id="L95">			res += historiqueJ1.getLastCoupString();</span>
+<span class="pc bpc" id="L96" title="1 of 2 branches missed.">		else if(joueur2.getId().equals(idJoueur)){</span>
+<span class="fc" id="L97">			res += historiqueJ1.getLastCoupString();</span>
 		}
-<span class="fc" id="L97">		return res;</span>
+<span class="fc" id="L99">		return res;</span>
     }
 	
 	public void partieJouee(Joueur joueur1, Joueur joueur2){
-<span class="fc bfc" id="L101" title="All 2 branches covered.">		if (joueur1.getCoup() == joueur2.getCoup()) {</span>
-<span class="fc bfc" id="L102" title="All 2 branches covered.">			if(joueur1.getCoup().equals(Coup.TRAHIR)) {</span>
-<span class="fc" id="L103">				joueur1.setResultat(Resultat.P);</span>
-<span class="fc" id="L104">				joueur2.setResultat(Resultat.P);</span>
+<span class="fc bfc" id="L103" title="All 2 branches covered.">		if (joueur1.getCoup() == joueur2.getCoup()) {</span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">			if(joueur1.getCoup().equals(Coup.TRAHIR)) {</span>
+<span class="fc" id="L105">				joueur1.setResultat(Resultat.P);</span>
+<span class="fc" id="L106">				joueur2.setResultat(Resultat.P);</span>
 			}
-<span class="pc bpc" id="L106" title="1 of 2 branches missed.">			else if(joueur1.getCoup().equals(Coup.COOPERER)){</span>
-<span class="fc" id="L107">				joueur1.setResultat(Resultat.C);</span>
-<span class="fc" id="L108">				joueur2.setResultat(Resultat.C);</span>
+<span class="pc bpc" id="L108" title="1 of 2 branches missed.">			else if(joueur1.getCoup().equals(Coup.COOPERER)){</span>
+<span class="fc" id="L109">				joueur1.setResultat(Resultat.C);</span>
+<span class="fc" id="L110">				joueur2.setResultat(Resultat.C);</span>
 			}
 		}
-<span class="fc bfc" id="L111" title="All 4 branches covered.">		else if ((joueur1.getCoup() == Coup.TRAHIR) &amp;&amp; (joueur2.getCoup() == Coup.COOPERER)){</span>
-<span class="fc" id="L112">			joueur1.setResultat(Resultat.T);</span>
-<span class="fc" id="L113">			joueur2.setResultat(Resultat.D);</span>
+<span class="fc bfc" id="L113" title="All 4 branches covered.">		else if ((joueur1.getCoup() == Coup.TRAHIR) &amp;&amp; (joueur2.getCoup() == Coup.COOPERER)){</span>
+<span class="fc" id="L114">			joueur1.setResultat(Resultat.T);</span>
+<span class="fc" id="L115">			joueur2.setResultat(Resultat.D);</span>
 		}
 		else {
-<span class="fc" id="L116">			joueur1.setResultat(Resultat.D);</span>
-<span class="fc" id="L117">			joueur2.setResultat(Resultat.T);</span>
+<span class="fc" id="L118">			joueur1.setResultat(Resultat.D);</span>
+<span class="fc" id="L119">			joueur2.setResultat(Resultat.T);</span>
 		}
 		
-<span class="fc" id="L120">		historiqueJ1.addCoupRes(joueur1);</span>
-<span class="fc" id="L121">		historiqueJ2.addCoupRes(joueur2);</span>
-<span class="fc" id="L122">	}</span>
+<span class="fc" id="L122">		historiqueJ1.addCoupRes(joueur1);</span>
+<span class="fc" id="L123">		historiqueJ2.addCoupRes(joueur2);</span>
+<span class="fc" id="L124">	}</span>
 
     public void joueUnCoup(Integer idPartie, Integer idJoueur, String coup) {
-<span class="pc bpc" id="L125" title="1 of 2 branches missed.">		if(this.id.equals(idPartie)){</span>
-<span class="fc bfc" id="L126" title="All 2 branches covered.">			if(joueur1.getId().equals(idJoueur)){</span>
-<span class="fc" id="L127">				joueur1.setCoupString(coup);</span>
+<span class="pc bpc" id="L127" title="1 of 2 branches missed.">		if(this.id.equals(idPartie)){</span>
+<span class="fc bfc" id="L128" title="All 2 branches covered.">			if(joueur1.getId().equals(idJoueur)){</span>
+<span class="fc" id="L129">				joueur1.setCoupString(coup);</span>
 			}
-<span class="pc bpc" id="L129" title="1 of 2 branches missed.">			else if(joueur2.getId().equals(idJoueur)){</span>
-<span class="fc" id="L130">				joueur2.setCoupString(coup);</span>
+<span class="pc bpc" id="L131" title="1 of 2 branches missed.">			else if(joueur2.getId().equals(idJoueur)){</span>
+<span class="fc" id="L132">				joueur2.setCoupString(coup);</span>
 			}
 		}
-<span class="fc" id="L133">    }</span>
+<span class="fc" id="L135">    }</span>
 
 	public boolean ifPlayed(){
-<span class="fc" id="L136">		boolean res = false;</span>
-<span class="pc bpc" id="L137" title="1 of 4 branches missed.">		if(joueur1.getCoup()!= null &amp;&amp; joueur2.getCoup()!= null){</span>
-<span class="fc" id="L138">			res = true;</span>
+<span class="fc" id="L138">		boolean res = false;</span>
+<span class="pc bpc" id="L139" title="1 of 4 branches missed.">		if(joueur1.getCoup()!= null &amp;&amp; joueur2.getCoup()!= null){</span>
+<span class="fc" id="L140">			res = true;</span>
 		}
-<span class="fc" id="L140">		return res;</span>
+<span class="fc" id="L142">		return res;</span>
 	}
 
 	public void resetCoupJoueur(){
-<span class="fc" id="L144">		joueur1.setCoup(null);</span>
-<span class="fc" id="L145">		joueur2.setCoup(null);</span>
-<span class="fc" id="L146">	}</span>
+<span class="fc" id="L146">		joueur1.setCoup(null);</span>
+<span class="fc" id="L147">		joueur2.setCoup(null);</span>
+<span class="fc" id="L148">	}</span>
 
 	public void setJoueur1(Joueur joueur){
-<span class="fc" id="L149">		this.joueur1 = joueur;</span>
-<span class="fc" id="L150">	}</span>
+<span class="fc" id="L151">		this.joueur1 = joueur;</span>
+<span class="fc" id="L152">	}</span>
 
 	public Joueur getJoueur1(){
-<span class="fc" id="L153">		return this.joueur1;</span>
+<span class="fc" id="L155">		return this.joueur1;</span>
 	}
 
 	public void setJoueur2(Joueur joueur){
-<span class="fc" id="L157">		this.joueur2 = joueur;</span>
-<span class="fc" id="L158">	}</span>
+<span class="fc" id="L159">		this.joueur2 = joueur;</span>
+<span class="fc" id="L160">	}</span>
 
 	public Joueur getJoueur2(){
-<span class="fc" id="L161">		return this.joueur2;</span>
+<span class="fc" id="L163">		return this.joueur2;</span>
 	}
 
 	public Integer getPartieId(){
-<span class="fc" id="L165">		return id;</span>
+<span class="fc" id="L167">		return id;</span>
 	}
 
 	public int getNbTourJouee() {
-<span class="fc" id="L169">		return nbTourJouee;</span>
+<span class="fc" id="L171">		return nbTourJouee;</span>
 	}
 
     public void setNbTourJouee(int nbTourJouee) {
-<span class="fc" id="L173">		this.nbTourJouee = nbTourJouee;</span>
-<span class="fc" id="L174">    }</span>
+<span class="fc" id="L175">		this.nbTourJouee = nbTourJouee;</span>
+<span class="fc" id="L176">    }</span>
 	
 	public void setNbTour(int nbTour){
-<span class="fc" id="L177">		this.nbTour = nbTour;</span>
-<span class="fc" id="L178">	}</span>
+<span class="fc" id="L179">		this.nbTour = nbTour;</span>
+<span class="fc" id="L180">	}</span>
 
     public int getNbTour() {
-<span class="fc" id="L181">        return nbTour;</span>
+<span class="fc" id="L183">        return nbTour;</span>
     }
 
 
     public void setStrategie(Integer idJoueur, int strategie) {
-<span class="fc bfc" id="L186" title="All 2 branches covered.">		if(joueur1.getId().equals(idJoueur)){</span>
-<span class="fc" id="L187">			joueur1.setStrategie(strategie);</span>
-<span class="fc" id="L188">			joueur1.setConnect(false);</span>
+<span class="fc bfc" id="L188" title="All 2 branches covered.">		if(joueur1.getId().equals(idJoueur)){</span>
+<span class="fc" id="L189">			joueur1.setStrategie(strategie);</span>
+<span class="fc" id="L190">			joueur1.setConnect(false);</span>
 		}
-<span class="pc bpc" id="L190" title="1 of 2 branches missed.">		else if(joueur2.getId().equals(idJoueur)){</span>
-<span class="fc" id="L191">			joueur2.setStrategie(strategie);</span>
-<span class="fc" id="L192">			joueur2.setConnect(false);</span>
+<span class="pc bpc" id="L192" title="1 of 2 branches missed.">		else if(joueur2.getId().equals(idJoueur)){</span>
+<span class="fc" id="L193">			joueur2.setStrategie(strategie);</span>
+<span class="fc" id="L194">			joueur2.setConnect(false);</span>
 		}
-<span class="fc" id="L194">    }</span>
+<span class="fc" id="L196">    }</span>
 
 }
 
