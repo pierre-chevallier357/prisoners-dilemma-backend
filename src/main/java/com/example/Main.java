@@ -49,8 +49,6 @@ public class Main {
     return joueur.getId();
 	}
 
-  
-
   @GetMapping("/creation-partie/{idJoueur}&{nb_tour}")
 	public Integer creationPartie(@PathVariable(value = "idJoueur") Integer idJoueur, @PathVariable(value = "nb_tour") int nbTour) {
 		Joueur joueur = Tools.joueurDansList(listJoueur, idJoueur);
@@ -77,7 +75,14 @@ public class Main {
     jeu.attenteJoueur2(idJoueur);
     return true;
   }
-  
+
+  @GetMapping("/nb-coups/{idPartie}")
+  public String nbCoupsJoues(@PathVariable(value = "idPartie") Integer idPartie){
+    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
+    String res = "";
+    res = jeu.getNbToursString();
+    return res;
+  } 
 
   @GetMapping("/coup/{idPartie}&{idJoueur}&{coup}")
   public boolean coupJoueur(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur, @PathVariable(value = "coup") String coup  ){

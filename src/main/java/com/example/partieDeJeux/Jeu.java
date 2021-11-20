@@ -181,6 +181,11 @@ public class Jeu{
         return nbTour;
     }
 
+	public string getNbToursString() {
+		return nbTour.toString();
+	}
+
+
     public void setStrategie(Integer idJoueur, int strategie) {
 		if(joueur1.getId().equals(idJoueur)){
 			joueur1.setStrategie(strategie);
