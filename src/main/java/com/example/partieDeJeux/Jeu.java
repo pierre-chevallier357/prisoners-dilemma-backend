@@ -181,7 +181,7 @@ public class Jeu{
         return nbTour;
     }
 
-	public string getNbToursString() {
+	public String getNbToursString() {
 		return nbTour.toString();
 	}
 
