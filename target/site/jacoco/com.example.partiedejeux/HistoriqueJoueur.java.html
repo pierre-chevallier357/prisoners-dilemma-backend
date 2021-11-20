@@ -44,5 +44,21 @@ import com.example.joueur.Joueur;
 <span class="fc" id="L44">		return point;</span>
 		
 	}
+
+    public String getLastCoupString() {
+<span class="fc" id="L49">		String res =&quot;&quot;;</span>
+<span class="pc bpc" id="L50" title="1 of 3 branches missed.">		switch (this.getLastCoup()){</span>
+			case COOPERER :
+<span class="fc" id="L52">				res += &quot;COOPERER&quot;;</span>
+<span class="fc" id="L53">				break;</span>
+			case  TRAHIR :
+<span class="fc" id="L55">				res += &quot;TRAHIR&quot;;</span>
+<span class="fc" id="L56">				break;</span>
+			default:
+<span class="nc" id="L58">				res += &quot;&quot;;</span>
+				break;
+		}
+<span class="fc" id="L61">		return res;</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
