@@ -150,6 +150,15 @@ public class Main {
     return res;
   }
 
+  @GetMapping("/supprimer-partie/{idPartie}&{idJoueur}")
+  public boolean supprimerPartie(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
+    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
+    if(jeu !=null){
+      listPartie.remove(jeu);
+    }
+    return true;
+  }
+
   @GetMapping("/all-joueur")
   public String getAllJoueur(){
     String res = "";
