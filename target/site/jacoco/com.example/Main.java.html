@@ -136,27 +136,27 @@ import com.zaxxer.hikari.HikariDataSource;
 
     @GetMapping(&quot;/dernier-coup-adv/{idPartie}&amp;{idJoueur}&quot;)
   public String dernierCoupAdv(@PathVariable(value = &quot;idPartie&quot;) Integer idPartie, @PathVariable(value = &quot;idJoueur&quot;) Integer idJoueur){
-<span class="nc" id="L139">    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);</span>
-<span class="nc" id="L140">    String res = &quot;&quot;;</span>
-<span class="nc" id="L141">    res += jeu.getDernierCoupAdv(idJoueur);</span>
-<span class="nc" id="L142">    return res;</span>
+<span class="fc" id="L139">    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);</span>
+<span class="fc" id="L140">    String res = &quot;&quot;;</span>
+<span class="fc" id="L141">    res += jeu.getDernierCoupAdv(idJoueur);</span>
+<span class="fc" id="L142">    return res;</span>
   }
 
   @GetMapping(&quot;/resultat-final/{idPartie}&amp;{idJoueur}&quot;)
   public String resFinal(@PathVariable(value = &quot;idPartie&quot;) Integer idPartie, @PathVariable(value = &quot;idJoueur&quot;) Integer idJoueur){
-<span class="nc" id="L147">    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);</span>
-<span class="nc" id="L148">    String res = &quot;&quot;;</span>
-<span class="nc" id="L149">    res += jeu.getRes(idJoueur)+&quot;&amp;&quot;+jeu.getResAdv(idJoueur) ;</span>
-<span class="nc" id="L150">    return res;</span>
+<span class="fc" id="L147">    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);</span>
+<span class="fc" id="L148">    String res = &quot;&quot;;</span>
+<span class="fc" id="L149">    res += jeu.getRes(idJoueur)+&quot;&amp;&quot;+jeu.getResAdv(idJoueur) ;</span>
+<span class="fc" id="L150">    return res;</span>
   }
 
   @GetMapping(&quot;/supprimer-partie/{idPartie}&quot;)
   public boolean supprimerPartie(@PathVariable(value = &quot;idPartie&quot;) Integer idPartie){
-<span class="nc" id="L155">    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);</span>
-<span class="nc bnc" id="L156" title="All 2 branches missed.">    if(jeu !=null){</span>
-<span class="nc" id="L157">      listPartie.remove(jeu);</span>
+<span class="fc" id="L155">    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);</span>
+<span class="pc bpc" id="L156" title="1 of 2 branches missed.">    if(jeu !=null){</span>
+<span class="fc" id="L157">      listPartie.remove(jeu);</span>
     }
-<span class="nc" id="L159">    return true;</span>
+<span class="fc" id="L159">    return true;</span>
   }
 
   @GetMapping(&quot;/all-joueur&quot;)
@@ -198,16 +198,19 @@ import com.zaxxer.hikari.HikariDataSource;
 <span class="fc" id="L198">    return res;</span>
   }
 
+  public Jeu getJeu(){
+<span class="fc" id="L202">    return listPartie.get(0);</span>
+  }
 
 
   @Bean
   public DataSource dataSource() throws ServerException {
-<span class="nc bnc" id="L205" title="All 4 branches missed.">    if (dbUrl == null || dbUrl.isEmpty()) {</span>
-<span class="nc" id="L206">      return new HikariDataSource();</span>
+<span class="nc bnc" id="L208" title="All 4 branches missed.">    if (dbUrl == null || dbUrl.isEmpty()) {</span>
+<span class="nc" id="L209">      return new HikariDataSource();</span>
     } else {
-<span class="nc" id="L208">      HikariConfig config = new HikariConfig();</span>
-<span class="nc" id="L209">      config.setJdbcUrl(dbUrl);</span>
-<span class="nc" id="L210">      return new HikariDataSource(config);</span>
+<span class="nc" id="L211">      HikariConfig config = new HikariConfig();</span>
+<span class="nc" id="L212">      config.setJdbcUrl(dbUrl);</span>
+<span class="nc" id="L213">      return new HikariDataSource(config);</span>
     }
   }
 

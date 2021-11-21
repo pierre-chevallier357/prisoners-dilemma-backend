@@ -1,15 +1,15 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-jeu_dilemme_g2_6,com.example.partiedejeux,Jeu,25,354,15,37,9,97,14,33,0,21
+jeu_dilemme_g2_6,com.example.partiedejeux,Jeu,25,354,14,38,9,97,13,34,0,21
 jeu_dilemme_g2_6,com.example.partiedejeux,Resultat,0,59,0,0,0,9,0,3,0,3
 jeu_dilemme_g2_6,com.example.partiedejeux,HistoriqueJoueur,7,105,1,4,1,22,1,11,0,9
 jeu_dilemme_g2_6,com.example.strategie,Strategie,0,14,0,2,0,6,0,3,0,2
 jeu_dilemme_g2_6,com.example.strategie,Donnant2Donnant,1,34,2,2,1,10,2,2,0,2
 jeu_dilemme_g2_6,com.example.strategie,Aleatoire,0,6,0,0,0,2,0,2,0,2
 jeu_dilemme_g2_6,com.example.strategie,DonnantDonnant,0,18,0,0,0,6,0,2,0,2
-jeu_dilemme_g2_6,com.example.strategie,DonnantDonnantAleatoire,4,22,1,1,2,7,1,2,0,2
-jeu_dilemme_g2_6,com.example.strategie,Donnant2DonnantAleatoire,22,21,5,1,6,8,3,2,0,2
+jeu_dilemme_g2_6,com.example.strategie,DonnantDonnantAleatoire,0,26,0,2,0,9,0,3,0,2
+jeu_dilemme_g2_6,com.example.strategie,Donnant2DonnantAleatoire,18,25,4,2,4,10,2,3,0,2
 jeu_dilemme_g2_6,com.example.strategie,ToujoursTrahir,0,5,0,0,0,2,0,2,0,2
-jeu_dilemme_g2_6,com.example.strategie,VraiPacificateur,4,30,2,4,2,6,2,3,0,2
+jeu_dilemme_g2_6,com.example.strategie,VraiPacificateur,0,34,2,4,0,8,2,3,0,2
 jeu_dilemme_g2_6,com.example.strategie,PacificateurNaif,18,9,4,0,4,4,2,2,0,2
 jeu_dilemme_g2_6,com.example.strategie,Rancunier,0,23,0,4,0,6,0,4,0,2
 jeu_dilemme_g2_6,com.example.strategie,ToujoursCooperer,0,5,0,0,0,2,0,2,0,2
@@ -19,4 +19,4 @@ jeu_dilemme_g2_6,com.example.joueur,Joueur,0,74,0,3,0,31,0,16,0,14
 jeu_dilemme_g2_6,com.example.joueur,Coup,0,24,0,0,0,3,0,1,0,1
 jeu_dilemme_g2_6,com.example,RestServer,8,0,0,0,3,0,2,0,2,0
 jeu_dilemme_g2_6,com.example,Tools,0,211,1,20,0,53,1,19,0,4
-jeu_dilemme_g2_6,com.example,Main,88,340,11,17,19,75,12,21,4,15
+jeu_dilemme_g2_6,com.example,Main,28,406,10,18,7,88,9,25,1,19
