@@ -30,7 +30,7 @@ public class Main {
 
   @GetMapping("/")
   public String index() {
-    return "Ceci est le serveur voici l'application : client-pc.web.app";
+    return "Ceci est le serveur, pour jouer, veuillez aller sur l'application : client-pc.web.app";
   }
 
   @GetMapping("/creation-joueur/{nom}")
@@ -134,7 +134,7 @@ public class Main {
     return res;
   }
 
-    @GetMapping("/dernier-coup-adv/{idPartie}&{idJoueur}")
+  @GetMapping("/dernier-coup-adv/{idPartie}&{idJoueur}")
   public String dernierCoupAdv(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
     String res = "";
@@ -168,7 +168,6 @@ public class Main {
     return res;
   }
 
-
   @GetMapping("/all-joueur-by-id")
   public String getAllIdsJoueur(){
     String res = "";
@@ -201,7 +200,6 @@ public class Main {
   public Jeu getJeu(){
     return listPartie.get(0);
   }
-
 
   @Bean
   public DataSource dataSource() throws ServerException {
