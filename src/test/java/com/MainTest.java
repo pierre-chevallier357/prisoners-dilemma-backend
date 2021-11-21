@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import com.example.Main;
+import com.example.joueur.Coup;
+import com.example.partiedejeux.Jeu;
 
 class MainTest {
     Main main = new Main();
@@ -42,6 +44,7 @@ class MainTest {
         assertTrue(main.attenteDuJoueur2(idPartie, idJoueur));
     }
 
+
     @Test
     void nbCoupsJouesTest() {
         assertEquals("1", main.nbCoupsJoues(idPartie));
@@ -73,10 +76,33 @@ class MainTest {
     @Test
     void resultatTourTest() {
         Integer idJoueur2 = main.creationJoueur("Joueur2");
+        
         main.coupJoueur(idPartie, idJoueur, "TRAHIR");
         main.coupJoueur(idPartie, idJoueur2, "COOPERER");
         main.jouePartie(idPartie, idJoueur);
         assertEquals("0", main.resultatTour(idPartie, idJoueur));
+    }
+
+    @Test
+    void dernierCoupAdvTest() {
+        Integer idJoueur2 = main.creationJoueur("Joueur2");
+        main.rejoindrePartie(idPartie, idJoueur2);
+        Jeu jeu = main.getJeu();
+        jeu.getJoueur1().setCoup(Coup.COOPERER);
+        jeu.getJoueur2().setCoup(Coup.COOPERER);
+        main.jouePartie(idPartie, idJoueur);
+        assertEquals("COOPERER", main.dernierCoupAdv(idPartie, idJoueur));
+    }
+
+    @Test
+    void resFinalTest() {
+        Integer idJoueur2 = main.creationJoueur("Joueur2");
+        main.rejoindrePartie(idPartie, idJoueur2);
+        Jeu jeu = main.getJeu();
+        jeu.getJoueur1().setCoup(Coup.COOPERER);
+        jeu.getJoueur2().setCoup(Coup.COOPERER);
+        main.jouePartie(idPartie, idJoueur);
+        assertEquals("3&3", main.resFinal(idPartie, idJoueur));
     }
 
     @Test
@@ -101,5 +127,14 @@ class MainTest {
     void  getAllPartieTest() {
         assertEquals(idPartie+"&", main.getAllPartie());
     }
-    
+    @Test
+    void  getJeuTest() {
+        Jeu jeu = new Jeu();
+        assertEquals(jeu.getClass().getName(), main.getJeu().getClass().getName());
+    }
+
+    @Test
+    void  supprimerPartieTest() {
+        assertEquals(true, main.supprimerPartie(idPartie));
+    }
 }

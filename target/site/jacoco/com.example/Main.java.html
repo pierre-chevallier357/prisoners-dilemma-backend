@@ -41,7 +41,7 @@ import com.zaxxer.hikari.HikariDataSource;
 <span class="pc bpc" id="L41" title="1 of 2 branches missed.">      while(j.getId().equals(i)){</span>
 <span class="nc" id="L42">        i = Tools.randomNum();</span>
       }
-<span class="fc" id="L44">    }</span>
+    }
 <span class="fc" id="L45">    joueur.setId(i);</span>
 <span class="fc" id="L46">    joueur.setNom(nom);</span>
 <span class="fc" id="L47">    joueur.setConnect(true);</span>
@@ -92,7 +92,7 @@ import com.zaxxer.hikari.HikariDataSource;
 <span class="fc" id="L92">      res = jeu.attenteDeCoup();</span>
 <span class="fc" id="L93">    }catch (Exception e) {</span>
 <span class="fc" id="L94">      res = false;</span>
-<span class="fc" id="L95">    }</span>
+    }
 <span class="fc" id="L96">    return res;</span>
   }
 
@@ -113,7 +113,7 @@ import com.zaxxer.hikari.HikariDataSource;
 <span class="fc" id="L113">        jeu.resetCoupJoueur();</span>
 <span class="fc" id="L114">        res = true;</span>
       }
-    }
+<span class="fc" id="L116">    }</span>
     else{
 <span class="fc" id="L118">      jeu.jeuManche();</span>
 <span class="fc" id="L119">      jeu.resetCoupJoueur();</span>
@@ -147,59 +147,67 @@ import com.zaxxer.hikari.HikariDataSource;
 <span class="nc" id="L147">    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);</span>
 <span class="nc" id="L148">    String res = &quot;&quot;;</span>
 <span class="nc" id="L149">    res += jeu.getRes(idJoueur)+&quot;&amp;&quot;+jeu.getResAdv(idJoueur) ;</span>
-<span class="nc" id="L150">    listPartie.remove(jeu);</span>
-<span class="nc" id="L151">    return res;</span>
+<span class="nc" id="L150">    return res;</span>
+  }
+
+  @GetMapping(&quot;/supprimer-partie/{idPartie}&quot;)
+  public boolean supprimerPartie(@PathVariable(value = &quot;idPartie&quot;) Integer idPartie){
+<span class="nc" id="L155">    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);</span>
+<span class="nc bnc" id="L156" title="All 2 branches missed.">    if(jeu !=null){</span>
+<span class="nc" id="L157">      listPartie.remove(jeu);</span>
+    }
+<span class="nc" id="L159">    return true;</span>
   }
 
   @GetMapping(&quot;/all-joueur&quot;)
   public String getAllJoueur(){
-<span class="fc" id="L156">    String res = &quot;&quot;;</span>
-<span class="fc bfc" id="L157" title="All 2 branches covered.">    for (Joueur j : listJoueur) {</span>
-<span class="fc" id="L158">      res += j.getNom()+&quot;&amp;&quot;+j.getId()+&quot;&amp;&quot;;</span>
-<span class="fc" id="L159">    }</span>
-<span class="fc" id="L160">    return res;</span>
+<span class="fc" id="L164">    String res = &quot;&quot;;</span>
+<span class="fc bfc" id="L165" title="All 2 branches covered.">    for (Joueur j : listJoueur) {</span>
+<span class="fc" id="L166">      res += j.getNom()+&quot;&amp;&quot;+j.getId()+&quot;&amp;&quot;;</span>
+    }
+<span class="fc" id="L168">    return res;</span>
   }
 
 
   @GetMapping(&quot;/all-joueur-by-id&quot;)
   public String getAllIdsJoueur(){
-<span class="fc" id="L166">    String res = &quot;&quot;;</span>
-<span class="fc bfc" id="L167" title="All 2 branches covered.">    for (Joueur j : listJoueur) {</span>
-<span class="fc" id="L168">      res += j.getId()+&quot;&amp;&quot;;</span>
-<span class="fc" id="L169">    }</span>
-<span class="fc" id="L170">    return res;</span>
+<span class="fc" id="L174">    String res = &quot;&quot;;</span>
+<span class="fc bfc" id="L175" title="All 2 branches covered.">    for (Joueur j : listJoueur) {</span>
+<span class="fc" id="L176">      res += j.getId()+&quot;&amp;&quot;;</span>
+    }
+<span class="fc" id="L178">    return res;</span>
   }
 
   @GetMapping(&quot;/all-joueur-by-nom&quot;)
   public String getAllNomsJoueur(){
-<span class="fc" id="L175">    String res = &quot;&quot;;</span>
-<span class="fc bfc" id="L176" title="All 2 branches covered.">    for (Joueur j : listJoueur) {</span>
-<span class="fc" id="L177">      res += j.getNom()+&quot;&amp;&quot;;</span>
-<span class="fc" id="L178">    }</span>
-<span class="fc" id="L179">    return res;</span>
+<span class="fc" id="L183">    String res = &quot;&quot;;</span>
+<span class="fc bfc" id="L184" title="All 2 branches covered.">    for (Joueur j : listJoueur) {</span>
+<span class="fc" id="L185">      res += j.getNom()+&quot;&amp;&quot;;</span>
+    }
+<span class="fc" id="L187">    return res;</span>
   }
 
   @GetMapping(&quot;/all-partie&quot;)
   public String getAllPartie(){
-<span class="fc" id="L184">    String res = &quot;&quot;;</span>
-<span class="fc bfc" id="L185" title="All 2 branches covered.">    for (Jeu p : listPartie) {</span>
-<span class="pc bpc" id="L186" title="1 of 2 branches missed.">      if(!p.getJoueur2().isConnect()){</span>
-<span class="fc" id="L187">        res += p.getPartieId()+&quot;&amp;&quot;;</span>
+<span class="fc" id="L192">    String res = &quot;&quot;;</span>
+<span class="fc bfc" id="L193" title="All 2 branches covered.">    for (Jeu p : listPartie) {</span>
+<span class="pc bpc" id="L194" title="1 of 2 branches missed.">      if(!p.getJoueur2().isConnect()){</span>
+<span class="fc" id="L195">        res += p.getPartieId()+&quot;&amp;&quot;;</span>
       }
-<span class="fc" id="L189">    }</span>
-<span class="fc" id="L190">    return res;</span>
+    }
+<span class="fc" id="L198">    return res;</span>
   }
 
 
 
   @Bean
   public DataSource dataSource() throws ServerException {
-<span class="nc bnc" id="L197" title="All 4 branches missed.">    if (dbUrl == null || dbUrl.isEmpty()) {</span>
-<span class="nc" id="L198">      return new HikariDataSource();</span>
+<span class="nc bnc" id="L205" title="All 4 branches missed.">    if (dbUrl == null || dbUrl.isEmpty()) {</span>
+<span class="nc" id="L206">      return new HikariDataSource();</span>
     } else {
-<span class="nc" id="L200">      HikariConfig config = new HikariConfig();</span>
-<span class="nc" id="L201">      config.setJdbcUrl(dbUrl);</span>
-<span class="nc" id="L202">      return new HikariDataSource(config);</span>
+<span class="nc" id="L208">      HikariConfig config = new HikariConfig();</span>
+<span class="nc" id="L209">      config.setJdbcUrl(dbUrl);</span>
+<span class="nc" id="L210">      return new HikariDataSource(config);</span>
     }
   }
 

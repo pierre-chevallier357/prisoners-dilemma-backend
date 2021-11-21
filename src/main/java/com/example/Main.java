@@ -198,6 +198,9 @@ public class Main {
     return res;
   }
 
+  public Jeu getJeu(){
+    return listPartie.get(0);
+  }
 
 
   @Bean
