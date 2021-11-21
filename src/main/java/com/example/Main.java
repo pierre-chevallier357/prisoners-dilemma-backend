@@ -150,8 +150,8 @@ public class Main {
     return res;
   }
 
-  @GetMapping("/supprimer-partie/{idPartie}&{idJoueur}")
-  public boolean supprimerPartie(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
+  @GetMapping("/supprimer-partie/{idPartie}")
+  public boolean supprimerPartie(@PathVariable(value = "idPartie") Integer idPartie){
     Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
     if(jeu !=null){
       listPartie.remove(jeu);
