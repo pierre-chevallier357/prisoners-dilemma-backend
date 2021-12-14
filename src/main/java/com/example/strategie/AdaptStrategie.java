@@ -17,11 +17,16 @@ public class AdaptStrategie {
                 break;
     
             case 14: 
-                StrategieToujourTrahir strat2 = new StrategieToujourTrahir();
-                choix = strat2.jouerStrategie(historiqueAdapter, (historique.size()-1));
+                try {
+                    StrategieToujourTrahir strat2 = new StrategieToujourTrahir();
+                    choix = strat2.jouerStrategie(historiqueAdapter, (historique.size()-1));
+                } catch (Exception e) {
+                    choix = Choix.COOPERER;
+                }
                 break;
                 
             default:
+                choix = Choix.COOPERER;
                 break;
         }
         if(choix.equals(Choix.COOPERER)){
