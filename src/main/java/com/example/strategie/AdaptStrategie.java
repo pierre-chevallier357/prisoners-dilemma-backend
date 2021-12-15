@@ -1,14 +1,14 @@
 package com.example.strategie;
 import java.util.ArrayList;
 
-import com.example.Strategie_groupe2.*;
+import strategie2.*;
 import com.example.joueur.Coup;
 
 public class AdaptStrategie {
     
     public static Coup adaptCoup(ArrayList<Coup> historique, int strategie){
         Coup coup = null;
-        Choix choix = null;
+        Choix choix = Choix.COOPERER;
         ArrayList<Choix> historiqueAdapter = listAdapter(historique);
         switch (strategie){
             case 13: 
