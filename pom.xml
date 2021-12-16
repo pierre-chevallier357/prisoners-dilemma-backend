@@ -29,13 +29,13 @@
 	<repository>
 		<id>RepProject</id>
 		<name>RepProject</name>
-		<url>file://${project.basedir}/libs</url>
+		<url>file://${project.basedir}/lib</url>
 	</repository>
   </repositories>
 	
   <dependencies>
   	<dependency>
-  		<groupId>external</groupId>
+  		<groupId>externJar</groupId>
   		<artifactId>strategie_g2</artifactId>
   		<version>1.0</version>
   	</dependency>
