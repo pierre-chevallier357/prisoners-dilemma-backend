@@ -5,34 +5,35 @@ import strategie2.*;
 import com.example.joueur.Coup;
 
 public class AdaptStrategie {
+	
+	public AdaptStrategie() {}
     
     public static Coup adaptCoup(ArrayList<Coup> historique, int strategie){
         Coup coup = null;
-        Choix choix = Choix.COOPERER;
+        Choix choix = null;
         ArrayList<Choix> historiqueAdapter = listAdapter(historique);
         switch (strategie){
             case 13: 
                 StrategieDonnantDonnant strat = new StrategieDonnantDonnant();
-                choix = strat.jouerStrategie(historiqueAdapter, (historique.size()-1));
+                choix = strat.jouerStrategie(historiqueAdapter, (historique.size()));
                 break;
     
             case 14: 
                 try {
                     StrategieToujourTrahir strat2 = new StrategieToujourTrahir();
-                    choix = strat2.jouerStrategie(historiqueAdapter, (historique.size()-1));
+                    choix = strat2.jouerStrategie(historiqueAdapter, (historique.size()));
                 } catch (Exception e) {
                     choix = Choix.COOPERER;
                 }
                 break;
-                
             default:
-                choix = Choix.COOPERER;
-                break;
+            	break;
+
         }
-        if(choix.equals(Choix.COOPERER)){
+        if((choix !=null) &&choix.equals(Choix.COOPERER)){
             coup =Coup.COOPERER;
         }
-        else if(choix.equals(Choix.TRAHIR)){
+        else if((choix !=null) && choix.equals(Choix.TRAHIR)){
             coup = Coup.TRAHIR;
         }
         return coup;

@@ -59,5 +59,12 @@ class ToolsTest {
         assertEquals(coup.getClass().getSimpleName() , Tools.prochainCoupStrat(historiqueJ1, historiqueJ2, 11).getClass().getSimpleName());
         assertEquals(coup.getClass().getSimpleName() , Tools.prochainCoupStrat(historiqueJ1, historiqueJ2, 12).getClass().getSimpleName());
 
+        
+        joueur.setCoup(coup);
+        historiqueJ2.addCoupRes(joueur);
+
+        assertEquals(Coup.COOPERER , Tools.prochainCoupStrat(historiqueJ1, historiqueJ2, 13));
+        assertEquals(Coup.TRAHIR , Tools.prochainCoupStrat(historiqueJ1, historiqueJ2, 14));
+
     }
 }

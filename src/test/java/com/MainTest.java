@@ -15,7 +15,7 @@ class MainTest {
 
     @Test
     void indexTest() {
-        String test = "Ceci est le serveur voici l'application : client-pc.web.app";
+        String test = "Ceci est le serveur, pour jouer, veuillez aller sur l'application : client-pc.web.app";
         assertEquals(test, main.index());
     }
 
@@ -77,8 +77,8 @@ class MainTest {
     void resultatTourTest() {
         Integer idJoueur2 = main.creationJoueur("Joueur2");
         
-        main.coupJoueur(idPartie, idJoueur, "TRAHIR");
-        main.coupJoueur(idPartie, idJoueur2, "COOPERER");
+        main.coupJoueur(idPartie, idJoueur, "COOPERER");
+        main.coupJoueur(idPartie, idJoueur2, "TRAHIR");
         main.jouePartie(idPartie, idJoueur);
         assertEquals("0", main.resultatTour(idPartie, idJoueur));
     }
