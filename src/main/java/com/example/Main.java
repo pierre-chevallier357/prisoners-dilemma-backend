@@ -103,6 +103,15 @@ public class Main {
     return true;
   }
 
+
+  @GetMapping("/disconnect/{idPartie}&{idJoueur}")
+  public boolean disconnectJoueur(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
+    Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
+    jeu.setStrategie(idJoueur, 1);
+    return true;
+  }
+
+
   @GetMapping("/partie/{idPartie}&{idJoueur}")
   public boolean jouePartie(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     boolean res = false;
