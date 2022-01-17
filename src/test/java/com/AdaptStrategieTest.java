@@ -14,14 +14,18 @@ import org.junit.jupiter.api.Test;
 public class AdaptStrategieTest {
     
     ArrayList<Coup> historiqueJ1 = new ArrayList<>();
+    ArrayList<Coup> historiqueJ2 = new ArrayList<>();
+
     ArrayList<Choix> historiqueChoixJ1 = new ArrayList<>();
     @Test
     void testAdaptCoup() {
+        AdaptStrategie adap = new AdaptStrategie(13);
         historiqueJ1.add(Coup.COOPERER);
-        assertEquals(Coup.COOPERER, AdaptStrategie.adaptCoup(historiqueJ1, 13));
+        assertEquals(Coup.COOPERER, adap.prochainCoup(historiqueJ2, historiqueJ1));
         historiqueJ1.add(Coup.TRAHIR);
-        assertEquals(Coup.TRAHIR, AdaptStrategie.adaptCoup(historiqueJ1, 13));
-        assertEquals(Coup.TRAHIR, AdaptStrategie.adaptCoup(historiqueJ1, 14));
+        assertEquals(Coup.TRAHIR, adap.prochainCoup(historiqueJ2, historiqueJ1));
+        AdaptStrategie adap2 = new AdaptStrategie(14);
+        assertEquals(Coup.TRAHIR, adap2.prochainCoup(historiqueJ2, historiqueJ1));
     }
     
     @Test
