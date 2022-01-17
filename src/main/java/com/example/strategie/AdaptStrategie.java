@@ -4,24 +4,28 @@ import java.util.ArrayList;
 import strategie2.*;
 import com.example.joueur.Coup;
 
-public class AdaptStrategie {
-	
-	public AdaptStrategie() {}
+public class AdaptStrategie extends Strategie {
+	int strategie;
+
+	public AdaptStrategie(int strategie) {
+        this.strategie = strategie;
+    }
     
-    public static Coup adaptCoup(ArrayList<Coup> historique, int strategie){
+    @Override
+    public Coup prochainCoup(ArrayList<Coup> historiqueJ1, ArrayList<Coup> historiqueJ2) {
         Coup coup = null;
         Choix choix = null;
-        ArrayList<Choix> historiqueAdapter = listAdapter(historique);
+        ArrayList<Choix> historiqueAdapter = listAdapter(historiqueJ2);
         switch (strategie){
             case 13: 
                 StrategieDonnantDonnant strat = new StrategieDonnantDonnant();
-                choix = strat.jouerStrategie(historiqueAdapter, (historique.size()));
+                choix = strat.jouerStrategie(historiqueAdapter, (historiqueJ2.size()));
                 break;
     
             case 14: 
                 try {
                     StrategieToujourTrahir strat2 = new StrategieToujourTrahir();
-                    choix = strat2.jouerStrategie(historiqueAdapter, (historique.size()));
+                    choix = strat2.jouerStrategie(historiqueAdapter, (historiqueJ2.size()));
                 } catch (Exception e) {
                     choix = Choix.COOPERER;
                 }
@@ -51,5 +55,4 @@ public class AdaptStrategie {
         }
         return listChoix;
     }
-    
 }

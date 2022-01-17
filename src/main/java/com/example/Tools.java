@@ -92,7 +92,8 @@ public class Tools {
                 coup = strat.prochainCoup(historiqueJ1.getListCoup(), historiqueJ2.getListCoup());
                 break;
             default:
-                coup = AdaptStrategie.adaptCoup(historiqueJ2.getListCoup(),strategie);
+                strat = new AdaptStrategie(strategie);
+                coup = strat.prochainCoup(historiqueJ1.getListCoup(), historiqueJ2.getListCoup());
                 break;
         }
         return coup;
