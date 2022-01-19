@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import strategie2.*;
 import com.example.joueur.Coup;
 
-public class AdaptStrategie extends Strategie {
+public class AdaptStrategie implements Strategie {
 	int strategie;
 
 	public AdaptStrategie(int strategie) {
