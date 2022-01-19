@@ -24,6 +24,7 @@ public class Main {
   private String dbUrl;
 
   private GameInterface game;
+  
 
   @GetMapping("/")
   public String index() {

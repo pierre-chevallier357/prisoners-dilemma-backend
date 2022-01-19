@@ -3,7 +3,7 @@ package com.example;
 import com.example.partiedejeux.Jeu;
 
 public interface GameInterface  {
-    
+
     public String index();
     public Integer creationJoueur(String nom);
     public Integer creationPartie(Integer idJoueur, int nbTour);
