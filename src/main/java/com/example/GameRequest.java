@@ -137,6 +137,7 @@ public class GameRequest implements GameInterface {
         Jeu jeu = Tools.jeuDansList(listPartie, idPartie);
         String res = "";
         res += jeu.getRes(idJoueur)+"&"+jeu.getResAdv(idJoueur) ;
+        listPartie.remove(jeu);
         return res;
       }
 
