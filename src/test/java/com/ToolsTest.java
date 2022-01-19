@@ -67,4 +67,11 @@ class ToolsTest {
         assertEquals(Coup.TRAHIR , Tools.prochainCoupStrat(historiqueJ1, historiqueJ2, 14));
 
     }
+
+    @Test
+    void coupAleatoireTest() {
+	    Coup coup  = Coup.COOPERER;
+
+        assertEquals(coup.getClass().getSimpleName(), Tools.coupAleatoire(0.5).getClass().getSimpleName());
+    }
 }
