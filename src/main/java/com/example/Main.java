@@ -23,7 +23,7 @@ public class Main {
   @Value("${spring.datasource.url}")
   private String dbUrl;
 
-  private GameInterface game;
+  private GameInterface game = new GameRequest();
   
 
   @GetMapping("/")
