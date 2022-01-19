@@ -3,138 +3,139 @@ package com;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-import com.example.Main;
+import com.example.GameInterface;
+import com.example.GameRequest;
 import com.example.joueur.Coup;
 import com.example.partiedejeux.Jeu;
 
-class MainTest {
-    Main main = new Main();
-    Integer idJoueur = main.creationJoueur("Joueur1");
-    Integer idPartie = main.creationPartie(idJoueur, 1);
+class GameInterfaceTest {
+    GameInterface game = new GameRequest();
+    Integer idJoueur = game.creationJoueur("Joueur1");
+    Integer idPartie = game.creationPartie(idJoueur, 1);
 
 
     @Test
     void indexTest() {
         String test = "Ceci est le serveur, pour jouer, veuillez aller sur l'application : client-pc.web.app";
-        assertEquals(test, main.index());
+        assertEquals(test, game.index());
     }
 
     @Test
     void creationJoueurTest() {
-        assertEquals(main.getAllIdsJoueur(), Integer.toString(idJoueur)+"&");
+        assertEquals(game.getAllIdsJoueur(), Integer.toString(idJoueur)+"&");
     }
 
     @Test
     void creationPartieTest() {
-        assertEquals(main.getAllPartie(), Integer.toString(idPartie)+"&");
+        assertEquals(game.getAllPartie(), Integer.toString(idPartie)+"&");
     }
     
 
 
     @Test
     void rejoindrePartieTest() {
-        Integer idJoueur2 = main.creationJoueur("Joueur2");
-        assertTrue(main.rejoindrePartie(idPartie, idJoueur2));
+        Integer idJoueur2 = game.creationJoueur("Joueur2");
+        assertTrue(game.rejoindrePartie(idPartie, idJoueur2));
     }
 
     @Test
     void attenteDuJoueur2Test() {
-        Integer idJoueur2 = main.creationJoueur("Joueur2");
-        main.rejoindrePartie(idPartie, idJoueur2);
-        assertTrue(main.attenteDuJoueur2(idPartie, idJoueur));
+        Integer idJoueur2 = game.creationJoueur("Joueur2");
+        game.rejoindrePartie(idPartie, idJoueur2);
+        assertTrue(game.attenteDuJoueur2(idPartie, idJoueur));
     }
 
 
     @Test
     void nbCoupsJouesTest() {
-        assertEquals("1", main.nbCoupsJoues(idPartie));
+        assertEquals("1", game.nbCoupsJoues(idPartie));
     }
 
     @Test
     void coupJoueurTest() {
-        assertTrue(main.coupJoueur(idPartie, idJoueur, "COOPERER"));
+        assertTrue(game.coupJoueur(idPartie, idJoueur, "COOPERER"));
         Integer i = 1;
-        assertFalse(main.coupJoueur(idPartie, i, "COOPERER"));
+        assertFalse(game.coupJoueur(idPartie, i, "COOPERER"));
     }
 
     @Test
     void strategieJoueurTest() {
-        assertTrue(main.strategieJoueur(idPartie, idJoueur, 1));
+        assertTrue(game.strategieJoueur(idPartie, idJoueur, 1));
     }
 
     @Test
     void jouePartieTest() {
-        Integer idJoueur2 = main.creationJoueur("Joueur2");
-        main.coupJoueur(idPartie, idJoueur, "COOPERER");
-        main.coupJoueur(idPartie, idJoueur2, "COOPERER");
-        assertTrue(main.jouePartie(idPartie, idJoueur));
-        main.strategieJoueur(idPartie, idJoueur, 1);
-        main.coupJoueur(idPartie, idJoueur2, "COOPERER");
-        assertTrue(main.jouePartie(idPartie, idJoueur2));
+        Integer idJoueur2 = game.creationJoueur("Joueur2");
+        game.coupJoueur(idPartie, idJoueur, "COOPERER");
+        game.coupJoueur(idPartie, idJoueur2, "COOPERER");
+        assertTrue(game.jouePartie(idPartie, idJoueur));
+        game.strategieJoueur(idPartie, idJoueur, 1);
+        game.coupJoueur(idPartie, idJoueur2, "COOPERER");
+        assertTrue(game.jouePartie(idPartie, idJoueur2));
     }
 
     @Test
     void resultatTourTest() {
-        Integer idJoueur2 = main.creationJoueur("Joueur2");
+        Integer idJoueur2 = game.creationJoueur("Joueur2");
         
-        main.coupJoueur(idPartie, idJoueur, "COOPERER");
-        main.coupJoueur(idPartie, idJoueur2, "TRAHIR");
-        main.jouePartie(idPartie, idJoueur);
-        assertEquals("0", main.resultatTour(idPartie, idJoueur));
+        game.coupJoueur(idPartie, idJoueur, "COOPERER");
+        game.coupJoueur(idPartie, idJoueur2, "TRAHIR");
+        game.jouePartie(idPartie, idJoueur);
+        assertEquals("0", game.resultatTour(idPartie, idJoueur));
     }
 
     @Test
     void dernierCoupAdvTest() {
-        Integer idJoueur2 = main.creationJoueur("Joueur2");
-        main.rejoindrePartie(idPartie, idJoueur2);
-        Jeu jeu = main.getJeu();
+        Integer idJoueur2 = game.creationJoueur("Joueur2");
+        game.rejoindrePartie(idPartie, idJoueur2);
+        Jeu jeu = game.getJeu();
         jeu.getJoueur1().setCoup(Coup.COOPERER);
         jeu.getJoueur2().setCoup(Coup.COOPERER);
-        main.jouePartie(idPartie, idJoueur);
-        assertEquals("COOPERER", main.dernierCoupAdv(idPartie, idJoueur));
+        game.jouePartie(idPartie, idJoueur);
+        assertEquals("COOPERER", game.dernierCoupAdv(idPartie, idJoueur));
     }
 
     @Test
     void resFinalTest() {
-        Integer idJoueur2 = main.creationJoueur("Joueur2");
-        main.rejoindrePartie(idPartie, idJoueur2);
-        Jeu jeu = main.getJeu();
+        Integer idJoueur2 = game.creationJoueur("Joueur2");
+        game.rejoindrePartie(idPartie, idJoueur2);
+        Jeu jeu = game.getJeu();
         jeu.getJoueur1().setCoup(Coup.COOPERER);
         jeu.getJoueur2().setCoup(Coup.COOPERER);
-        main.jouePartie(idPartie, idJoueur);
-        assertEquals("3&3", main.resFinal(idPartie, idJoueur));
+        game.jouePartie(idPartie, idJoueur);
+        assertEquals("3&3", game.resFinal(idPartie, idJoueur));
     }
 
     @Test
     void  getAllJoueurTest() {
-        Integer idJoueur2 = main.creationJoueur("Joueur2");
-        assertEquals("Joueur1&"+idJoueur+"&"+"Joueur2&"+idJoueur2+"&", main.getAllJoueur());
+        Integer idJoueur2 = game.creationJoueur("Joueur2");
+        assertEquals("Joueur1&"+idJoueur+"&"+"Joueur2&"+idJoueur2+"&", game.getAllJoueur());
     }
 
     @Test
     void  getAllIdsJoueurTest() {
-        Integer idJoueur2 = main.creationJoueur("Joueur2");
-        assertEquals(idJoueur+"&"+idJoueur2+"&", main.getAllIdsJoueur());
+        Integer idJoueur2 = game.creationJoueur("Joueur2");
+        assertEquals(idJoueur+"&"+idJoueur2+"&", game.getAllIdsJoueur());
     }
 
     @Test
     void  getAllNomsJoueurTest() {
-        main.creationJoueur("Joueur2");
-        assertEquals("Joueur1&"+"Joueur2&", main.getAllNomsJoueur());
+        game.creationJoueur("Joueur2");
+        assertEquals("Joueur1&"+"Joueur2&", game.getAllNomsJoueur());
     }
     
     @Test
     void  getAllPartieTest() {
-        assertEquals(idPartie+"&", main.getAllPartie());
+        assertEquals(idPartie+"&", game.getAllPartie());
     }
     @Test
     void  getJeuTest() {
         Jeu jeu = new Jeu();
-        assertEquals(jeu.getClass().getName(), main.getJeu().getClass().getName());
+        assertEquals(jeu.getClass().getName(), game.getJeu().getClass().getName());
     }
 
     @Test
     void  supprimerPartieTest() {
-        assertEquals(true, main.supprimerPartie(idPartie));
+        assertEquals(true, game.supprimerPartie(idPartie));
     }
 }

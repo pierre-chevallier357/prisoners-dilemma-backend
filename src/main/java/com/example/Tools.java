@@ -98,4 +98,18 @@ public class Tools {
         }
         return coup;
     }
+
+    public static Coup coupAleatoire(double d) {
+		Coup coup;
+		
+		if(Math.random()<d) {
+			coup= Coup.COOPERER;
+		}
+		else {
+			coup = Coup.TRAHIR;
+		}
+		
+		return coup;
+		
+	}
 }

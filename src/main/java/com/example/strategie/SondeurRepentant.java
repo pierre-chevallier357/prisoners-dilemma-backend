@@ -3,7 +3,9 @@ package com.example.strategie;
 import java.util.ArrayList;
 
 import com.example.joueur.*;
-public class SondeurRepentant extends Strategie {
+
+import com.example.Tools;
+public class SondeurRepentant implements Strategie {
 	
 	@Override
 	public Coup prochainCoup(ArrayList<Coup> historiqueJ1, ArrayList<Coup> historiqueJ2) {
@@ -23,7 +25,7 @@ public class SondeurRepentant extends Strategie {
 			}
 		}
 		catch(Exception e){
-			coup = coupAleatoire(0.5);
+			coup = Tools.coupAleatoire(0.5);
 		}
 		return coup;
 		

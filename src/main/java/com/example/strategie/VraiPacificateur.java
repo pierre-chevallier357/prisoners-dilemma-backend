@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 import com.example.joueur.*;
 
-public class VraiPacificateur extends Strategie{
+import com.example.Tools;
+
+public class VraiPacificateur implements Strategie{
 	
 	@Override
 	public Coup prochainCoup(ArrayList<Coup> historiqueJ1, ArrayList<Coup> historiqueJ2) {
@@ -15,7 +17,7 @@ public class VraiPacificateur extends Strategie{
 			}
 		}
 		catch(Exception e){
-			coup = coupAleatoire(0.5);
+			coup = Tools.coupAleatoire(0.5);
 		}
 		return coup;
 		

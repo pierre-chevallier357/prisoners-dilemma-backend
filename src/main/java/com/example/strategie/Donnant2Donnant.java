@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 import com.example.joueur.*;
 
-public class Donnant2Donnant extends Strategie {
+import com.example.Tools;
+
+public class Donnant2Donnant implements Strategie {
 	@Override
 	public Coup prochainCoup(ArrayList<Coup> historiqueJ1, ArrayList<Coup> historiqueJ2) {
 		Coup coup = null;
@@ -18,7 +20,7 @@ public class Donnant2Donnant extends Strategie {
 			 }	
 		}		
 		catch(Exception e){
-			coup = coupAleatoire(0.5);
+			coup = Tools.coupAleatoire(0.5);
 		}
 		 return coup;
 	}
