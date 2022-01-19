@@ -62,6 +62,11 @@ class GameInterfaceTest {
     void strategieJoueurTest() {
         assertTrue(game.strategieJoueur(idPartie, idJoueur, 1));
     }
+    
+    @Test
+    void disconnectJoueurUserTest() {
+        assertTrue(game.disconnectJoueur(idPartie, idJoueur));
+    }
 
     @Test
     void jouePartieTest() {
