@@ -18,8 +18,12 @@ public class AdaptStrategie implements Strategie {
         ArrayList<Choix> historiqueAdapter = listAdapter(historiqueJ2);
         switch (strategie){
             case 13: 
-                StrategieDonnantDonnant strat = new StrategieDonnantDonnant();
-                choix = strat.jouerStrategie(historiqueAdapter, (historiqueJ2.size()));
+                try {
+                    StrategieDonnantDonnant strat = new StrategieDonnantDonnant();
+                    choix = strat.jouerStrategie(historiqueAdapter, (historiqueJ2.size()));
+                } catch (Exception e) {
+                    choix = Choix.COOPERER;
+                }
                 break;
     
             case 14: 
