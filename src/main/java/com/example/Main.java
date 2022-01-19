@@ -27,98 +27,98 @@ public class Main {
   
 
   @GetMapping("/")
-  public String index() {
+  public String indexUser() {
     return "Ceci est le serveur, pour jouer, veuillez aller sur l'application : client-pc.web.app";
   }
 
   @GetMapping("/creation-joueur/{nom}")
-	public Integer creationJoueur(@PathVariable(value = "nom") String nom) {
+	public Integer creationJoueurUser(@PathVariable(value = "nom") String nom) {
     return game.creationJoueur(nom);
 	}
 
   @GetMapping("/creation-partie/{idJoueur}&{nb_tour}")
-	public Integer creationPartie(@PathVariable(value = "idJoueur") Integer idJoueur, @PathVariable(value = "nb_tour") int nbTour) {
+	public Integer creationPartieUser(@PathVariable(value = "idJoueur") Integer idJoueur, @PathVariable(value = "nb_tour") int nbTour) {
     return game.creationPartie(idJoueur, nbTour);
 	}
 
   @GetMapping("/rejoindrePartie/{idPartie}&{idJoueur}")
-  public boolean rejoindrePartie(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
+  public boolean rejoindrePartieUser(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     return game.rejoindrePartie(idPartie, idJoueur);
   }
 
   @GetMapping("/attente-connection/{idPartie}&{idJoueur}")
-  public boolean attenteDuJoueur2(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
+  public boolean attenteDuJoueur2User(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     return game.attenteDuJoueur2(idPartie, idJoueur);
   }
 
   @GetMapping("/nb-coups/{idPartie}")
-  public String nbCoupsJoues(@PathVariable(value = "idPartie") Integer idPartie){
+  public String nbCoupsJouesUser(@PathVariable(value = "idPartie") Integer idPartie){
     return game.nbCoupsJoues(idPartie);
   } 
 
   @GetMapping("/coup/{idPartie}&{idJoueur}&{coup}")
-  public boolean coupJoueur(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur, @PathVariable(value = "coup") String coup  ){
+  public boolean coupJoueurUser(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur, @PathVariable(value = "coup") String coup  ){
     return game.coupJoueur(idPartie, idJoueur, coup);
   }
 
   @GetMapping("/strategie/{idPartie}&{idJoueur}&{strategie}")
-  public boolean strategieJoueur(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur, @PathVariable(value = "strategie") int strategie ){
+  public boolean strategieJoueurUser(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur, @PathVariable(value = "strategie") int strategie ){
     return game.strategieJoueur(idPartie, idJoueur, strategie);
   }
 
 
   @GetMapping("/disconnect/{idPartie}&{idJoueur}")
-  public boolean disconnectJoueur(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
+  public boolean disconnectJoueurUser(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     return game.disconnectJoueur(idPartie, idJoueur);
   }
 
 
   @GetMapping("/partie/{idPartie}&{idJoueur}")
-  public boolean jouePartie(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
+  public boolean jouePartieUser(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     return game.jouePartie(idPartie, idJoueur);
   }
 
   @GetMapping("/resultat-tour/{idPartie}&{idJoueur}")
-  public String resultatTour(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
+  public String resultatTourUser(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     return game.resultatTour(idPartie, idJoueur);
   }
 
   @GetMapping("/dernier-coup-adv/{idPartie}&{idJoueur}")
-  public String dernierCoupAdv(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
+  public String dernierCoupAdvUser(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     return game.dernierCoupAdv(idPartie, idJoueur);
   }
 
   @GetMapping("/resultat-final/{idPartie}&{idJoueur}")
-  public String resFinal(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
+  public String resFinalUser(@PathVariable(value = "idPartie") Integer idPartie, @PathVariable(value = "idJoueur") Integer idJoueur){
     return game.resFinal(idPartie, idJoueur);
   }
 
   @GetMapping("/supprimer-partie/{idPartie}")
-  public boolean supprimerPartie(@PathVariable(value = "idPartie") Integer idPartie){
+  public boolean supprimerPartieUser(@PathVariable(value = "idPartie") Integer idPartie){
     return game.supprimerPartie(idPartie);
   }
 
   @GetMapping("/all-joueur")
-  public String getAllJoueur(){
+  public String getAllJoueurUser(){
     return game.getAllJoueur();
   }
 
   @GetMapping("/all-joueur-by-id")
-  public String getAllIdsJoueur(){
+  public String getAllIdsJoueurUser(){
     return game.getAllIdsJoueur();
   }
 
   @GetMapping("/all-joueur-by-nom")
-  public String getAllNomsJoueur(){
+  public String getAllNomsJoueurUser(){
     return game.getAllNomsJoueur();
   }
 
   @GetMapping("/all-partie")
-  public String getAllPartie(){
+  public String getAllPartieUser(){
     return game.getAllPartie();
   }
 
-  public Jeu getJeu(){
+  public Jeu getJeuUser(){
     return game.getJeu();
   }
 
